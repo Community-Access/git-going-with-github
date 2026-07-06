@@ -90,6 +90,8 @@ async function provisionRoster({
             repoName,
             requiredWorkflows,
             permission,
+            enrollmentRepo: learner.enrollment_repo,
+            enrollmentIssueNumber: learner.enrollment_issue_number,
             verifyRetries,
             verifyDelayMs,
             sleep
@@ -143,6 +145,8 @@ async function provisionOne({
   repoName,
   requiredWorkflows,
   permission,
+  enrollmentRepo,
+  enrollmentIssueNumber,
   verifyRetries = 10,
   verifyDelayMs = 3000,
   sleep = sleepReal
@@ -183,11 +187,19 @@ async function provisionOne({
     result = 'created';
   }
 
-  await client.ensureCollaborator({
+  const collaboratorResult = await client.ensureCollaborator({
     owner: studentOwner,
     repo: repoName,
     username: handle,
     permission
+  });
+
+  await notifyEnrollmentIssue({
+    client,
+    enrollmentRepo,
+    enrollmentIssueNumber,
+    collaboratorStatus: collaboratorResult.status,
+    learningRoomRepo: `${studentOwner}/${repoName}`
   });
 
   // Final verification gate: required workflows must be present. On a fresh
@@ -224,7 +236,41 @@ async function provisionOne({
     templateSha = await client.getDefaultBranchSha({ owner: studentOwner, repo: repoName });
   }
 
-  return { result, healed, templateSha };
+  return { result, healed, templateSha, collaboratorStatus: collaboratorResult.status };
+}
+
+/**
+ * Tell the learner what actually happened when granting access: GitHub sends
+ * an invitation email for a brand-new collaborator, but grants instant
+ * access with no notification at all to someone who is already a member of
+ * the Community-Access organization (support#62). Best-effort only - a
+ * courtesy comment must never fail provisioning.
+ */
+async function notifyEnrollmentIssue({
+  client,
+  enrollmentRepo,
+  enrollmentIssueNumber,
+  collaboratorStatus,
+  learningRoomRepo
+}) {
+  if (!enrollmentRepo || !enrollmentIssueNumber || typeof client.commentOnIssue !== 'function') {
+    return;
+  }
+  const [owner, repo] = String(enrollmentRepo).split('/');
+  if (!owner || !repo) {
+    return;
+  }
+  const body =
+    collaboratorStatus === 'already-collaborator'
+      ? `Your learning room is ready: \`${learningRoomRepo}\`. You already have access - no invitation needed, since you're already a member of the Community-Access organization. Open it directly: https://github.com/${learningRoomRepo}`
+      : `Your learning room is ready: \`${learningRoomRepo}\`. Watch for a GitHub repository invitation (notification bell and email) and accept it to open it.`;
+  try {
+    await client.commentOnIssue({ owner, repo, issue_number: enrollmentIssueNumber, body });
+  } catch (err) {
+    console.error(
+      `Could not post enrollment follow-up comment on ${enrollmentRepo}#${enrollmentIssueNumber}: ${err.message}`
+    );
+  }
 }
 
 async function withRateLimitRetry(fn, { maxRetries, sleep, logger }) {
@@ -276,6 +322,7 @@ function required(config, key) {
 module.exports = {
   provisionRoster,
   provisionOne,
+  notifyEnrollmentIssue,
   defaultRepoName,
   isSecondaryRateLimit,
   missingWorkflows,

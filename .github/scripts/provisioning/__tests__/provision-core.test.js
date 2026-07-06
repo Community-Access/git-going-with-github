@@ -269,3 +269,84 @@ test('isSecondaryRateLimit detects status and message forms', () => {
   assert.ok(isSecondaryRateLimit({ message: 'oops HTTP 403 here' }));
   assert.equal(isSecondaryRateLimit({ message: 'HTTP 404' }), false);
 });
+
+test('posts an instant-access comment when the learner is already an org member', async () => {
+  const comments = [];
+  const { client } = makeClient({
+    async ensureCollaborator() {
+      return { status: 'already-collaborator' };
+    },
+    async commentOnIssue(args) {
+      comments.push(args);
+    }
+  });
+  const roster = rosterWith({
+    github_handle: 'alice',
+    cohort_id: 'c1',
+    enrollment_repo: 'Community-Access/git-going-with-github',
+    enrollment_issue_number: 250
+  });
+  const { roster: out } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(out.learners[0].provision_state, 'provisioned');
+  assert.equal(comments.length, 1);
+  assert.equal(comments[0].owner, 'Community-Access');
+  assert.equal(comments[0].repo, 'git-going-with-github');
+  assert.equal(comments[0].issue_number, 250);
+  assert.match(comments[0].body, /already have access/);
+  assert.match(comments[0].body, /Community-Access\/learning-room-c1-alice/);
+});
+
+test('posts an invitation-pending comment for a new collaborator', async () => {
+  const comments = [];
+  const { client } = makeClient({
+    async ensureCollaborator() {
+      return { status: 'invited' };
+    },
+    async commentOnIssue(args) {
+      comments.push(args);
+    }
+  });
+  const roster = rosterWith({
+    github_handle: 'alice',
+    cohort_id: 'c1',
+    enrollment_repo: 'Community-Access/git-going-with-github',
+    enrollment_issue_number: 250
+  });
+  await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(comments.length, 1);
+  assert.match(comments[0].body, /Watch for a GitHub repository invitation/);
+});
+
+test('skips the enrollment comment silently when no enrollment issue is known', async () => {
+  const comments = [];
+  const { client } = makeClient({
+    async commentOnIssue(args) {
+      comments.push(args);
+    }
+  });
+  const roster = rosterWith({ github_handle: 'alice', cohort_id: 'c1' });
+  const { roster: out } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(out.learners[0].provision_state, 'provisioned');
+  assert.equal(comments.length, 0);
+});
+
+test('a failed enrollment comment does not fail provisioning', async () => {
+  const { client } = makeClient({
+    async commentOnIssue() {
+      throw new Error('comment boom');
+    }
+  });
+  const roster = rosterWith({
+    github_handle: 'alice',
+    cohort_id: 'c1',
+    enrollment_repo: 'Community-Access/git-going-with-github',
+    enrollment_issue_number: 250
+  });
+  const { roster: out, summary } = await provisionRoster({ roster, client, config, sleep: noSleep });
+
+  assert.equal(out.learners[0].provision_state, 'provisioned');
+  assert.equal(summary.error, 0);
+});
