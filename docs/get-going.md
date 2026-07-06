@@ -48,6 +48,8 @@ At the start of the workshop, the facilitator shares an enrollment link. Complet
 
 Your repository name usually looks like `learning-room-your-username`. This is your personal practice space for the workshop.
 
+> **No invitation arrived?** If you are already a member of the Community-Access GitHub organization for any other reason (a prior cohort, a facilitator role, and so on), GitHub grants you instant access to your new Learning Room instead of sending an invitation - there is nothing to accept and no notification. Check your repository list or search github.com directly for your repository name before filing a support issue.
+
 ## Step 3 - Understand the Learning Room
 
 The Learning Room is a private repository created from a template. Everyone starts from the same materials, but your work belongs to you.
