@@ -48,6 +48,9 @@ function fakeRequest(overrides = {}) {
     if (method === 'POST' && route === '/repos/org/room/pulls') {
       return { number: 99, html_url: 'https://example.test/pull/99' };
     }
+    if (method === 'GET' && route === '/repos/org/room/pulls/99') {
+      return { mergeable_state: 'dirty' };
+    }
     return null;
   };
   return { calls, request };
@@ -56,7 +59,7 @@ function fakeRequest(overrides = {}) {
 test('opens a branch, two conflicting edits, a PR, and comments the issue', async () => {
   const { calls, request } = fakeRequest();
 
-  await ensureMergeConflictPractice(11, request);
+  await ensureMergeConflictPractice(11, request, 0);
 
   const refPosts = calls.filter((c) => c.method === 'POST' && c.route === '/repos/org/room/git/refs');
   assert.equal(refPosts.length, 1);
@@ -89,7 +92,7 @@ test('is idempotent: does nothing when a practice PR already exists in any state
     'GET /repos/org/room/pulls?': () => [{ number: 5, state: 'closed' }]
   });
 
-  await ensureMergeConflictPractice(11, request);
+  await ensureMergeConflictPractice(11, request, 0);
 
   const writes = calls.filter((c) => c.method === 'POST' || c.method === 'PUT');
   assert.deepEqual(writes, [
@@ -105,7 +108,7 @@ test('is idempotent: skips when the conflict anchor is already on main', async (
     })
   });
 
-  await ensureMergeConflictPractice(11, request);
+  await ensureMergeConflictPractice(11, request, 0);
 
   const writes = calls.filter((c) => c.method === 'POST' || c.method === 'PUT');
   assert.deepEqual(writes, []);
@@ -118,7 +121,7 @@ test('falls back to looking up the issue when no issue number is passed', async 
     ]
   });
 
-  await ensureMergeConflictPractice(null, request);
+  await ensureMergeConflictPractice(null, request, 0);
 
   const issueComments = calls.filter((c) => c.method === 'POST' && c.route === '/repos/org/room/issues/21/comments');
   assert.equal(issueComments.length, 1);
@@ -130,4 +133,23 @@ test('never throws: progression survives a seeding failure', async () => {
   };
 
   await assert.doesNotReject(ensureMergeConflictPractice(11, request));
+});
+
+test('falls back to manual instructions when the practice PR never registers as conflicting', async () => {
+  const { calls, request } = fakeRequest({
+    'GET /repos/org/room/pulls/99': () => ({ mergeable_state: 'clean' })
+  });
+
+  await ensureMergeConflictPractice(11, request, 0);
+
+  const successComments = calls.filter(
+    (c) => c.method === 'POST' && c.route === '/repos/org/room/issues/11/comments' && /practice PR is ready/.test(c.body.body)
+  );
+  const fallbackComments = calls.filter(
+    (c) => c.method === 'POST' && c.route === '/repos/org/room/issues/11/comments' && /did not register a conflict/.test(c.body.body)
+  );
+  assert.equal(successComments.length, 0);
+  assert.equal(fallbackComments.length, 1);
+  assert.match(fallbackComments[0].body.body, /#99/);
+  assert.match(fallbackComments[0].body.body, /main/);
 });
