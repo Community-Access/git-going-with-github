@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GIT Going with GitHub - A two-day accessible open source workshop by Community Access">
+  <title>Provisioning Verification Messaging Implementation Plan - GIT Going with GitHub</title>
+  <link rel="stylesheet" href="../../styles/github-markdown.css">
+  <link rel="stylesheet" href="../../styles/highlight.css">
+  <link rel="stylesheet" href="../../styles/custom.css">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 0;
+      max-width: 980px;
+      margin: 0;
+      padding: 45px;
+    }
+
+    .page-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 1rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    @media (max-width: 767px) {
+      .page-layout {
+        grid-template-columns: 1fr;
+        padding: 0.5rem 0.5rem 1rem;
+      }
+
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <div class="site-header-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="../../index.html">Home</a> <span aria-hidden="true">›</span> <span aria-current="page">Provisioning Verification Messaging Implementation Plan</span>
+      </nav>
+      <div class="header-actions">
+        <a href="https://github.com/Community-Access/git-going-with-github/wiki" class="wiki-link" target="_blank" rel="noopener noreferrer">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.06l-2.573 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h.25a.25.25 0 0 0 .25-.25v-5.5Z"/>
+          </svg>
+          Wiki
+        </a>
+        <form role="search" class="search-form" action="../../search.html" method="get">
+        <label for="site-search" class="search-label">Search docs</label>
+        <input
+          type="search"
+          id="site-search"
+          class="search-input"
+          name="q"
+          placeholder="Search docs…"
+          autocomplete="off"
+          aria-label="Search documentation"
+        >
+        <button type="submit" class="search-button" aria-label="Submit search">
+          <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"/>
+          </svg>
+        </button>
+      </form>
+      </div>
+    </div>
+  </header>
+  <div class="page-layout">
+    <aside class="guided-sidebar" aria-label="Guided reference">
+    <h2 class="guided-title">Guided Reference</h2>
+    <p class="guided-intro">Follow the learning order, then jump into challenge issue views, appendices, and support resources.</p>
+
+
+    <section class="guided-resume" aria-label="Resume learning">
+      <a id="resume-link" class="guided-resume-link" href="../../index.html" hidden>Resume where you left off</a>
+    </section>
+
+    <nav class="guided-nav" aria-label="Workshop navigation">
+      <section class="guided-section">
+        <h3>Start Here</h3>
+        <ul>
+          <li><a href="../../index.html">Workshop Home</a></li>
+          <li><a href="../../docs/course-guide.html">Course Guide</a></li>
+<li><a href="../../docs/get-going.html">Get Going with GitHub</a></li>
+<li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Learning Order</h3>
+        <details>
+          <summary>Day 1 chapters</summary>
+          <ul>
+            <li><a href="../../docs/00-pre-workshop-setup.html">Pre-Workshop Setup - GIT Going with GitHub</a></li>
+<li><a href="../../docs/01-choose-your-tools.html">Choose Your Adventure: A Tool Tour</a></li>
+<li><a href="../../docs/02-understanding-github.html">Understanding GitHub&#39;s Web Structure</a></li>
+<li><a href="../../docs/03-navigating-repositories.html">Navigating Repositories</a></li>
+<li><a href="../../docs/04-the-learning-room.html">The Learning Room: Your Personal Practice Repository</a></li>
+<li><a href="../../docs/05-working-with-issues.html">Working with Issues</a></li>
+<li><a href="../../docs/06-working-with-pull-requests.html">Working with Pull Requests</a></li>
+<li><a href="../../docs/07-merge-conflicts.html">Merge Conflicts</a></li>
+<li><a href="../../docs/08-open-source-culture.html">Culture, Etiquette, and Community Standards</a></li>
+<li><a href="../../docs/09-labels-milestones-projects.html">Labels, Milestones, and Projects</a></li>
+<li><a href="../../docs/10-notifications-and-day-1-close.html">Notifications</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary>Day 2 chapters</summary>
+          <ul>
+            <li><a href="../../docs/11-vscode-interface.html">VS Code: Interface and Setup</a></li>
+<li><a href="../../docs/12-vscode-accessibility.html">VS Code: Accessibility Deep Dive</a></li>
+<li><a href="../../docs/13-how-git-works.html">How Git Works: The Mental Model</a></li>
+<li><a href="../../docs/14-git-in-practice.html">Git &amp; Source Control in VS Code</a></li>
+<li><a href="../../docs/15-code-review.html">Code Review: PRs, Diffs, and Constructive Feedback</a></li>
+<li><a href="../../docs/16-github-copilot.html">GitHub Copilot</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Templates</a></li>
+<li><a href="../../docs/18-fork-and-contribute.html">Fork and Contribute: The Open Source Workflow</a></li>
+<li><a href="../../docs/19-accessibility-agents.html">Accessibility Agents</a></li>
+<li><a href="../../docs/20-build-your-agent.html">Capstone Project: Contribute an Impactful Agent</a></li>
+<li><a href="../../docs/21-github-accessibility-and-open-source.html">GitHub Accessibility and Open Source at Scale</a></li>
+<li><a href="../../docs/22-what-comes-next.html">What Comes Next: Your Developer Journey</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Appendices</h3>
+        <details>
+          <summary>Reference library</summary>
+          <ul>
+            <li><a href="../../docs/appendix-a-glossary.html">Appendix A: GitHub Concepts &amp; Glossary</a></li>
+<li><a href="../../docs/appendix-b-screen-reader-cheatsheet.html">Appendix B: Screen Reader Cheat Sheet</a></li>
+<li><a href="../../docs/appendix-c-markdown-reference.html">Appendix C: Markdown and GitHub Flavored Markdown - Complete Guide</a></li>
+<li><a href="../../docs/appendix-d-git-authentication.html">Appendix D: Git Authentication</a></li>
+<li><a href="../../docs/appendix-e-advanced-git.html">Appendix E: Advanced Git Operations</a></li>
+<li><a href="../../docs/appendix-f-git-security.html">Appendix F: Git Security for Contributors</a></li>
+<li><a href="../../docs/appendix-g-vscode-reference.html">Appendix G: VS Code Accessibility Reference</a></li>
+<li><a href="../../docs/appendix-h-github-desktop.html">Appendix H: GitHub Desktop</a></li>
+<li><a href="../../docs/appendix-i-github-cli.html">Appendix I: GitHub CLI Reference</a></li>
+<li><a href="../../docs/appendix-j-cloud-editors.html">Appendix J: GitHub Codespaces</a></li>
+<li><a href="../../docs/appendix-k-copilot-reference.html">Appendix K: Copilot Reference</a></li>
+<li><a href="../../docs/appendix-l-agents-reference.html">Appendix L: Accessibility Agents Reference</a></li>
+<li><a href="../../docs/appendix-m-accessibility-standards.html">Appendix M: Accessibility Standards Reference</a></li>
+<li><a href="../../docs/appendix-n-advanced-search.html">Appendix N: GitHub Advanced Search</a></li>
+<li><a href="../../docs/appendix-o-branch-protection.html">Appendix O: Branch Protection Rules and Repository Rulesets</a></li>
+<li><a href="../../docs/appendix-p-security-features.html">Appendix P: GitHub Security Features</a></li>
+<li><a href="../../docs/appendix-q-actions-workflows.html">Appendix Q: GitHub Actions and Workflows</a></li>
+<li><a href="../../docs/appendix-r-projects-deep-dive.html">Appendix R: GitHub Projects Deep Dive</a></li>
+<li><a href="../../docs/appendix-s-releases-tags-insights.html">Appendix S: Releases, Tags, and Repository Insights</a></li>
+<li><a href="../../docs/appendix-t-community-and-social.html">Appendix T: Community and Social</a></li>
+<li><a href="../../docs/appendix-u-discussions-and-gists.html">Appendix U: Discussions and Gists</a></li>
+<li><a href="../../docs/appendix-v-github-mobile.html">Appendix V: GitHub Mobile</a></li>
+<li><a href="../../docs/appendix-w-github-pages.html">Appendix W: Publishing with GitHub Pages</a></li>
+<li><a href="../../docs/appendix-x-resources.html">Appendix X: Resources</a></li>
+<li><a href="../../docs/appendix-y-workshop-materials.html">Appendix Y: Accessing and Downloading Workshop Materials</a></li>
+<li><a href="../../docs/appendix-z-github-skills.html">Appendix Z: GitHub Skills - Complete Course Catalog</a></li>
+<li><a href="../../docs/appendix-aa-agent-installation-setup.html">Appendix AA: Agent Installation &amp; Setup Across All Platforms</a></li>
+<li><a href="../../docs/appendix-ab-advanced-agent-patterns.html">Appendix AB: Advanced Agent Patterns &amp; Skills</a></li>
+<li><a href="../../docs/appendix-ac-document-developer-tools.html">Appendix AC: Document &amp; Developer Tool Agents</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <section class="guided-section">
+        <h3>Challenge Lab</h3>
+        <ul>
+          <li><a href="../../docs/CHALLENGES.html">Challenge Hub</a></li>
+<li><a href="../../work.html">Issue-Style Challenge Walkthrough</a></li>
+<li><a href="../../docs/17-issue-templates.html">Issue Template Deep Dive</a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>External Resources</h3>
+        <ul>
+          <li><a href="https://lp.csedesigns.com/ggg/PODCASTS.html">Podcast Episodes <span class="guided-external">(external)</span></a></li>
+<li><a href="https://lp.csedesigns.com/ggg/feed.xml">RSS Feed <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+
+      <section class="guided-section">
+        <h3>Get Help</h3>
+        <ul>
+          <li><a href="https://github.com/Community-Access/support">Support Hub <span class="guided-external">(external)</span></a></li>
+        </ul>
+      </section>
+    </nav>
+  </aside>
+    <main id="main-content" class="markdown-body page-main">
+      <nav class="quick-jumps" aria-label="Quick jumps">
+    <h2 class="quick-jumps-title">Quick Jumps</h2>
+    <ul class="quick-jumps-list">
+      <li><a href="#course-content">Jump to course content</a></li><li><a href="#main-content">Jump to main content top</a></li><li><a href="#on-this-page">Jump to on-page sections</a></li><li><a href="../../docs/CHALLENGES.html">Open challenge hub</a></li><li><a href="../../work.html">Open issue-style challenge walkthrough</a></li>
+    </ul>
+  </nav>
+
+      <nav id="on-this-page" class="onpage-nav" aria-label="On this page">
+    <h2 class="onpage-title">On This Page</h2>
+    <ul class="onpage-list">
+      <li class="onpage-item"><a href="#global-constraints">Global Constraints</a></li>
+<li class="onpage-item onpage-sub"><a href="#task-1-add-enrollment_repoenrollment_issue_number-to-the-roster-schema-and-upsertlearner">Task 1: Add enrollment_repo/enrollment_issue_number to the roster schema and upsertLearner</a></li>
+<li class="onpage-item onpage-sub"><a href="#task-2-parse-the-public-enrollment-issue-reference-out-of-the-private-intake-issue">Task 2: Parse the public enrollment issue reference out of the private intake issue</a></li>
+<li class="onpage-item onpage-sub"><a href="#task-3-add-commentonissue-to-the-github-client">Task 3: Add commentOnIssue to the GitHub client</a></li>
+<li class="onpage-item onpage-sub"><a href="#task-4-post-the-true-enrollment-access-message-from-provision-corejs">Task 4: Post the true enrollment-access message from provision-core.js</a></li>
+<li class="onpage-item onpage-sub"><a href="#task-5-verify-the-challenge-7-conflict-practice-pr-actually-conflicts">Task 5: Verify the Challenge 7 conflict-practice PR actually conflicts</a></li>
+<li class="onpage-item"><a href="#self-review-notes">Self-Review Notes</a></li>
+<li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
+<li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
+    </ul>
+  </nav>
+      <div id="course-content"><h1 id="provisioning-verification-messaging-implementation-plan">Provisioning Verification Messaging Implementation Plan</h1>
+<blockquote>
+<p><strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (<code>- [ ]</code>) syntax for tracking.</p>
+</blockquote>
+<p><strong>Goal:</strong> Make two provisioning automations verify what actually happened and tell the learner the truth, instead of assuming success and going silent when the assumption is wrong: (1) enrollment access - invitation sent vs. instant org-member access; (2) Challenge 7 conflict-practice PR - actually conflicting vs. silently not.</p>
+<p><strong>Architecture:</strong> <code>github-client.js</code>&#39;s <code>ensureCollaborator()</code> already returns which case occurred (<code>invited</code> vs <code>already-collaborator</code>) but the result is discarded; thread it through <code>provision-core.js</code> and post a tailored follow-up comment on the learner&#39;s public enrollment issue (new <code>commentOnIssue</code> client method, new <code>enrollment_repo</code>/<code>enrollment_issue_number</code> roster fields sourced from the existing private intake issue&#39;s &quot;Public issue:&quot; line). Separately, <code>challenge-progression.js</code>&#39;s Challenge 7 conflict-seeder polls the practice PR&#39;s <code>mergeable_state</code> after opening it and posts a manual-fallback comment if it never turns out to actually conflict.</p>
+<p><strong>Tech Stack:</strong> Node.js, <code>node --test</code> (no new dependency), matching this repo&#39;s existing provisioning-subsystem conventions exactly (dependency-injected <code>client</code>/<code>request</code> objects, fake-client test doubles).</p>
+<h2 id="global-constraints">Global Constraints</h2>
+<ul>
+<li>Pure orchestration stays pure: <code>provision-core.js</code> still takes an injected <code>client</code> and never touches the network directly (existing project rule - see <code>.github/scripts/provisioning/provision-core.js</code> file header).</li>
+<li>A courtesy follow-up comment (enrollment status, conflict fallback) must never cause provisioning or seeding to fail. Wrap in try/catch and swallow.</li>
+<li>No generic verification framework. These are two concrete fixes for two known incidents (support#61, support#62), not a reusable platform (YAGNI - see spec&#39;s &quot;Out of scope&quot;).</li>
+<li><code>roster.schema.json</code> has <code>&quot;additionalProperties&quot;: false</code> on the learner object - new fields must be added there explicitly or the schema (documentation only, not runtime-enforced) goes stale.</li>
+<li>Existing roster rows predating this change have no <code>enrollment_repo</code>/<code>enrollment_issue_number</code> - all new code must treat their absence as &quot;skip the comment,&quot; never as an error.</li>
+</ul>
+<hr>
+<h3 id="task-1-add-enrollment_repoenrollment_issue_number-to-the-roster-schema-and-upsertlearner">Task 1: Add <code>enrollment_repo</code>/<code>enrollment_issue_number</code> to the roster schema and <code>upsertLearner</code></h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>roster.schema.json</code></li>
+<li>Modify: <code>.github/scripts/provisioning/roster.js:145-155</code></li>
+<li>Test: <code>.github/scripts/provisioning/__tests__/roster.test.js</code></li>
+</ul>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li>Consumes: nothing new.</li>
+<li>Produces: <code>upsertLearner(roster, entry)</code> now persists <code>entry.enrollment_repo</code> and
+<code>entry.enrollment_issue_number</code> (both optional, default <code>null</code>) on newly-inserted
+learner records. Later tasks read <code>learner.enrollment_repo</code> /
+<code>learner.enrollment_issue_number</code> off roster entries.</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 1: Write the failing test</strong></li>
+</ul>
+<p>Open <code>.github/scripts/provisioning/__tests__/roster.test.js</code> and add this test
+(near the other <code>upsertLearner</code> tests):</p>
+<pre><code class="hljs language-js"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;upsertLearner persists enrollment_repo and enrollment_issue_number&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">emptyRoster</span>();
+  <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">upsertLearner</span>(roster, {
+    <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;alice&#x27;</span>,
+    <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span>,
+    <span class="hljs-attr">enrollment_repo</span>: <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: <span class="hljs-number">250</span>
+  });
+  assert.<span class="hljs-title function_">equal</span>(next.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_repo</span>, <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(next.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_issue_number</span>, <span class="hljs-number">250</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;upsertLearner defaults enrollment fields to null when omitted&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">emptyRoster</span>();
+  <span class="hljs-keyword">const</span> next = <span class="hljs-title function_">upsertLearner</span>(roster, { <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;bob&#x27;</span>, <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span> });
+  assert.<span class="hljs-title function_">equal</span>(next.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_repo</span>, <span class="hljs-literal">null</span>);
+  assert.<span class="hljs-title function_">equal</span>(next.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_issue_number</span>, <span class="hljs-literal">null</span>);
+});</code></pre>
+<p>(Check the top of the file to confirm <code>emptyRoster</code> and <code>upsertLearner</code> are
+already imported from <code>../roster</code> - they are used by existing tests in this
+file, so no new import line should be needed.)</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 2: Run the tests to verify they fail</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/roster.test.js</code></p>
+<p>Expected: FAIL - <code>next.learners[0].enrollment_repo</code> is <code>undefined</code>, not the
+expected value (and <code>undefined</code> for the second test&#39;s <code>null</code> check too).</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 3: Add the fields to <code>upsertLearner</code></strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/roster.js</code>, in <code>upsertLearner</code>&#39;s insert
+branch (the <code>next.learners.push({...})</code> call), change:</p>
+<pre><code class="hljs language-js">  next.<span class="hljs-property">learners</span>.<span class="hljs-title function_">push</span>({
+    <span class="hljs-attr">github_handle</span>: entry.<span class="hljs-property">github_handle</span>,
+    <span class="hljs-attr">cohort_id</span>: entry.<span class="hljs-property">cohort_id</span>,
+    <span class="hljs-attr">path</span>: entry.<span class="hljs-property">path</span> || <span class="hljs-string">&#x27;day1-day2&#x27;</span>,
+    <span class="hljs-attr">learning_room_repo</span>: entry.<span class="hljs-property">learning_room_repo</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">provision_state</span>: entry.<span class="hljs-property">provision_state</span> || <span class="hljs-string">&#x27;pending&#x27;</span>,
+    <span class="hljs-attr">status</span>: entry.<span class="hljs-property">status</span> || <span class="hljs-string">&#x27;awaiting-ack&#x27;</span>,
+    <span class="hljs-attr">registered_at</span>: entry.<span class="hljs-property">registered_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">last_signal_at</span>: entry.<span class="hljs-property">last_signal_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">notes</span>: entry.<span class="hljs-property">notes</span> || <span class="hljs-string">&#x27;&#x27;</span>
+  });</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js">  next.<span class="hljs-property">learners</span>.<span class="hljs-title function_">push</span>({
+    <span class="hljs-attr">github_handle</span>: entry.<span class="hljs-property">github_handle</span>,
+    <span class="hljs-attr">cohort_id</span>: entry.<span class="hljs-property">cohort_id</span>,
+    <span class="hljs-attr">path</span>: entry.<span class="hljs-property">path</span> || <span class="hljs-string">&#x27;day1-day2&#x27;</span>,
+    <span class="hljs-attr">learning_room_repo</span>: entry.<span class="hljs-property">learning_room_repo</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">provision_state</span>: entry.<span class="hljs-property">provision_state</span> || <span class="hljs-string">&#x27;pending&#x27;</span>,
+    <span class="hljs-attr">status</span>: entry.<span class="hljs-property">status</span> || <span class="hljs-string">&#x27;awaiting-ack&#x27;</span>,
+    <span class="hljs-attr">registered_at</span>: entry.<span class="hljs-property">registered_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">last_signal_at</span>: entry.<span class="hljs-property">last_signal_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">enrollment_repo</span>: entry.<span class="hljs-property">enrollment_repo</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: entry.<span class="hljs-property">enrollment_issue_number</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">notes</span>: entry.<span class="hljs-property">notes</span> || <span class="hljs-string">&#x27;&#x27;</span>
+  });</code></pre>
+<p>(The update branch, <code>Object.assign(existing, entry)</code>, already passes through
+arbitrary fields - no change needed there.)</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 4: Run the tests to verify they pass</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/roster.test.js</code></p>
+<p>Expected: all tests in the file PASS.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 5: Update the schema documentation</strong></li>
+</ul>
+<p>In <code>roster.schema.json</code>, inside <code>definitions.learner.properties</code>, add after
+the <code>notes</code> property:</p>
+<pre><code class="hljs language-json">        <span class="hljs-attr">&quot;enrollment_repo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;null&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;owner/name of the public repo hosting the learner&#x27;s [ENROLL] issue. Used to post a follow-up comment once provisioning completes. Null when unknown (e.g. roster rows predating this field).&quot;</span>
+        <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+        <span class="hljs-attr">&quot;enrollment_issue_number&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+          <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;integer&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;null&quot;</span><span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span>
+          <span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Issue number of the learner&#x27;s public [ENROLL] issue in enrollment_repo. Null when unknown.&quot;</span>
+        <span class="hljs-punctuation">}</span></code></pre>
+<p>(Remember the trailing comma after the existing <code>&quot;notes&quot;</code> block&#39;s closing
+brace, since this is not the last property anymore.)</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 6: Commit</strong></li>
+</ul>
+<pre><code class="hljs language-bash">git add roster.schema.json .github/scripts/provisioning/roster.js .github/scripts/provisioning/__tests__/roster.test.js
+git commit -m <span class="hljs-string">&quot;feat(provisioning): add enrollment_repo/enrollment_issue_number to roster
+
+Structured fields for the learner&#x27;s public [ENROLL] issue, so provisioning
+can post a follow-up comment there once it knows whether access was granted
+by invitation or instantly (existing org member). Previously this
+information only existed embedded in a free-text notes string.&quot;</span></code></pre>
+<hr>
+<h3 id="task-2-parse-the-public-enrollment-issue-reference-out-of-the-private-intake-issue">Task 2: Parse the public enrollment issue reference out of the private intake issue</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>.github/scripts/provisioning/sync-intake-to-roster.js:40-91</code></li>
+<li>Test: <code>.github/scripts/provisioning/__tests__/sync-intake-to-roster.test.js</code></li>
+</ul>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li>Consumes: <code>upsertLearner</code> now accepts <code>enrollment_repo</code>/<code>enrollment_issue_number</code>
+(Task 1).</li>
+<li>Produces: <code>parseIntakeIssue(issue)</code> return value now also includes
+<code>enrollment_repo</code> (string or <code>null</code>) and <code>enrollment_issue_number</code> (number or
+<code>null</code>), parsed from the intake issue body&#39;s existing
+<code>- Public issue: https://github.com/OWNER/REPO/issues/N</code> line (this line is
+already written by <code>registration.yml</code> today - see
+<code>.github/workflows/registration.yml:310</code> and <code>:740</code>). <code>syncIntakeToRoster</code>
+passes these through to the roster.</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 1: Write the failing tests</strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/__tests__/sync-intake-to-roster.test.js</code>,
+add:</p>
+<pre><code class="hljs language-js"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;parseIntakeIssue extracts the public enrollment issue reference&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> parsed = <span class="hljs-title function_">parseIntakeIssue</span>(<span class="hljs-title function_">intakeIssue</span>({ <span class="hljs-attr">login</span>: <span class="hljs-string">&#x27;alice&#x27;</span> }));
+  assert.<span class="hljs-title function_">equal</span>(parsed.<span class="hljs-property">enrollment_repo</span>, <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(parsed.<span class="hljs-property">enrollment_issue_number</span>, <span class="hljs-number">42</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;parseIntakeIssue tolerates a missing public issue line&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> issue = <span class="hljs-title function_">intakeIssue</span>({ <span class="hljs-attr">login</span>: <span class="hljs-string">&#x27;alice&#x27;</span> });
+  issue.<span class="hljs-property">body</span> = issue.<span class="hljs-property">body</span>.<span class="hljs-title function_">replace</span>(<span class="hljs-regexp">/^- Public issue:.*\n/m</span>, <span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> parsed = <span class="hljs-title function_">parseIntakeIssue</span>(issue);
+  assert.<span class="hljs-title function_">equal</span>(parsed.<span class="hljs-property">enrollment_repo</span>, <span class="hljs-literal">null</span>);
+  assert.<span class="hljs-title function_">equal</span>(parsed.<span class="hljs-property">enrollment_issue_number</span>, <span class="hljs-literal">null</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;syncIntakeToRoster carries the enrollment reference onto the roster entry&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> roster = { <span class="hljs-attr">version</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">cohorts</span>: [], <span class="hljs-attr">learners</span>: [] };
+  <span class="hljs-keyword">const</span> result = <span class="hljs-title function_">syncIntakeToRoster</span>({
+    roster,
+    <span class="hljs-attr">intakeIssues</span>: [<span class="hljs-title function_">intakeIssue</span>({ <span class="hljs-attr">number</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">login</span>: <span class="hljs-string">&#x27;alice&#x27;</span> })],
+    <span class="hljs-attr">cohortId</span>: <span class="hljs-string">&#x27;self-paced-2026&#x27;</span>
+  });
+  assert.<span class="hljs-title function_">equal</span>(result.<span class="hljs-property">roster</span>.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_repo</span>, <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(result.<span class="hljs-property">roster</span>.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">enrollment_issue_number</span>, <span class="hljs-number">42</span>);
+});</code></pre>
+<p>(The <code>intakeIssue()</code> test helper already at the top of this file bakes in
+<code>&#39;- Public issue: https://github.com/Community-Access/git-going-with-github/issues/42&#39;</code></p>
+<ul>
+<li>that&#39;s where the <code>42</code> and repo name above come from.)</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 2: Run the tests to verify they fail</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/sync-intake-to-roster.test.js</code></p>
+<p>Expected: FAIL - <code>parsed.enrollment_repo</code> is <code>undefined</code>.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 3: Parse the &quot;Public issue:&quot; line</strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/sync-intake-to-roster.js</code>, change
+<code>parseIntakeIssue</code> from:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">parseIntakeIssue</span>(<span class="hljs-params">issue</span>) {
+  <span class="hljs-keyword">if</span> (!issue || <span class="hljs-keyword">typeof</span> issue.<span class="hljs-property">title</span> !== <span class="hljs-string">&#x27;string&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">if</span> (!issue.<span class="hljs-property">title</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-variable constant_">INTAKE_TITLE_PREFIX</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">String</span>(issue.<span class="hljs-property">body</span> || <span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> submitted = body.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/^- Submitted by: @(\S+)\s*$/m</span>);
+  <span class="hljs-keyword">if</span> (!submitted || !<span class="hljs-title function_">isValidHandle</span>(submitted[<span class="hljs-number">1</span>])) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">const</span> captured = body.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/^- Captured at: (\S+)\s*$/m</span>);
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">github_handle</span>: submitted[<span class="hljs-number">1</span>],
+    <span class="hljs-attr">registered_at</span>: (captured &amp;&amp; captured[<span class="hljs-number">1</span>]) || issue.<span class="hljs-property">created_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">intake_issue_number</span>: issue.<span class="hljs-property">number</span>
+  };
+}</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">parseIntakeIssue</span>(<span class="hljs-params">issue</span>) {
+  <span class="hljs-keyword">if</span> (!issue || <span class="hljs-keyword">typeof</span> issue.<span class="hljs-property">title</span> !== <span class="hljs-string">&#x27;string&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">if</span> (!issue.<span class="hljs-property">title</span>.<span class="hljs-title function_">startsWith</span>(<span class="hljs-variable constant_">INTAKE_TITLE_PREFIX</span>)) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">const</span> body = <span class="hljs-title class_">String</span>(issue.<span class="hljs-property">body</span> || <span class="hljs-string">&#x27;&#x27;</span>);
+  <span class="hljs-keyword">const</span> submitted = body.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/^- Submitted by: @(\S+)\s*$/m</span>);
+  <span class="hljs-keyword">if</span> (!submitted || !<span class="hljs-title function_">isValidHandle</span>(submitted[<span class="hljs-number">1</span>])) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">const</span> captured = body.<span class="hljs-title function_">match</span>(<span class="hljs-regexp">/^- Captured at: (\S+)\s*$/m</span>);
+  <span class="hljs-keyword">const</span> publicIssue = body.<span class="hljs-title function_">match</span>(
+    <span class="hljs-regexp">/^- Public issue: https:\/\/github\.com\/([^/\s]+\/[^/\s]+)\/issues\/(\d+)\s*$/m</span>
+  );
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">github_handle</span>: submitted[<span class="hljs-number">1</span>],
+    <span class="hljs-attr">registered_at</span>: (captured &amp;&amp; captured[<span class="hljs-number">1</span>]) || issue.<span class="hljs-property">created_at</span> || <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">intake_issue_number</span>: issue.<span class="hljs-property">number</span>,
+    <span class="hljs-attr">enrollment_repo</span>: publicIssue ? publicIssue[<span class="hljs-number">1</span>] : <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: publicIssue ? <span class="hljs-title class_">Number</span>(publicIssue[<span class="hljs-number">2</span>]) : <span class="hljs-literal">null</span>
+  };
+}</code></pre>
+<p>Then update <code>syncIntakeToRoster</code>&#39;s <code>upsertLearner</code> call from:</p>
+<pre><code class="hljs language-js">    next = <span class="hljs-title function_">upsertLearner</span>(next, {
+      <span class="hljs-attr">github_handle</span>: parsed.<span class="hljs-property">github_handle</span>,
+      <span class="hljs-attr">cohort_id</span>: cohortId,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;day1-day2&#x27;</span>,
+      <span class="hljs-attr">provision_state</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;awaiting-ack&#x27;</span>,
+      <span class="hljs-attr">registered_at</span>: parsed.<span class="hljs-property">registered_at</span>,
+      <span class="hljs-attr">notes</span>: <span class="hljs-string">`from intake issue #<span class="hljs-subst">${parsed.intake_issue_number}</span>`</span>
+    });</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js">    next = <span class="hljs-title function_">upsertLearner</span>(next, {
+      <span class="hljs-attr">github_handle</span>: parsed.<span class="hljs-property">github_handle</span>,
+      <span class="hljs-attr">cohort_id</span>: cohortId,
+      <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;day1-day2&#x27;</span>,
+      <span class="hljs-attr">provision_state</span>: <span class="hljs-string">&#x27;pending&#x27;</span>,
+      <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;awaiting-ack&#x27;</span>,
+      <span class="hljs-attr">registered_at</span>: parsed.<span class="hljs-property">registered_at</span>,
+      <span class="hljs-attr">enrollment_repo</span>: parsed.<span class="hljs-property">enrollment_repo</span>,
+      <span class="hljs-attr">enrollment_issue_number</span>: parsed.<span class="hljs-property">enrollment_issue_number</span>,
+      <span class="hljs-attr">notes</span>: <span class="hljs-string">`from intake issue #<span class="hljs-subst">${parsed.intake_issue_number}</span>`</span>
+    });</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 4: Run the tests to verify they pass</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/sync-intake-to-roster.test.js</code></p>
+<p>Expected: all tests in the file PASS.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 5: Commit</strong></li>
+</ul>
+<pre><code class="hljs language-bash">git add .github/scripts/provisioning/sync-intake-to-roster.js .github/scripts/provisioning/__tests__/sync-intake-to-roster.test.js
+git commit -m <span class="hljs-string">&quot;feat(provisioning): carry the public enrollment issue onto roster entries
+
+registration.yml already records &#x27;- Public issue: &lt;url&gt;&#x27; in the private
+intake mirror issue; parse it out and store it as structured
+enrollment_repo/enrollment_issue_number fields so provisioning can post a
+follow-up comment on the learner&#x27;s actual enrollment issue later.&quot;</span></code></pre>
+<hr>
+<h3 id="task-3-add-commentonissue-to-the-github-client">Task 3: Add <code>commentOnIssue</code> to the GitHub client</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>.github/scripts/provisioning/github-client.js</code></li>
+<li>Test: <code>.github/scripts/provisioning/__tests__/github-client.test.js</code></li>
+</ul>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li>Consumes: nothing new.</li>
+<li>Produces: both <code>createFetchClient(...)</code> and <code>fromOctokit(...)</code> now expose
+<code>commentOnIssue({ owner, repo, issue_number, body })</code>, returning the created
+comment (or throwing on failure - callers are responsible for deciding
+whether a failure here should be fatal; Task 4 will treat it as non-fatal).</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 1: Write the failing tests</strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/__tests__/github-client.test.js</code>, add:</p>
+<pre><code class="hljs language-js"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;commentOnIssue posts to the issue comments endpoint&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">let</span> body;
+  <span class="hljs-keyword">const</span> client = <span class="hljs-title function_">createFetchClient</span>({
+    <span class="hljs-attr">token</span>: <span class="hljs-string">&#x27;t&#x27;</span>,
+    <span class="hljs-attr">fetchImpl</span>: <span class="hljs-title function_">fakeFetchFactory</span>({
+      <span class="hljs-string">&#x27;POST /repos/o/r/issues/42/comments&#x27;</span>: <span class="hljs-function">(<span class="hljs-params">opts</span>) =&gt;</span> {
+        body = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(opts.<span class="hljs-property">body</span>);
+        <span class="hljs-keyword">return</span> { <span class="hljs-attr">status</span>: <span class="hljs-number">201</span>, <span class="hljs-keyword">async</span> <span class="hljs-title function_">json</span>(<span class="hljs-params"></span>) { <span class="hljs-keyword">return</span> { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span> }; } };
+      }
+    })
+  });
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">commentOnIssue</span>({ <span class="hljs-attr">owner</span>: <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-attr">repo</span>: <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-attr">issue_number</span>: <span class="hljs-number">42</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;hello&#x27;</span> });
+  assert.<span class="hljs-title function_">equal</span>(body.<span class="hljs-property">body</span>, <span class="hljs-string">&#x27;hello&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(result.<span class="hljs-property">id</span>, <span class="hljs-number">1</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;commentOnIssue throws with detail on failure&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> client = <span class="hljs-title function_">createFetchClient</span>({
+    <span class="hljs-attr">token</span>: <span class="hljs-string">&#x27;t&#x27;</span>,
+    <span class="hljs-attr">fetchImpl</span>: <span class="hljs-title function_">fakeFetchFactory</span>({
+      <span class="hljs-string">&#x27;POST /repos/o/r/issues/42/comments&#x27;</span>: <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">status</span>: <span class="hljs-number">404</span>, <span class="hljs-keyword">async</span> <span class="hljs-title function_">text</span>(<span class="hljs-params"></span>) { <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;not found&#x27;</span>; } })
+    })
+  });
+  <span class="hljs-keyword">await</span> assert.<span class="hljs-title function_">rejects</span>(
+    <span class="hljs-function">() =&gt;</span> client.<span class="hljs-title function_">commentOnIssue</span>({ <span class="hljs-attr">owner</span>: <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-attr">repo</span>: <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-attr">issue_number</span>: <span class="hljs-number">42</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;hello&#x27;</span> }),
+    <span class="hljs-regexp">/commentOnIssue failed \(HTTP 404\).*not found/</span>
+  );
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;fromOctokit commentOnIssue delegates to issues.createComment&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">let</span> called;
+  <span class="hljs-keyword">const</span> octokit = {
+    <span class="hljs-attr">rest</span>: {
+      <span class="hljs-attr">issues</span>: {
+        <span class="hljs-attr">createComment</span>: <span class="hljs-title function_">async</span> (args) =&gt; {
+          called = args;
+          <span class="hljs-keyword">return</span> { <span class="hljs-attr">data</span>: { <span class="hljs-attr">id</span>: <span class="hljs-number">7</span> } };
+        }
+      }
+    }
+  };
+  <span class="hljs-keyword">const</span> client = <span class="hljs-title function_">fromOctokit</span>(octokit);
+  <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">commentOnIssue</span>({ <span class="hljs-attr">owner</span>: <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-attr">repo</span>: <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-attr">issue_number</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;hi&#x27;</span> });
+  assert.<span class="hljs-title function_">deepEqual</span>(called, { <span class="hljs-attr">owner</span>: <span class="hljs-string">&#x27;o&#x27;</span>, <span class="hljs-attr">repo</span>: <span class="hljs-string">&#x27;r&#x27;</span>, <span class="hljs-attr">issue_number</span>: <span class="hljs-number">5</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">&#x27;hi&#x27;</span> });
+  assert.<span class="hljs-title function_">equal</span>(result.<span class="hljs-property">id</span>, <span class="hljs-number">7</span>);
+});</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 2: Run the tests to verify they fail</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/github-client.test.js</code></p>
+<p>Expected: FAIL - <code>client.commentOnIssue is not a function</code>.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 3: Implement <code>commentOnIssue</code> in both client variants</strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/github-client.js</code>, in the object returned by
+<code>createFetchClient</code>, add (after <code>ensureCollaborator</code>, before
+<code>listWorkflowPaths</code>):</p>
+<pre><code class="hljs language-js">    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params">{ owner, repo, issue_number, body }</span>) {
+      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">request</span>(
+        <span class="hljs-string">&#x27;POST&#x27;</span>,
+        <span class="hljs-string">`/repos/<span class="hljs-subst">${owner}</span>/<span class="hljs-subst">${repo}</span>/issues/<span class="hljs-subst">${issue_number}</span>/comments`</span>,
+        { body }
+      );
+      <span class="hljs-keyword">if</span> (res.<span class="hljs-property">status</span> === <span class="hljs-number">201</span>) <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">json</span>();
+      <span class="hljs-keyword">const</span> detail = <span class="hljs-keyword">await</span> res.<span class="hljs-title function_">text</span>();
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(
+        <span class="hljs-string">`commentOnIssue failed (HTTP <span class="hljs-subst">${res.status}</span>) for <span class="hljs-subst">${owner}</span>/<span class="hljs-subst">${repo}</span>#<span class="hljs-subst">${issue_number}</span>: <span class="hljs-subst">${detail}</span>`</span>
+      );
+    },</code></pre>
+<p>In the object returned by <code>fromOctokit</code>, add (after <code>ensureCollaborator</code>,
+before <code>listWorkflowPaths</code>):</p>
+<pre><code class="hljs language-js">    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params">{ owner, repo, issue_number, body }</span>) {
+      <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> octokit.<span class="hljs-property">rest</span>.<span class="hljs-property">issues</span>.<span class="hljs-title function_">createComment</span>({ owner, repo, issue_number, body });
+      <span class="hljs-keyword">return</span> res.<span class="hljs-property">data</span>;
+    },</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 4: Run the tests to verify they pass</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/github-client.test.js</code></p>
+<p>Expected: all tests in the file PASS.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 5: Commit</strong></li>
+</ul>
+<pre><code class="hljs language-bash">git add .github/scripts/provisioning/github-client.js .github/scripts/provisioning/__tests__/github-client.test.js
+git commit -m <span class="hljs-string">&quot;feat(provisioning): add commentOnIssue to the GitHub client
+
+Needed so provisioning can post a follow-up comment on a learner&#x27;s public
+enrollment issue once it knows whether access was granted by invitation or
+instantly.&quot;</span></code></pre>
+<hr>
+<h3 id="task-4-post-the-true-enrollment-access-message-from-provision-corejs">Task 4: Post the true enrollment-access message from <code>provision-core.js</code></h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>.github/scripts/provisioning/provision-core.js</code></li>
+<li>Test: <code>.github/scripts/provisioning/__tests__/provision-core.test.js</code></li>
+</ul>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li>Consumes: <code>client.ensureCollaborator(...)</code> already returns
+<code>{ status: &#39;invited&#39; | &#39;already-collaborator&#39; }</code> (existing). <code>client.commentOnIssue</code>
+from Task 3. <code>learner.enrollment_repo</code> / <code>learner.enrollment_issue_number</code>
+from Task 1/2.</li>
+<li>Produces: <code>provisionOne(...)</code> now returns
+<code>{ result, healed, templateSha, collaboratorStatus }</code>. A new exported
+<code>notifyEnrollmentIssue({ client, enrollmentRepo, enrollmentIssueNumber, collaboratorStatus, learningRoomRepo })</code>
+helper posts the tailored comment and never throws.</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 1: Write the failing tests</strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/__tests__/provision-core.test.js</code>, add:</p>
+<pre><code class="hljs language-js"><span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;posts an instant-access comment when the learner is already an org member&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> comments = [];
+  <span class="hljs-keyword">const</span> { client } = <span class="hljs-title function_">makeClient</span>({
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">ensureCollaborator</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> { <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;already-collaborator&#x27;</span> };
+    },
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params">args</span>) {
+      comments.<span class="hljs-title function_">push</span>(args);
+    }
+  });
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">rosterWith</span>({
+    <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;alice&#x27;</span>,
+    <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span>,
+    <span class="hljs-attr">enrollment_repo</span>: <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: <span class="hljs-number">250</span>
+  });
+  <span class="hljs-keyword">const</span> { <span class="hljs-attr">roster</span>: out } = <span class="hljs-keyword">await</span> <span class="hljs-title function_">provisionRoster</span>({ roster, client, config, <span class="hljs-attr">sleep</span>: noSleep });
+
+  assert.<span class="hljs-title function_">equal</span>(out.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">provision_state</span>, <span class="hljs-string">&#x27;provisioned&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(comments.<span class="hljs-property">length</span>, <span class="hljs-number">1</span>);
+  assert.<span class="hljs-title function_">equal</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">owner</span>, <span class="hljs-string">&#x27;Community-Access&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">repo</span>, <span class="hljs-string">&#x27;git-going-with-github&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">issue_number</span>, <span class="hljs-number">250</span>);
+  assert.<span class="hljs-title function_">match</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">body</span>, <span class="hljs-regexp">/already have access/</span>);
+  assert.<span class="hljs-title function_">match</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">body</span>, <span class="hljs-regexp">/Community-Access\/learning-room-c1-alice/</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;posts an invitation-pending comment for a new collaborator&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> comments = [];
+  <span class="hljs-keyword">const</span> { client } = <span class="hljs-title function_">makeClient</span>({
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">ensureCollaborator</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">return</span> { <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;invited&#x27;</span> };
+    },
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params">args</span>) {
+      comments.<span class="hljs-title function_">push</span>(args);
+    }
+  });
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">rosterWith</span>({
+    <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;alice&#x27;</span>,
+    <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span>,
+    <span class="hljs-attr">enrollment_repo</span>: <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: <span class="hljs-number">250</span>
+  });
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">provisionRoster</span>({ roster, client, config, <span class="hljs-attr">sleep</span>: noSleep });
+
+  assert.<span class="hljs-title function_">equal</span>(comments.<span class="hljs-property">length</span>, <span class="hljs-number">1</span>);
+  assert.<span class="hljs-title function_">match</span>(comments[<span class="hljs-number">0</span>].<span class="hljs-property">body</span>, <span class="hljs-regexp">/Watch for a GitHub repository invitation/</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;skips the enrollment comment silently when no enrollment issue is known&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> comments = [];
+  <span class="hljs-keyword">const</span> { client } = <span class="hljs-title function_">makeClient</span>({
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params">args</span>) {
+      comments.<span class="hljs-title function_">push</span>(args);
+    }
+  });
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">rosterWith</span>({ <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;alice&#x27;</span>, <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span> });
+  <span class="hljs-keyword">const</span> { <span class="hljs-attr">roster</span>: out } = <span class="hljs-keyword">await</span> <span class="hljs-title function_">provisionRoster</span>({ roster, client, config, <span class="hljs-attr">sleep</span>: noSleep });
+
+  assert.<span class="hljs-title function_">equal</span>(out.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">provision_state</span>, <span class="hljs-string">&#x27;provisioned&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(comments.<span class="hljs-property">length</span>, <span class="hljs-number">0</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;a failed enrollment comment does not fail provisioning&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { client } = <span class="hljs-title function_">makeClient</span>({
+    <span class="hljs-keyword">async</span> <span class="hljs-title function_">commentOnIssue</span>(<span class="hljs-params"></span>) {
+      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;comment boom&#x27;</span>);
+    }
+  });
+  <span class="hljs-keyword">const</span> roster = <span class="hljs-title function_">rosterWith</span>({
+    <span class="hljs-attr">github_handle</span>: <span class="hljs-string">&#x27;alice&#x27;</span>,
+    <span class="hljs-attr">cohort_id</span>: <span class="hljs-string">&#x27;c1&#x27;</span>,
+    <span class="hljs-attr">enrollment_repo</span>: <span class="hljs-string">&#x27;Community-Access/git-going-with-github&#x27;</span>,
+    <span class="hljs-attr">enrollment_issue_number</span>: <span class="hljs-number">250</span>
+  });
+  <span class="hljs-keyword">const</span> { <span class="hljs-attr">roster</span>: out, summary } = <span class="hljs-keyword">await</span> <span class="hljs-title function_">provisionRoster</span>({ roster, client, config, <span class="hljs-attr">sleep</span>: noSleep });
+
+  assert.<span class="hljs-title function_">equal</span>(out.<span class="hljs-property">learners</span>[<span class="hljs-number">0</span>].<span class="hljs-property">provision_state</span>, <span class="hljs-string">&#x27;provisioned&#x27;</span>);
+  assert.<span class="hljs-title function_">equal</span>(summary.<span class="hljs-property">error</span>, <span class="hljs-number">0</span>);
+});</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 2: Run the tests to verify they fail</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/provision-core.test.js</code></p>
+<p>Expected: FAIL - the first three new tests report <code>comments.length</code> as <code>0</code>
+(or the wrong body), since nothing calls <code>commentOnIssue</code> yet.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 3: Thread <code>collaboratorStatus</code> through and add <code>notifyEnrollmentIssue</code></strong></li>
+</ul>
+<p>In <code>.github/scripts/provisioning/provision-core.js</code>, change the
+<code>provisionOne</code> function signature from:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">provisionOne</span>(<span class="hljs-params">{
+  client,
+  handle,
+  studentOwner,
+  templateOwner,
+  templateRepo,
+  repoName,
+  requiredWorkflows,
+  permission,
+  verifyRetries = <span class="hljs-number">10</span>,
+  verifyDelayMs = <span class="hljs-number">3000</span>,
+  sleep = sleepReal
+}</span>) {</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">provisionOne</span>(<span class="hljs-params">{
+  client,
+  handle,
+  studentOwner,
+  templateOwner,
+  templateRepo,
+  repoName,
+  requiredWorkflows,
+  permission,
+  enrollmentRepo,
+  enrollmentIssueNumber,
+  verifyRetries = <span class="hljs-number">10</span>,
+  verifyDelayMs = <span class="hljs-number">3000</span>,
+  sleep = sleepReal
+}</span>) {</code></pre>
+<p>Change the <code>ensureCollaborator</code> call and everything through the function&#39;s
+<code>return</code> from:</p>
+<pre><code class="hljs language-js">  <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">ensureCollaborator</span>({
+    <span class="hljs-attr">owner</span>: studentOwner,
+    <span class="hljs-attr">repo</span>: repoName,
+    <span class="hljs-attr">username</span>: handle,
+    permission
+  });</code></pre>
+<p>...(verification and seeding block unchanged)...</p>
+<pre><code class="hljs language-js">  <span class="hljs-keyword">return</span> { result, healed, templateSha };
+}</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js">  <span class="hljs-keyword">const</span> collaboratorResult = <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">ensureCollaborator</span>({
+    <span class="hljs-attr">owner</span>: studentOwner,
+    <span class="hljs-attr">repo</span>: repoName,
+    <span class="hljs-attr">username</span>: handle,
+    permission
+  });
+
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">notifyEnrollmentIssue</span>({
+    client,
+    enrollmentRepo,
+    enrollmentIssueNumber,
+    <span class="hljs-attr">collaboratorStatus</span>: collaboratorResult.<span class="hljs-property">status</span>,
+    <span class="hljs-attr">learningRoomRepo</span>: <span class="hljs-string">`<span class="hljs-subst">${studentOwner}</span>/<span class="hljs-subst">${repoName}</span>`</span>
+  });</code></pre>
+<p>...(verification and seeding block unchanged)...</p>
+<pre><code class="hljs language-js">  <span class="hljs-keyword">return</span> { result, healed, templateSha, <span class="hljs-attr">collaboratorStatus</span>: collaboratorResult.<span class="hljs-property">status</span> };
+}
+
+<span class="hljs-comment">/**
+ * Tell the learner what actually happened when granting access: GitHub sends
+ * an invitation email for a brand-new collaborator, but grants instant
+ * access with no notification at all to someone who is already a member of
+ * the Community-Access organization (support#62). Best-effort only - a
+ * courtesy comment must never fail provisioning.
+ */</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">notifyEnrollmentIssue</span>(<span class="hljs-params">{
+  client,
+  enrollmentRepo,
+  enrollmentIssueNumber,
+  collaboratorStatus,
+  learningRoomRepo
+}</span>) {
+  <span class="hljs-keyword">if</span> (!enrollmentRepo || !enrollmentIssueNumber || <span class="hljs-keyword">typeof</span> client.<span class="hljs-property">commentOnIssue</span> !== <span class="hljs-string">&#x27;function&#x27;</span>) {
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">const</span> [owner, repo] = <span class="hljs-title class_">String</span>(enrollmentRepo).<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;/&#x27;</span>);
+  <span class="hljs-keyword">if</span> (!owner || !repo) {
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">const</span> body =
+    collaboratorStatus === <span class="hljs-string">&#x27;already-collaborator&#x27;</span>
+      ? <span class="hljs-string">`Your learning room is ready: \`<span class="hljs-subst">${learningRoomRepo}</span>\`. You already have access - no invitation needed, since you&#x27;re already a member of the Community-Access organization. Open it directly: https://github.com/<span class="hljs-subst">${learningRoomRepo}</span>`</span>
+      : <span class="hljs-string">`Your learning room is ready: \`<span class="hljs-subst">${learningRoomRepo}</span>\`. Watch for a GitHub repository invitation (notification bell and email) and accept it to open it.`</span>;
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">await</span> client.<span class="hljs-title function_">commentOnIssue</span>({ owner, repo, <span class="hljs-attr">issue_number</span>: enrollmentIssueNumber, body });
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(
+      <span class="hljs-string">`Could not post enrollment follow-up comment on <span class="hljs-subst">${enrollmentRepo}</span>#<span class="hljs-subst">${enrollmentIssueNumber}</span>: <span class="hljs-subst">${err.message}</span>`</span>
+    );
+  }
+}</code></pre>
+<p>Then, in <code>provisionRoster</code>&#39;s call to <code>provisionOne</code> (inside the
+<code>withRateLimitRetry(() =&gt; provisionOne({...</code>), add the two new fields:</p>
+<pre><code class="hljs language-js">        () =&gt;
+          <span class="hljs-title function_">provisionOne</span>({
+            client,
+            handle,
+            studentOwner,
+            templateOwner,
+            templateRepo,
+            repoName,
+            requiredWorkflows,
+            permission,
+            <span class="hljs-attr">enrollmentRepo</span>: learner.<span class="hljs-property">enrollment_repo</span>,
+            <span class="hljs-attr">enrollmentIssueNumber</span>: learner.<span class="hljs-property">enrollment_issue_number</span>,
+            verifyRetries,
+            verifyDelayMs,
+            sleep
+          }),</code></pre>
+<p>Finally, add <code>notifyEnrollmentIssue</code> to <code>module.exports</code> at the bottom of the
+file (alongside the existing exports):</p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  provisionRoster,
+  provisionOne,
+  notifyEnrollmentIssue,
+  defaultRepoName,
+  isSecondaryRateLimit,
+  missingWorkflows,
+  summarize
+};</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 4: Run the tests to verify they pass</strong></li>
+</ul>
+<p>Run: <code>node --test .github/scripts/provisioning/__tests__/provision-core.test.js</code></p>
+<p>Expected: all tests in the file PASS (including the pre-existing ones - the
+<code>makeClient()</code> helper&#39;s default <code>ensureCollaborator</code> already returns
+<code>{ status: &#39;invited&#39; }</code>, and roster entries built via <code>rosterWith(...)</code> without
+<code>enrollment_repo</code>/<code>enrollment_issue_number</code> will have those fields <code>null</code>, so
+existing tests take the &quot;skip silently&quot; path with no behavior change).</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 5: Commit</strong></li>
+</ul>
+<pre><code class="hljs language-bash">git add .github/scripts/provisioning/provision-core.js .github/scripts/provisioning/__tests__/provision-core.test.js
+git commit -m <span class="hljs-string">&quot;feat(provisioning): tell learners the truth about enrollment access
+
+Thread ensureCollaborator&#x27;s already-known invited/already-collaborator
+status through provisionOne and post the matching message on the learner&#x27;s
+public enrollment issue: &#x27;watch for an invitation&#x27; for a new collaborator,
+or &#x27;you already have access, no invitation needed&#x27; for an existing org
+member. Closes the exact gap behind support#62 - George Kerscher never
+got an invitation because he was already a Community-Access org member,
+and had no way to know that from the generic enrollment message.&quot;</span></code></pre>
+<hr>
+<h3 id="task-5-verify-the-challenge-7-conflict-practice-pr-actually-conflicts">Task 5: Verify the Challenge 7 conflict-practice PR actually conflicts</h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li>Modify: <code>learning-room/.github/scripts/challenge-progression.js</code></li>
+<li>Create: <code>learning-room/.github/scripts/__tests__/challenge-progression.test.js</code></li>
+</ul>
+<p><strong>Interfaces:</strong></p>
+<ul>
+<li>Consumes: the existing <code>githubRequest</code>-shaped <code>request(route, options, retries)</code>
+function already used throughout this file.</li>
+<li>Produces: <code>ensureMergeConflictPractice(issueNumber, request, delayMs)</code> (new
+optional third parameter, defaulting to <code>2000</code>) now verifies the practice
+PR&#39;s <code>mergeable_state</code> before declaring success, and calls the new exported
+<code>postConflictFallbackComment(issueNumber, prNumber, request)</code> when
+verification fails.</li>
+<li><input aria-label="" disabled="" type="checkbox">
+<strong>Step 1: Write the failing tests</strong></li>
+</ul>
+<p>Create <code>learning-room/.github/scripts/__tests__/challenge-progression.test.js</code>:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> test = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;node:test&#x27;</span>);
+<span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;node:assert/strict&#x27;</span>);
+
+process.<span class="hljs-property">env</span>.<span class="hljs-property">GITHUB_TOKEN</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">GITHUB_TOKEN</span> || <span class="hljs-string">&#x27;test-token&#x27;</span>;
+process.<span class="hljs-property">env</span>.<span class="hljs-property">GITHUB_REPOSITORY</span> = process.<span class="hljs-property">env</span>.<span class="hljs-property">GITHUB_REPOSITORY</span> || <span class="hljs-string">&#x27;Community-Access/learning-room-test&#x27;</span>;
+
+<span class="hljs-keyword">const</span> { ensureMergeConflictPractice } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;../challenge-progression&#x27;</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">makeFakeRequest</span>(<span class="hljs-params">routes</span>) {
+  <span class="hljs-keyword">const</span> calls = [];
+  <span class="hljs-keyword">const</span> <span class="hljs-title function_">request</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">route, options = {}</span>) =&gt; {
+    calls.<span class="hljs-title function_">push</span>({ route, <span class="hljs-attr">method</span>: options.<span class="hljs-property">method</span> || <span class="hljs-string">&#x27;GET&#x27;</span> });
+    <span class="hljs-keyword">const</span> key = <span class="hljs-string">`<span class="hljs-subst">${options.method || <span class="hljs-string">&#x27;GET&#x27;</span>}</span> <span class="hljs-subst">${route}</span>`</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> [pattern, handler] <span class="hljs-keyword">of</span> routes) {
+      <span class="hljs-keyword">if</span> (pattern.<span class="hljs-title function_">test</span>(key)) <span class="hljs-keyword">return</span> <span class="hljs-title function_">handler</span>(route, options);
+    }
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Unexpected request in test: <span class="hljs-subst">${key}</span>`</span>);
+  };
+  <span class="hljs-keyword">return</span> { request, calls };
+}
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;posts the success comment when the practice PR registers as conflicting&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">const</span> { request, calls } = <span class="hljs-title function_">makeFakeRequest</span>([
+    [<span class="hljs-regexp">/^GET .*\/pulls\?head=/</span>, <span class="hljs-function">() =&gt;</span> []],
+    [<span class="hljs-regexp">/^GET .*\/git\/ref\/heads\/main$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">object</span>: { <span class="hljs-attr">sha</span>: <span class="hljs-string">&#x27;main-sha&#x27;</span> } })],
+    [<span class="hljs-regexp">/^GET .*\/contents\/docs\/welcome\.md\?ref=main$/</span>, <span class="hljs-function">() =&gt;</span> ({
+      <span class="hljs-attr">sha</span>: <span class="hljs-string">&#x27;file-sha&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">from</span>(<span class="hljs-string">&#x27;Hello world&#x27;</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-string">&#x27;base64&#x27;</span>)
+    })],
+    [<span class="hljs-regexp">/^POST .*\/git\/refs$/</span>, <span class="hljs-function">() =&gt;</span> ({})],
+    [<span class="hljs-regexp">/^PUT .*\/contents\/docs\/welcome\.md$/</span>, <span class="hljs-function">() =&gt;</span> ({})],
+    [<span class="hljs-regexp">/^POST .*\/pulls$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">number</span>: <span class="hljs-number">99</span>, <span class="hljs-attr">html_url</span>: <span class="hljs-string">&#x27;https://example.test/pr/99&#x27;</span> })],
+    [<span class="hljs-regexp">/^GET .*\/pulls\/99$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">mergeable_state</span>: <span class="hljs-string">&#x27;dirty&#x27;</span> })],
+    [<span class="hljs-regexp">/^POST .*\/issues\/11\/comments$/</span>, <span class="hljs-function">() =&gt;</span> ({})]
+  ]);
+
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">ensureMergeConflictPractice</span>(<span class="hljs-number">11</span>, request, <span class="hljs-number">0</span>);
+
+  <span class="hljs-keyword">const</span> commentCall = calls.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">c</span>) =&gt;</span> c.<span class="hljs-property">route</span>.<span class="hljs-title function_">includes</span>(<span class="hljs-string">&#x27;/issues/11/comments&#x27;</span>));
+  assert.<span class="hljs-title function_">ok</span>(commentCall, <span class="hljs-string">&#x27;expected a comment to be posted on the challenge issue&#x27;</span>);
+});
+
+<span class="hljs-title function_">test</span>(<span class="hljs-string">&#x27;posts the fallback comment when the practice PR never registers as conflicting&#x27;</span>, <span class="hljs-title function_">async</span> () =&gt; {
+  <span class="hljs-keyword">let</span> commentBody = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">const</span> { request } = <span class="hljs-title function_">makeFakeRequest</span>([
+    [<span class="hljs-regexp">/^GET .*\/pulls\?head=/</span>, <span class="hljs-function">() =&gt;</span> []],
+    [<span class="hljs-regexp">/^GET .*\/git\/ref\/heads\/main$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">object</span>: { <span class="hljs-attr">sha</span>: <span class="hljs-string">&#x27;main-sha&#x27;</span> } })],
+    [<span class="hljs-regexp">/^GET .*\/contents\/docs\/welcome\.md\?ref=main$/</span>, <span class="hljs-function">() =&gt;</span> ({
+      <span class="hljs-attr">sha</span>: <span class="hljs-string">&#x27;file-sha&#x27;</span>,
+      <span class="hljs-attr">content</span>: <span class="hljs-title class_">Buffer</span>.<span class="hljs-title function_">from</span>(<span class="hljs-string">&#x27;Hello world&#x27;</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-string">&#x27;base64&#x27;</span>)
+    })],
+    [<span class="hljs-regexp">/^POST .*\/git\/refs$/</span>, <span class="hljs-function">() =&gt;</span> ({})],
+    [<span class="hljs-regexp">/^PUT .*\/contents\/docs\/welcome\.md$/</span>, <span class="hljs-function">() =&gt;</span> ({})],
+    [<span class="hljs-regexp">/^POST .*\/pulls$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">number</span>: <span class="hljs-number">99</span>, <span class="hljs-attr">html_url</span>: <span class="hljs-string">&#x27;https://example.test/pr/99&#x27;</span> })],
+    [<span class="hljs-regexp">/^GET .*\/pulls\/99$/</span>, <span class="hljs-function">() =&gt;</span> ({ <span class="hljs-attr">mergeable_state</span>: <span class="hljs-string">&#x27;clean&#x27;</span> })],
+    [<span class="hljs-regexp">/^POST .*\/issues\/11\/comments$/</span>, <span class="hljs-function">(<span class="hljs-params">route, options</span>) =&gt;</span> {
+      commentBody = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(options.<span class="hljs-property">body</span>).<span class="hljs-property">body</span>;
+      <span class="hljs-keyword">return</span> {};
+    }]
+  ]);
+
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">ensureMergeConflictPractice</span>(<span class="hljs-number">11</span>, request, <span class="hljs-number">0</span>);
+
+  assert.<span class="hljs-title function_">ok</span>(commentBody, <span class="hljs-string">&#x27;expected a fallback comment to be posted&#x27;</span>);
+  assert.<span class="hljs-title function_">match</span>(commentBody, <span class="hljs-regexp">/did not register a conflict/</span>);
+  assert.<span class="hljs-title function_">match</span>(commentBody, <span class="hljs-regexp">/main/</span>);
+});</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 2: Run the tests to verify they fail</strong></li>
+</ul>
+<p>Run: <code>node --test learning-room/.github/scripts/__tests__/challenge-progression.test.js</code></p>
+<p>Expected: FAIL on both tests - <code>Unexpected request in test: GET /repos/.../pulls/99</code> (nothing polls the PR today), and the second test&#39;s
+<code>commentBody</code> assertion fails because today&#39;s code always posts the success
+comment regardless of <code>mergeable_state</code>.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 3: Add verification and the fallback comment</strong></li>
+</ul>
+<p>In <code>learning-room/.github/scripts/challenge-progression.js</code>, add two new
+constants near the existing <code>CONFLICT_*</code> constants (after
+<code>const CONFLICT_PR_TITLE = &#39;Challenge 7 practice: resolve this merge conflict&#39;;</code>):</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CONFLICT_VERIFY_ATTEMPTS</span> = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">CONFLICT_VERIFY_DELAY_MS</span> = <span class="hljs-number">2000</span>;</code></pre>
+<p>Add two new functions after <code>postConflictPracticeComment</code> (before
+<code>async function ensureMergeConflictPractice</code>):</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">waitForConflictState</span>(<span class="hljs-params">prNumber, request = githubRequest, delayMs = CONFLICT_VERIFY_DELAY_MS</span>) {
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> attempt = <span class="hljs-number">1</span>; attempt &lt;= <span class="hljs-variable constant_">CONFLICT_VERIFY_ATTEMPTS</span>; attempt += <span class="hljs-number">1</span>) {
+    <span class="hljs-keyword">const</span> pr = <span class="hljs-keyword">await</span> <span class="hljs-title function_">request</span>(<span class="hljs-string">`/repos/<span class="hljs-subst">${owner}</span>/<span class="hljs-subst">${repo}</span>/pulls/<span class="hljs-subst">${prNumber}</span>`</span>, {}, <span class="hljs-number">1</span>);
+    <span class="hljs-keyword">if</span> (pr &amp;&amp; pr.<span class="hljs-property">mergeable_state</span> === <span class="hljs-string">&#x27;dirty&#x27;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    <span class="hljs-keyword">if</span> (attempt &lt; <span class="hljs-variable constant_">CONFLICT_VERIFY_ATTEMPTS</span>) {
+      <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> <span class="hljs-built_in">setTimeout</span>(resolve, delayMs));
+    }
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">postConflictFallbackComment</span>(<span class="hljs-params">issueNumber, prNumber, request = githubRequest</span>) {
+  <span class="hljs-keyword">if</span> (!issueNumber) {
+    <span class="hljs-keyword">return</span>;
+  }
+  <span class="hljs-keyword">await</span> <span class="hljs-title function_">request</span>(<span class="hljs-string">`/repos/<span class="hljs-subst">${owner}</span>/<span class="hljs-subst">${repo}</span>/issues/<span class="hljs-subst">${issueNumber}</span>/comments`</span>, {
+    <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;POST&#x27;</span>,
+    <span class="hljs-attr">body</span>: {
+      <span class="hljs-attr">body</span>: [
+        <span class="hljs-string">`Your merge conflict practice PR is open (#<span class="hljs-subst">${prNumber}</span>), but it did not register a conflict yet.`</span>,
+        <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-string">&#x27;You can create one yourself instead:&#x27;</span>,
+        <span class="hljs-string">&#x27;1. Open `docs/welcome.md` for editing directly on the `main` branch (the pencil icon, committing straight to `main`).&#x27;</span>,
+        <span class="hljs-string">`2. Find the sentence marked with \`<span class="hljs-subst">${CONFLICT_ANCHOR}</span>\` and reword it slightly.`</span>,
+        <span class="hljs-string">&#x27;3. Commit that change directly to `main`.&#x27;</span>,
+        <span class="hljs-string">`4. Go back to PR #<span class="hljs-subst">${prNumber}</span> - it should now show &quot;This branch has conflicts that must be resolved.&quot;`</span>,
+        <span class="hljs-string">&#x27;5. Follow Steps 2-5 in this issue to resolve it.&#x27;</span>
+      ].<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;\n&#x27;</span>)
+    }
+  });
+}</code></pre>
+<p>Then change <code>ensureMergeConflictPractice</code>&#39;s signature and its final block
+from:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">ensureMergeConflictPractice</span>(<span class="hljs-params">issueNumber, request = githubRequest</span>) {</code></pre>
+<p>...(unchanged body up to)...</p>
+<pre><code class="hljs language-js">    <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;INFO&#x27;</span>, <span class="hljs-string">`Opened Challenge 7 conflict practice PR: <span class="hljs-subst">${pr.html_url}</span>`</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Opened Challenge 7 conflict practice PR: <span class="hljs-subst">${pr.html_url}</span>`</span>);
+
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">postConflictPracticeComment</span>(targetIssueNumber, pr.<span class="hljs-property">number</span>, request);
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WARN&#x27;</span>, <span class="hljs-string">`Could not set up merge conflict practice: <span class="hljs-subst">${error.message}</span>. Student can still resolve manually.`</span>);
+  }
+}</code></pre>
+<p>to:</p>
+<pre><code class="hljs language-js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">ensureMergeConflictPractice</span>(<span class="hljs-params">issueNumber, request = githubRequest, delayMs = CONFLICT_VERIFY_DELAY_MS</span>) {</code></pre>
+<p>...(unchanged body up to)...</p>
+<pre><code class="hljs language-js">    <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;INFO&#x27;</span>, <span class="hljs-string">`Opened Challenge 7 conflict practice PR: <span class="hljs-subst">${pr.html_url}</span>`</span>);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`Opened Challenge 7 conflict practice PR: <span class="hljs-subst">${pr.html_url}</span>`</span>);
+
+    <span class="hljs-keyword">const</span> isConflicting = <span class="hljs-keyword">await</span> <span class="hljs-title function_">waitForConflictState</span>(pr.<span class="hljs-property">number</span>, request, delayMs);
+    <span class="hljs-keyword">if</span> (isConflicting) {
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">postConflictPracticeComment</span>(targetIssueNumber, pr.<span class="hljs-property">number</span>, request);
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WARN&#x27;</span>, <span class="hljs-string">`Practice PR #<span class="hljs-subst">${pr.number}</span> did not register as conflicting after retries.`</span>);
+      <span class="hljs-keyword">await</span> <span class="hljs-title function_">postConflictFallbackComment</span>(targetIssueNumber, pr.<span class="hljs-property">number</span>, request);
+    }
+  } <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;WARN&#x27;</span>, <span class="hljs-string">`Could not set up merge conflict practice: <span class="hljs-subst">${error.message}</span>. Student can still resolve manually.`</span>);
+  }
+}</code></pre>
+<p>Finally, add the two new functions to <code>module.exports</code> at the bottom of the
+file:</p>
+<pre><code class="hljs language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  resolveValidAssignee,
+  ensurePeerSimulationArtifacts,
+  ensureLabel,
+  ensurePeerIssue,
+  ensurePeerSimulationBranch,
+  ensurePeerSimulationPullRequest,
+  ensureMergeConflictPractice,
+  waitForConflictState,
+  postConflictFallbackComment
+};</code></pre>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 4: Run the tests to verify they pass</strong></li>
+</ul>
+<p>Run: <code>node --test learning-room/.github/scripts/__tests__/challenge-progression.test.js</code></p>
+<p>Expected: both tests PASS.</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 5: Run the full provisioning and automation suites as a regression check</strong></li>
+</ul>
+<p>Run: <code>npm run test:provisioning &amp;&amp; npm run test:automation</code></p>
+<p>Expected: all pre-existing tests still PASS (these changes are additive to
+files those suites already cover for <code>test:provisioning</code>; <code>test:automation</code>
+is unaffected but confirms nothing else broke).</p>
+<ul>
+<li><input aria-label="" disabled="" type="checkbox"> <strong>Step 6: Commit</strong></li>
+</ul>
+<pre><code class="hljs language-bash">git add learning-room/.github/scripts/challenge-progression.js learning-room/.github/scripts/__tests__/challenge-progression.test.js
+git commit -m <span class="hljs-string">&quot;fix(learning-room): verify the Challenge 7 practice PR actually conflicts
+
+GitHub computes mergeable_state asynchronously, so a freshly-opened practice
+PR can briefly (or, rarely, permanently) not show as conflicting even though
+both branches touched the same line. Poll it after opening the PR; if it
+never turns dirty, post manual conflict-creation steps instead of silently
+leaving a learner with a PR that looks ready but isn&#x27;t (support#61).&quot;</span></code></pre>
+<h2 id="self-review-notes">Self-Review Notes</h2>
+<ul>
+<li><strong>Spec coverage:</strong> B1 (roster schema, sync-intake parsing, github-client
+<code>commentOnIssue</code>, <code>provision-core.js</code> wiring) is Tasks 1-4. B2 (Challenge 7
+verification) is Task 5. Both testing sections from the spec are covered.</li>
+<li><strong>Type/name consistency:</strong> <code>enrollment_repo</code>/<code>enrollment_issue_number</code> are
+spelled identically across <code>roster.schema.json</code>, <code>roster.js</code>,
+<code>sync-intake-to-roster.js</code>, and <code>provision-core.js</code>. <code>commentOnIssue</code>&#39;s
+parameter shape (<code>{ owner, repo, issue_number, body }</code>) matches between
+<code>github-client.js</code>&#39;s two implementations, its tests, and
+<code>notifyEnrollmentIssue</code>&#39;s call site.</li>
+<li><strong>No placeholders:</strong> every step has complete, runnable code.</li>
+<li><strong>Silent-skip guarantee:</strong> Task 4&#39;s <code>notifyEnrollmentIssue</code> returns early
+(no throw, no call) when <code>enrollmentRepo</code>/<code>enrollmentIssueNumber</code> are falsy,
+and wraps the actual call in try/catch - covered by the &quot;skips ... silently&quot;
+and &quot;does not fail provisioning&quot; tests.</li>
+</ul>
+<h2 id="authoritative-sources">Authoritative Sources</h2>
+<ul>
+<li><a href="2026-07-06-onboarding-verification-and-a11y-report-design.html">Design spec: onboarding verification and a11y report</a></li>
+<li><a href="../../roster.schema.json"><code>roster.schema.json</code></a></li>
+<li><a href="../../.github/scripts/provisioning/roster.js"><code>.github/scripts/provisioning/roster.js</code></a></li>
+<li><a href="../../.github/scripts/provisioning/sync-intake-to-roster.js"><code>.github/scripts/provisioning/sync-intake-to-roster.js</code></a></li>
+<li><a href="../../.github/scripts/provisioning/github-client.js"><code>.github/scripts/provisioning/github-client.js</code></a></li>
+<li><a href="../../.github/scripts/provisioning/provision-core.js"><code>.github/scripts/provisioning/provision-core.js</code></a></li>
+<li><a href="../../.github/workflows/registration.yml"><code>.github/workflows/registration.yml</code></a></li>
+<li><a href="../../learning-room/.github/scripts/challenge-progression.js"><code>learning-room/.github/scripts/challenge-progression.js</code></a></li>
+</ul>
+<h3 id="section-level-source-map">Section-Level Source Map</h3>
+<ul>
+<li><strong>Task 1 (roster schema fields):</strong> <a href="2026-07-06-onboarding-verification-and-a11y-report-design.html">Design spec, Part B1</a>, <a href="../../roster.schema.json"><code>roster.schema.json</code></a>, <a href="../../.github/scripts/provisioning/roster.js"><code>roster.js</code></a>.</li>
+<li><strong>Task 2 (parse public enrollment issue):</strong> <a href="../../.github/scripts/provisioning/sync-intake-to-roster.js"><code>sync-intake-to-roster.js</code></a>, <a href="../../.github/workflows/registration.yml"><code>registration.yml</code></a>.</li>
+<li><strong>Task 3 (commentOnIssue client method):</strong> <a href="../../.github/scripts/provisioning/github-client.js"><code>github-client.js</code></a>.</li>
+<li><strong>Task 4 (post enrollment message):</strong> <a href="2026-07-06-onboarding-verification-and-a11y-report-design.html">Design spec, Part B1</a>, <a href="../../.github/scripts/provisioning/provision-core.js"><code>provision-core.js</code></a>.</li>
+<li><strong>Task 5 (Challenge 7 verification):</strong> <a href="2026-07-06-onboarding-verification-and-a11y-report-design.html">Design spec, Part B2</a>, <a href="../../learning-room/.github/scripts/challenge-progression.js"><code>challenge-progression.js</code></a>.</li>
+</ul>
+</div>
+
+    </main>
+  </div>
+  <footer role="contentinfo" class="site-footer">
+    <p><strong>GIT Going with GitHub</strong> - A workshop by <a href="https://community-access.org">Community Access</a></p>
+    <p><a href="https://github.com/community-access/git-going-with-github">View on GitHub</a> · <a href="https://community-access.org">community-access.org</a></p>
+  </footer>
+
+  <script>
+  (function() {
+    var key = 'gggLastVisitedPath';
+    var currentPath = window.location.pathname || '';
+    try {
+      if (currentPath) {
+        localStorage.setItem(key, currentPath);
+      }
+    } catch (e) {}
+
+    var resumeLink = document.getElementById('resume-link');
+    if (!resumeLink) return;
+
+    try {
+      var savedPath = localStorage.getItem(key);
+      if (savedPath && savedPath !== currentPath) {
+        resumeLink.hidden = false;
+        resumeLink.setAttribute('href', savedPath);
+      }
+    } catch (e) {}
+  })();
+  </script>
+  </body>
+</html>

@@ -964,7 +964,7 @@ function findMarkdownFiles(dir, fileList = []) {
       // Skip generated, private, and editor-history directories.
       const relativeDir = path.relative(process.cwd(), filePath).replace(/\\/g, '/');
       const generatedPodcastDir = relativeDir === 'podcasts/bundles' || relativeDir === 'podcasts/challenge-bundles';
-      if (!generatedPodcastDir && !['node_modules', '.git', '.github', '.history', 'html'].includes(file)) {
+      if (!generatedPodcastDir && !['node_modules', '.git', '.github', '.history', 'html', '.superpowers', '.worktrees'].includes(file)) {
         findMarkdownFiles(filePath, fileList);
       }
     } else if (file.endsWith('.md')) {

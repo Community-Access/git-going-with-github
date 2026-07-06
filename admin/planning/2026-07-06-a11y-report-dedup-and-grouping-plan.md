@@ -423,3 +423,15 @@ reader users instead of one long flat list (support#61)."
   exported name used in both the test file and the workflow `require()` call.
   `check_accessibility`'s public signature is unchanged.
 - **No placeholders:** every step has complete, runnable code.
+
+## Authoritative Sources
+
+- [Design spec: onboarding verification and a11y report](2026-07-06-onboarding-verification-and-a11y-report-design.md)
+- [`learning-room/.github/scripts/check_accessibility.py`](../../learning-room/.github/scripts/check_accessibility.py)
+- [`learning-room/.github/workflows/content-validation.yml`](../../learning-room/.github/workflows/content-validation.yml)
+- [`.github/scripts/validation-report.js`](../../.github/scripts/validation-report.js) (the existing testable-module pattern this plan follows)
+
+### Section-Level Source Map
+
+- **Task 1 (table-description dedup):** [Design spec, Part A](2026-07-06-onboarding-verification-and-a11y-report-design.md), [`check_accessibility.py`](../../learning-room/.github/scripts/check_accessibility.py).
+- **Task 2 (comment builder + grouping):** [Design spec, Part A](2026-07-06-onboarding-verification-and-a11y-report-design.md), [`content-validation.yml`](../../learning-room/.github/workflows/content-validation.yml), [`validation-report.js`](../../.github/scripts/validation-report.js).

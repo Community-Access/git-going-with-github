@@ -140,3 +140,24 @@ After `ensureMergeConflictPractice()` opens the dedicated practice PR (around li
 - No change to `errors`/`warnings` grouping in the content-validation comment (no
   evidence of the same volume problem there).
 - No change to how `check_links.py` or `check_markdown.py` work.
+
+## Authoritative Sources
+
+Use these files as the current source of truth for the claims in this design - the
+code itself, not this document, is authoritative once implemented.
+
+- [`learning-room/.github/scripts/check_accessibility.py`](../../learning-room/.github/scripts/check_accessibility.py)
+- [`learning-room/.github/workflows/content-validation.yml`](../../learning-room/.github/workflows/content-validation.yml)
+- [`.github/scripts/provisioning/provision-core.js`](../../.github/scripts/provisioning/provision-core.js)
+- [`.github/scripts/provisioning/github-client.js`](../../.github/scripts/provisioning/github-client.js)
+- [`.github/scripts/provisioning/roster.js`](../../.github/scripts/provisioning/roster.js)
+- [`.github/scripts/provisioning/sync-intake-to-roster.js`](../../.github/scripts/provisioning/sync-intake-to-roster.js)
+- [`learning-room/.github/scripts/challenge-progression.js`](../../learning-room/.github/scripts/challenge-progression.js)
+- [`.github/workflows/registration.yml`](../../.github/workflows/registration.yml)
+
+### Section-Level Source Map
+
+- **Background:** Community-Access/support issues #61 and #62 (external, not in this repo).
+- **Part A (accessibility-checker flood):** [`check_accessibility.py`](../../learning-room/.github/scripts/check_accessibility.py), [`content-validation.yml`](../../learning-room/.github/workflows/content-validation.yml).
+- **Part B1 (enrollment invitation status):** [`github-client.js`](../../.github/scripts/provisioning/github-client.js), [`provision-core.js`](../../.github/scripts/provisioning/provision-core.js), [`roster.js`](../../.github/scripts/provisioning/roster.js), [`sync-intake-to-roster.js`](../../.github/scripts/provisioning/sync-intake-to-roster.js), [`registration.yml`](../../.github/workflows/registration.yml).
+- **Part B2 (Challenge 7 conflict verification):** [`challenge-progression.js`](../../learning-room/.github/scripts/challenge-progression.js).

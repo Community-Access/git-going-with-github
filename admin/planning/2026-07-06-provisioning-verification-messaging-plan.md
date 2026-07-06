@@ -970,3 +970,22 @@ leaving a learner with a PR that looks ready but isn't (support#61)."
   (no throw, no call) when `enrollmentRepo`/`enrollmentIssueNumber` are falsy,
   and wraps the actual call in try/catch - covered by the "skips ... silently"
   and "does not fail provisioning" tests.
+
+## Authoritative Sources
+
+- [Design spec: onboarding verification and a11y report](2026-07-06-onboarding-verification-and-a11y-report-design.md)
+- [`roster.schema.json`](../../roster.schema.json)
+- [`.github/scripts/provisioning/roster.js`](../../.github/scripts/provisioning/roster.js)
+- [`.github/scripts/provisioning/sync-intake-to-roster.js`](../../.github/scripts/provisioning/sync-intake-to-roster.js)
+- [`.github/scripts/provisioning/github-client.js`](../../.github/scripts/provisioning/github-client.js)
+- [`.github/scripts/provisioning/provision-core.js`](../../.github/scripts/provisioning/provision-core.js)
+- [`.github/workflows/registration.yml`](../../.github/workflows/registration.yml)
+- [`learning-room/.github/scripts/challenge-progression.js`](../../learning-room/.github/scripts/challenge-progression.js)
+
+### Section-Level Source Map
+
+- **Task 1 (roster schema fields):** [Design spec, Part B1](2026-07-06-onboarding-verification-and-a11y-report-design.md), [`roster.schema.json`](../../roster.schema.json), [`roster.js`](../../.github/scripts/provisioning/roster.js).
+- **Task 2 (parse public enrollment issue):** [`sync-intake-to-roster.js`](../../.github/scripts/provisioning/sync-intake-to-roster.js), [`registration.yml`](../../.github/workflows/registration.yml).
+- **Task 3 (commentOnIssue client method):** [`github-client.js`](../../.github/scripts/provisioning/github-client.js).
+- **Task 4 (post enrollment message):** [Design spec, Part B1](2026-07-06-onboarding-verification-and-a11y-report-design.md), [`provision-core.js`](../../.github/scripts/provisioning/provision-core.js).
+- **Task 5 (Challenge 7 verification):** [Design spec, Part B2](2026-07-06-onboarding-verification-and-a11y-report-design.md), [`challenge-progression.js`](../../learning-room/.github/scripts/challenge-progression.js).
