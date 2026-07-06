@@ -102,3 +102,28 @@ test('syncIntakeToRoster requires a cohort id', () => {
     /cohortId/
   );
 });
+
+test('parseIntakeIssue extracts the public enrollment issue reference', () => {
+  const parsed = parseIntakeIssue(intakeIssue({ login: 'alice' }));
+  assert.equal(parsed.enrollment_repo, 'Community-Access/git-going-with-github');
+  assert.equal(parsed.enrollment_issue_number, 42);
+});
+
+test('parseIntakeIssue tolerates a missing public issue line', () => {
+  const issue = intakeIssue({ login: 'alice' });
+  issue.body = issue.body.replace(/^- Public issue:.*\n/m, '');
+  const parsed = parseIntakeIssue(issue);
+  assert.equal(parsed.enrollment_repo, null);
+  assert.equal(parsed.enrollment_issue_number, null);
+});
+
+test('syncIntakeToRoster carries the enrollment reference onto the roster entry', () => {
+  const roster = { version: 1, cohorts: [], learners: [] };
+  const result = syncIntakeToRoster({
+    roster,
+    intakeIssues: [intakeIssue({ number: 1, login: 'alice' })],
+    cohortId: 'self-paced-2026'
+  });
+  assert.equal(result.roster.learners[0].enrollment_repo, 'Community-Access/git-going-with-github');
+  assert.equal(result.roster.learners[0].enrollment_issue_number, 42);
+});

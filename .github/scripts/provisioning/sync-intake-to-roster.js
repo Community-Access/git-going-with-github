@@ -44,10 +44,15 @@ function parseIntakeIssue(issue) {
   const submitted = body.match(/^- Submitted by: @(\S+)\s*$/m);
   if (!submitted || !isValidHandle(submitted[1])) return null;
   const captured = body.match(/^- Captured at: (\S+)\s*$/m);
+  const publicIssue = body.match(
+    /^- Public issue: https:\/\/github\.com\/([^/\s]+\/[^/\s]+)\/issues\/(\d+)\s*$/m
+  );
   return {
     github_handle: submitted[1],
     registered_at: (captured && captured[1]) || issue.created_at || null,
-    intake_issue_number: issue.number
+    intake_issue_number: issue.number,
+    enrollment_repo: publicIssue ? publicIssue[1] : null,
+    enrollment_issue_number: publicIssue ? Number(publicIssue[2]) : null
   };
 }
 
@@ -85,6 +90,8 @@ function syncIntakeToRoster({ roster, intakeIssues, cohortId }) {
       provision_state: 'pending',
       status: 'awaiting-ack',
       registered_at: parsed.registered_at,
+      enrollment_repo: parsed.enrollment_repo,
+      enrollment_issue_number: parsed.enrollment_issue_number,
       notes: `from intake issue #${parsed.intake_issue_number}`
     });
     added.push(parsed.github_handle);
