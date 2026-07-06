@@ -14,6 +14,17 @@ import sys
 import json
 from pathlib import Path
 
+TABLE_SEPARATOR_RE = re.compile(r'^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$')
+
+
+def _is_table_header(line, next_line):
+    """A line is a GFM table header when it contains '|' and the next line is
+    a valid separator row (e.g. '|---|---|'). Matching on the header plus its
+    separator - not on every row that merely contains '|' - means a 10-row
+    table produces one finding instead of ten (support#61)."""
+    return '|' in line and bool(TABLE_SEPARATOR_RE.match(next_line))
+
+
 def check_accessibility(filepath):
     """Check accessibility issues in a markdown file."""
     issues = []
@@ -85,17 +96,13 @@ def check_accessibility(filepath):
                     })
                     break
         
-        # Check for tables without descriptions
-        if '|' in line and any('|' in lines[i] for i in range(max(0, line_num-2), min(len(lines), line_num+2))):
-            # Likely a table
-            # Check if there's a caption or description before it
+        # Check for tables without descriptions. Only the header line is
+        # inspected (paired with the separator row that follows it), so a
+        # single table produces at most one finding regardless of row count.
+        if line_num < len(lines) and _is_table_header(line, lines[line_num]):
             if line_num > 1:
-                prev_line = lines[line_num-2].strip()
-                if prev_line and not prev_line.startswith('|'):
-                    # There's a description
-                    pass
-                else:
-                    # Could use a description
+                prev_line = lines[line_num - 2].strip()
+                if not prev_line or prev_line.startswith('|'):
                     issues.append({
                         'file': filepath,
                         'line': line_num,
