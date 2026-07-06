@@ -137,6 +137,8 @@ This is your first challenge that uses GitHub's web editor, so take a moment wit
 3. Verify the **base branch** is `main` and the **compare branch** is your `fix/yourname-issueXX` branch.
 4. Activate the **Create pull request** button.
 
+> **Note:** This title only needs to make sense for this one PR. It has no bearing on later chapters - some later challenges (Chapter 7, for example) automatically open their own separate pull request with a title the automation chooses. You never need to reuse or match a title across challenges.
+
 **You are done when:** Your PR appears in the Pull Requests list. The bot will begin running checks within about 30 seconds. Continue to Challenge 6.3.
 
 ### Challenge 6.3 Step-by-Step: Pass Required Checks
