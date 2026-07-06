@@ -115,3 +115,50 @@ test('fromOctokit listWorkflowPaths filters files and handles 404', async () => 
   const client = fromOctokit(octokit);
   assert.deepEqual(await client.listWorkflowPaths({ owner: 'o', repo: 'r' }), ['x.yml']);
 });
+
+test('commentOnIssue posts to the issue comments endpoint', async () => {
+  let body;
+  const client = createFetchClient({
+    token: 't',
+    fetchImpl: fakeFetchFactory({
+      'POST /repos/o/r/issues/42/comments': (opts) => {
+        body = JSON.parse(opts.body);
+        return { status: 201, async json() { return { id: 1 }; } };
+      }
+    })
+  });
+  const result = await client.commentOnIssue({ owner: 'o', repo: 'r', issue_number: 42, body: 'hello' });
+  assert.equal(body.body, 'hello');
+  assert.equal(result.id, 1);
+});
+
+test('commentOnIssue throws with detail on failure', async () => {
+  const client = createFetchClient({
+    token: 't',
+    fetchImpl: fakeFetchFactory({
+      'POST /repos/o/r/issues/42/comments': () => ({ status: 404, async text() { return 'not found'; } })
+    })
+  });
+  await assert.rejects(
+    () => client.commentOnIssue({ owner: 'o', repo: 'r', issue_number: 42, body: 'hello' }),
+    /commentOnIssue failed \(HTTP 404\).*not found/
+  );
+});
+
+test('fromOctokit commentOnIssue delegates to issues.createComment', async () => {
+  let called;
+  const octokit = {
+    rest: {
+      issues: {
+        createComment: async (args) => {
+          called = args;
+          return { data: { id: 7 } };
+        }
+      }
+    }
+  };
+  const client = fromOctokit(octokit);
+  const result = await client.commentOnIssue({ owner: 'o', repo: 'r', issue_number: 5, body: 'hi' });
+  assert.deepEqual(called, { owner: 'o', repo: 'r', issue_number: 5, body: 'hi' });
+  assert.equal(result.id, 7);
+});

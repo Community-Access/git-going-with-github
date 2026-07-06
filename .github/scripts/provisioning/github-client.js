@@ -87,6 +87,19 @@ function createFetchClient({
       );
     },
 
+    async commentOnIssue({ owner, repo, issue_number, body }) {
+      const res = await request(
+        'POST',
+        `/repos/${owner}/${repo}/issues/${issue_number}/comments`,
+        { body }
+      );
+      if (res.status === 201) return res.json();
+      const detail = await res.text();
+      throw new Error(
+        `commentOnIssue failed (HTTP ${res.status}) for ${owner}/${repo}#${issue_number}: ${detail}`
+      );
+    },
+
     async listWorkflowPaths({ owner, repo }) {
       const res = await request(
         'GET',
@@ -147,6 +160,10 @@ function fromOctokit(octokit) {
     async ensureCollaborator({ owner, repo, username, permission = 'push' }) {
       const res = await octokit.rest.repos.addCollaborator({ owner, repo, username, permission });
       return { status: res.status === 201 ? 'invited' : 'already-collaborator' };
+    },
+    async commentOnIssue({ owner, repo, issue_number, body }) {
+      const res = await octokit.rest.issues.createComment({ owner, repo, issue_number, body });
+      return res.data;
     },
     async listWorkflowPaths({ owner, repo }) {
       try {
