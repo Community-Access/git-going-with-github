@@ -388,6 +388,8 @@ const CONFLICT_BRANCH = 'challenge-7/conflict-practice';
 const CONFLICT_FILE = 'docs/welcome.md';
 const CONFLICT_ANCHOR = '<!-- challenge-7-conflict-anchor -->';
 const CONFLICT_PR_TITLE = 'Challenge 7 practice: resolve this merge conflict';
+const CONFLICT_VERIFY_ATTEMPTS = 3;
+const CONFLICT_VERIFY_DELAY_MS = 2000;
 
 async function findOpenOrPastPullRequest(branch, request = githubRequest) {
   const existing = await request(`/repos/${owner}/${repo}/pulls?head=${owner}:${encodeURIComponent(branch)}&state=all`, {}, 1);
@@ -406,7 +408,41 @@ async function postConflictPracticeComment(issueNumber, prNumber, request = gith
   });
 }
 
-async function ensureMergeConflictPractice(issueNumber, request = githubRequest) {
+async function waitForConflictState(prNumber, request = githubRequest, delayMs = CONFLICT_VERIFY_DELAY_MS) {
+  for (let attempt = 1; attempt <= CONFLICT_VERIFY_ATTEMPTS; attempt += 1) {
+    const pr = await request(`/repos/${owner}/${repo}/pulls/${prNumber}`, {}, 1);
+    if (pr && pr.mergeable_state === 'dirty') {
+      return true;
+    }
+    if (attempt < CONFLICT_VERIFY_ATTEMPTS) {
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
+  return false;
+}
+
+async function postConflictFallbackComment(issueNumber, prNumber, request = githubRequest) {
+  if (!issueNumber) {
+    return;
+  }
+  await request(`/repos/${owner}/${repo}/issues/${issueNumber}/comments`, {
+    method: 'POST',
+    body: {
+      body: [
+        `Your merge conflict practice PR is open (#${prNumber}), but it did not register a conflict yet.`,
+        '',
+        'You can create one yourself instead:',
+        '1. Open `docs/welcome.md` for editing directly on the `main` branch (the pencil icon, committing straight to `main`).',
+        `2. Find the sentence marked with \`${CONFLICT_ANCHOR}\` and reword it slightly.`,
+        '3. Commit that change directly to `main`.',
+        `4. Go back to PR #${prNumber} - it should now show "This branch has conflicts that must be resolved."`,
+        '5. Follow Steps 2-5 in this issue to resolve it.'
+      ].join('\n')
+    }
+  });
+}
+
+async function ensureMergeConflictPractice(issueNumber, request = githubRequest, delayMs = CONFLICT_VERIFY_DELAY_MS) {
   log('INFO', 'Setting up merge conflict practice for Challenge 7...');
   try {
     let targetIssueNumber = issueNumber;
@@ -477,7 +513,13 @@ async function ensureMergeConflictPractice(issueNumber, request = githubRequest)
     log('INFO', `Opened Challenge 7 conflict practice PR: ${pr.html_url}`);
     console.log(`Opened Challenge 7 conflict practice PR: ${pr.html_url}`);
 
-    await postConflictPracticeComment(targetIssueNumber, pr.number, request);
+    const isConflicting = await waitForConflictState(pr.number, request, delayMs);
+    if (isConflicting) {
+      await postConflictPracticeComment(targetIssueNumber, pr.number, request);
+    } else {
+      log('WARN', `Practice PR #${pr.number} did not register as conflicting after retries.`);
+      await postConflictFallbackComment(targetIssueNumber, pr.number, request);
+    }
   } catch (error) {
     log('WARN', `Could not set up merge conflict practice: ${error.message}. Student can still resolve manually.`);
   }
@@ -712,5 +754,7 @@ module.exports = {
   ensurePeerIssue,
   ensurePeerSimulationBranch,
   ensurePeerSimulationPullRequest,
-  ensureMergeConflictPractice
+  ensureMergeConflictPractice,
+  waitForConflictState,
+  postConflictFallbackComment
 };
