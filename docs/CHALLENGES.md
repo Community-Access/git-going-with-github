@@ -178,6 +178,8 @@ Merge Day closes the Day 1 loop. You verify that your pull request is ready, mer
 
 **Evidence to post:** Share the merged PR link and the issue number that closed.
 
+Before you close the issue, answer the four **Confidence Check** reflection questions from [Chapter 10](10-notifications-and-day-1-close.md#confidence-check) in a comment on your Challenge 9 issue. There are no wrong answers - this is for you.
+
 Before moving on, scan the [Challenge 9 solution reference](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-09-merge-day.md) to make sure you caught both the merge and verification steps.
 </details>
 

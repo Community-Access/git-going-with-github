@@ -610,6 +610,17 @@ You have completed Day 1. Take a moment to appreciate what you accomplished:
 - You survived a merge conflict
 - You contributed to an open source community
 
+#### Reflect before you close
+
+Before you close this issue, take two minutes to answer these questions in a comment below. There are no wrong answers - this is for you. (These are the same questions in the Chapter 10 Confidence Check, surfaced here so you see them before closing.)
+
+1. Which chapter felt the most natural to you? Which one do you want to revisit?
+2. Can you explain what a pull request does to someone who has never used GitHub?
+3. If you saw a merge conflict right now, would you know where to start?
+4. What is one thing you want to try on GitHub this week that you did not get to today?
+
+> **Screen reader tip:** Copy these questions into your comment and type your answers directly below each one. Use a blank line between each question-answer pair so the structure is clear when read back.
+
 ---
 
 **Your evidence** (fill in when closing this issue):
@@ -864,18 +875,24 @@ Source template: [challenge-12-review.yml](https://github.com/Community-Access/g
 
 **Chapter:** [Ch15: Code Review](https://github.com/Community-Access/git-going-with-github/blob/main/docs/15-code-review.md)
 
-**What you will do:** Perform a thorough code review on a peer-simulation PR (or a buddy's PR). Use the sample file at `docs/code-review-sample.md` for your review if you do not have a real PR to review. Leave inline comments, make a suggestion, and submit a verdict.
+**What you will do:** Perform a thorough code review. If your Learning Room has an open pull request, review that (Path A). If it does not, review the sample file at `docs/code-review-sample.md` instead (Path B). Either way, you will leave specific feedback and a verdict.
 
 **Why this matters:** Code review is how teams maintain quality and teach each other.
 
-#### Step-by-step review process
+#### Choose your path
+
+- **Path A (preferred):** There is an open PR in **this** repository to review. Use the PR workflow below.
+- **Path B (fallback):** There is no open PR, or the only PR is already merged. Review the sample file and post your review as a comment on **this** issue.
+
+Not sure where to look? The peer simulation PR lives in **your own Learning Room** repository (the one you are in right now), not in the main workshop repository. Open the **Pull requests** tab here. If the **Peer Simulation: Improve contribution guidance** PR is missing or already merged, use Path B.
+
+#### Path A: Review a pull request
 
 #### Step 1: Find the PR to review
-1. Go to the **Pull requests** tab in this repository
-2. Look for the **Peer Simulation: Improve contribution guidance** PR
+1. Go to the **Pull requests** tab in **this** repository
+2. Look for the **Peer Simulation: Improve contribution guidance** PR, or a classmate's open PR
 3. Click to open it
 4. Alternatively, if your facilitator gave you buddy access, open your buddy's Day 2 PR
-5. If you do not have a real PR to review, open and review the sample file at `docs/code-review-sample.md` instead.
 
 #### Step 2: Go to the Files changed tab
 1. At the top of the PR, you will see tabs: **Conversation**, **Commits**, **Files changed**, **Checks**
@@ -917,14 +934,29 @@ Source template: [challenge-12-review.yml](https://github.com/Community-Access/g
 ```text
 6. Click **Submit review**
 
-#### Review checklist
+#### Path B: Review the sample file (when no open PR is available)
 
-When reviewing, ask yourself:
-- ✅ Does it do what the PR description says?
-- ✅ Is the commit message clear and meaningful?
-- ✅ Are there typos or formatting issues?
-- ✅ Would a beginner understand this content?
-- ✅ Is the language accessible and clear?
+A plain Markdown file has no diff, so there is no **Files changed** tab and no inline comment button. Instead, you will read the file, find the issues, and post your review as a comment on **this Challenge 12 issue**.
+
+#### Step 1: Open the sample file
+1. In **this** repository, open `docs/code-review-sample.md`
+2. Read the whole file. It is intentionally written with a few issues for you to find
+
+#### Step 2: Find at least two things to comment on
+Look for:
+- Typos or unclear language
+- Missing or incorrect headings
+- Inconsistent formatting (for example, list markers that do not match)
+- Missing alt text for images
+- Any accessibility or clarity problems
+
+#### Step 3: Write your review as a comment on this issue
+Post a comment on **this Challenge 12 issue** that includes:
+1. One thing the author did well (be specific - quote the line)
+2. At least one constructive suggestion (quote the line, then suggest a fix)
+3. A one-sentence verdict: would you **Approve**, **Request changes**, or **Comment** if this were a real PR, and why
+
+This is how review works when you cannot comment inline: you describe what you found and what verdict you would give.
 
 #### Review checklist
 
@@ -948,9 +980,9 @@ When reviewing, consider:
 **Your evidence** (fill in when closing this issue):
 
 ```text
-Review URL: https://github.com/...
-I reviewed the peer-simulation PR.
-My inline comments were about: ...
+Path used: A (PR review) or B (sample file)
+Review URL or comment: https://github.com/...
+My feedback was about: ...
 My verdict was: ... because...
 ```
 
@@ -964,8 +996,9 @@ Read any review comments on your PR. If you do not have real buddy access, reply
 
 | Symptom | Try this |
 |---|---|
-| I cannot find the Files changed tab | Open the PR, then look for tabs: Conversation, Commits, Files changed. Screen reader users: these are tab links within the PR page. |
-| I do not know how to leave an inline comment | Hover over (or focus on) a line number in the diff and select the blue + button that appears. |
+| I cannot find the peer simulation PR | It lives in your own Learning Room, not the main workshop repo. Open the Pull requests tab here. If it is missing or merged, use Path B with `docs/code-review-sample.md`. |
+| I cannot find the Files changed tab | This only exists on a PR (Path A). If you are reviewing the sample file (Path B), skip this and post your review as a comment on this issue. |
+| I do not know how to leave an inline comment | Hover over (or focus on) a line number in the diff and select the blue + button that appears. Path B users: there is no inline button on a plain file, so write your review as an issue comment instead. |
 | I do not know how to suggest changes | In the comment box, select the file-diff icon (it looks like +/-) to create a suggestion block. Edit the code inside the block. |
 | I am not sure which verdict to give | When in doubt, use **Comment**. It gives feedback without blocking. |
 | I finished but want to check my work | [View the reference solution](https://github.com/Community-Access/git-going-with-github/blob/main/docs/solutions/solution-12-review.md) |
