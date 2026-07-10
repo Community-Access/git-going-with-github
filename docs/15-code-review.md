@@ -1089,6 +1089,8 @@ Chapter 15 is the **code review chapter** focused on practicing constructive fee
 1. **Review a practice PR and leave 2-3 inline comments** - read the diff line by line, find specific items to comment on, and post constructive feedback.
 2. **Submit a formal review verdict** - complete your review by choosing approve, request changes, or comment only.
 
+> **No open PR to review?** The steps below assume a pull request with a diff. If your Learning Room has no open PR (or the peer simulation PR is already merged), review the sample file at `docs/code-review-sample.md` instead: read the whole file, find at least two issues (typos, headings, formatting, alt text, clarity), and post your review - one thing done well, at least one constructive suggestion, and a one-sentence verdict - as a comment on your Challenge 12 issue. A plain file has no diff, so there is no Files changed tab and no inline comment button; the issue comment is where your review lives. See the Challenge 12 issue template for the full Path B steps.
+
 ### Practice 12.1 Step-by-Step: Review a PR and Leave Inline Comments
 
 **Goal:** Navigate a PR diff using screen reader-friendly tools and post 2-3 specific, constructive inline comments.
