@@ -79,10 +79,10 @@ The [Challenge 3 solution reference](https://github.com/Community-Access/git-goi
 A branch is a safe workspace. It lets you try a change without rewriting the main version of the project. In this challenge, you create your own branch and confirm that you know where your work will happen.
 
 **What to do:**
-
-- Find the branch selector on the Code tab
-- Create a branch named `learn/YOUR-USERNAME` from `main`
-- Confirm the branch selector now names your branch
+-Find the branch selector on the Code tab.
+-The main branch is selected by default. Open the branch dropdown to view existing branches. You can also tab to the edit field to filter existing branches or     enter the name of a new branch.
+-Enter learn/YOUR-USERNAME as the new branch name. Press Tab to move to the Tags field, then press Tab again to reach the Create branch button. Press Enter or Space to activate it. Your new branch will be created and become active.
+-Confirm that the branch selector now shows your new branch.
 
 **Evidence to post:** Write the branch name you created and how you confirmed you were on it.
 
