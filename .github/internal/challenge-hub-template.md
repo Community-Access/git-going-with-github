@@ -87,7 +87,7 @@ Then open a PR with:
 
 1. Re-read the Challenge Hub.
 2. Check the [Screen Reader Cheat Sheet](https://github.com/Community-Access/git-going-with-github/blob/main/docs/appendix-b-screen-reader-cheatsheet.md).
-3. Listen to the companion episode in [PODCASTS.md](https://github.com/Community-Access/git-going-with-github/blob/main/PODCASTS.md).
+3. Listen to the companion episode in [the podcast episode index](https://lp.csedesigns.com/ggg/PODCASTS.html).
 4. Ask in the workshop help channel with your challenge number.
 5. Comment on this issue with what is blocking you.
 

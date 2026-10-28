@@ -271,8 +271,8 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 │   ├── 00-pre-workshop-setup.md through 22-what-comes-next.md
 │   ├── appendix-a-glossary.md through appendix-z-github-skills.md
 │   └── solutions/                       -- Reference solutions for every challenge
-├── podcasts/                            -- Audio companion episodes
-└── PODCASTS.md                          -- Audio player page
+├── podcasts/                            -- Audio companion pipeline (episodes are served from lp.csedesigns.com/ggg)
+└── admin/PODCASTS.md                    -- Episode listing
 ```
 
 > *Note: Appendices were renumbered during a February 2026 review. If you encounter external references to "Appendix D" or later letters, subtract one letter (e.g., the former Appendix D is now [Appendix C](docs/appendix-m-accessibility-standards.md)).*
