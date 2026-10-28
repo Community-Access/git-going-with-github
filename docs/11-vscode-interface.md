@@ -412,6 +412,8 @@ VS Code uses a web-based renderer. Configure NVDA for best results:
 3. Use Quick Nav OFF (`Left+Right Arrow`) when inside the editor - standard cursor navigation is more predictable
 4. Use `VO+Shift+Down` to interact with the editor, `VO+Shift+Up` to stop interacting
 
+> **If VoiceOver says "selection replaced" when you type:** some learners on macOS hear "selection replaced" when they type the first character in a file in the editor, in a new file or an existing one. Nothing has been replaced: your text is intact, and you can check by reading the line with `VO+L`. The cause is not yet known, and the same announcement has been reported in other Markdown editors, so it may come from VoiceOver rather than VS Code. Turning off macOS text replacements did not stop it. If it happens to you, add your macOS, VoiceOver and VS Code versions to [issue #175](https://github.com/Community-Access/git-going-with-github/issues/175) so we can narrow it down.
+
 ### Learning Cards: Screen Reader Mode
 
 <details>
