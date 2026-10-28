@@ -317,7 +317,9 @@ And by the end of Day 2, you will not just be a learner. You will be a product m
 
 ## Accessibility of This Project
 
-How we work on the workshop's own accessibility, how to report a barrier (on GitHub or by email), how we respond, what the workshop supports and what we know is not yet good enough are all in [ACCESSIBILITY.md](ACCESSIBILITY.md). We follow GitHub's [Open Source Accessibility Framework](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/), an improvement framework rather than a certification, and publish our progress in ACCESSIBILITY.md.
+How we work on the workshop's own accessibility, how to report a barrier (on GitHub or by email), how we respond, what the workshop supports and what we know is not yet good enough are all in [ACCESSIBILITY.md](ACCESSIBILITY.md). We follow GitHub's [Open Source Accessibility Framework](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/), an improvement framework rather than a certification, and publish our progress in ACCESSIBILITY.md and in our public tracking issue, [GIT Going with GitHub, issue 55](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/55).
+
+[![Open Source Accessibility Framework progress for GIT Going with GitHub](https://img.shields.io/badge/Accessibility%20Framework-GIT%20Going%20with%20GitHub-F143AB?logo=github&logoColor=000000)](https://github.com/open-source-accessibility/Open-Source-Accessibility-Framework/issues/55)
 
 To report a barrier, use the [accessibility bug report form](https://github.com/Community-Access/git-going-with-github/issues/new?template=accessibility-bug.yml) or email [support@community-access.org](mailto:support@community-access.org). To help, look for issues labeled [`accessibility`](https://github.com/Community-Access/git-going-with-github/issues?q=is%3Aopen+label%3Aaccessibility).
 
