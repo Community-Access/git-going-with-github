@@ -631,15 +631,15 @@ java -jar bfg.jar --replace-text passwords.txt</code></pre>
 <h3 id="step-5-tell-github-to-rescan">Step 5: Tell GitHub to rescan</h3>
 <p>After removing the secret from history, go to <strong>Security → Secret scanning</strong> in your repository and mark any open alerts as resolved.</p>
 <h3 id="quick-decision-flowchart">Quick decision flowchart</h3>
-<pre><code class="hljs">Secret <span class="hljs-keyword">committed</span>
+<pre><code class="hljs language-text">Secret committed
       │
-      ├─ Still <span class="hljs-keyword">local</span> <span class="hljs-keyword">only</span> (<span class="hljs-keyword">not</span> pushed)?
-      │     └─ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--soft HEAD~1 -&gt; remove secret -&gt; recommit</span>
+      ├─ Still local only (not pushed)?
+      │     └─ git reset --soft HEAD~1 -&gt; remove secret -&gt; recommit
       │
       └─ Already pushed?
             ├─ Rotate the secret FIRST (assume compromised)
-            ├─ Remove <span class="hljs-keyword">from</span> history <span class="hljs-keyword">with</span> git <span class="hljs-keyword">filter</span>-repo <span class="hljs-keyword">or</span> BFG
-            └─ Force push + <span class="hljs-keyword">notify</span> team</code></pre>
+            ├─ Remove from history with git filter-repo or BFG
+            └─ Force push + notify team</code></pre>
 <hr>
 <h2 id="7-github39s-built-in-push-protection">7. GitHub&#39;s Built-In Push Protection</h2>
 <p>GitHub automatically scans pushes for known secret patterns before they reach the remote. If it detects a secret, the push is blocked.</p>

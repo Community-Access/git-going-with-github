@@ -873,7 +873,7 @@ All agents work the same across platforms, but the workflow differs slightly.
 
 **GitHub Copilot (VS Code):**
 
-```
+```text
 Ctrl+Alt+I → Type: @aria-specialist audit this component for ARIA
 ```
 
@@ -891,7 +891,7 @@ gemini @aria-specialist audit this component for ARIA
 
 **Claude Desktop:**
 
-```
+```text
 Open chat → Type: @aria-specialist audit this component for ARIA
 ```
 

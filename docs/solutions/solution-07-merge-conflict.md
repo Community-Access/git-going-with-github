@@ -6,7 +6,7 @@ This shows what conflict markers look like and how to resolve them.
 
 When Git cannot automatically merge two changes to the same lines, it inserts markers:
 
-```
+```text
 <<<<<<< HEAD
 Welcome to the Learning Room! This is the main branch version.
 =======
@@ -24,7 +24,7 @@ Welcome to the Learning Room! This is my improved version with more detail.
 
 **Before (with conflict markers):**
 
-```
+```text
 <<<<<<< HEAD
 Welcome to the Learning Room! This is the main branch version.
 =======
@@ -34,7 +34,7 @@ Welcome to the Learning Room! This is my improved version with more detail.
 
 **After (resolved):**
 
-```
+```text
 Welcome to the Learning Room! This is my improved version with more detail.
 ```
 

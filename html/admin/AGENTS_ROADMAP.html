@@ -330,40 +330,40 @@
 <p><strong>Before (4.x):</strong> Agents reported issues; users fixed manually.
 <strong>Now (5.0.0+):</strong> Agents can auto-apply many fixes; users review and confirm.</p>
 <p><strong>Example:</strong></p>
-<pre><code class="hljs"><span class="hljs-attribute">Version</span> <span class="hljs-number">4</span>.x:
-<span class="hljs-attribute">User</span>: @aria-specialist audit this component
-<span class="hljs-attribute">Agent</span>:<span class="hljs-meta"> [Reports 3 ARIA errors]</span>
-<span class="hljs-attribute">User</span>:<span class="hljs-meta"> [Manually fixes issues in code]</span>
+<pre><code class="hljs language-text">Version 4.x:
+User: @aria-specialist audit this component
+Agent: [Reports 3 ARIA errors]
+User: [Manually fixes issues in code]
 
-<span class="hljs-attribute">Version</span> <span class="hljs-number">5</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span>+:
-<span class="hljs-attribute">User</span>: @web-issue-fixer audit-and-fix this component
-<span class="hljs-attribute">Agent</span>:<span class="hljs-meta"> [Reports 3 ARIA errors]</span>
-<span class="hljs-attribute">Agent</span>:<span class="hljs-meta"> [Applies auto-fix for 2 errors; flags 1 for manual review]</span>
-<span class="hljs-attribute">Agent</span>:<span class="hljs-meta"> [Returns remediated code for approval]</span></code></pre>
+Version 5.0.0+:
+User: @web-issue-fixer audit-and-fix this component
+Agent: [Reports 3 ARIA errors]
+Agent: [Applies auto-fix for 2 errors; flags 1 for manual review]
+Agent: [Returns remediated code for approval]</code></pre>
 <h3 id="2-compliance-exports-amp-vpat-generation">2. Compliance Exports &amp; VPAT Generation</h3>
 <p><strong>Before (4.x):</strong> No automated compliance reporting.
 <strong>Now (5.0.0+):</strong> Generate VPAT and compliance reports automatically.</p>
-<pre><code class="hljs"><span class="hljs-symbol">User:</span> @document-csv-reporter generate-vpat audit-findings.json
-<span class="hljs-symbol">Agent:</span> [Exports findings mapped <span class="hljs-keyword">to</span> WCAG <span class="hljs-number">2.2</span> AA <span class="hljs-built_in">and</span> Section <span class="hljs-number">508</span>]
-<span class="hljs-symbol">Agent:</span> [Generates VPAT template <span class="hljs-keyword">with</span> compliance assertions]
-<span class="hljs-symbol">Output:</span> compliance-report.xlsx</code></pre>
+<pre><code class="hljs language-text">User: @document-csv-reporter generate-vpat audit-findings.json
+Agent: [Exports findings mapped to WCAG 2.2 AA and Section 508]
+Agent: [Generates VPAT template with compliance assertions]
+Output: compliance-report.xlsx</code></pre>
 <h3 id="3-continuous-evaluation-amp-trending">3. Continuous Evaluation &amp; Trending</h3>
 <p><strong>Before (4.x):</strong> One-off audits; no trend tracking.
 <strong>Now (5.0.0+):</strong> Track accessibility scores over time; identify improvement or regression.</p>
 <p><strong>Capability:</strong></p>
-<pre><code class="hljs">Hook configuration:
+<pre><code class="hljs language-text">Hook configuration:
 {
-  <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;continuous-eval&quot;</span>,
-  <span class="hljs-string">&quot;event&quot;</span>: <span class="hljs-string">&quot;on-schedule&quot;</span>,
-  <span class="hljs-string">&quot;schedule&quot;</span>: <span class="hljs-string">&quot;0 2 * * 0&quot;</span>,  <span class="hljs-comment">// Weekly</span>
-  <span class="hljs-string">&quot;track&quot;</span>: {
-    <span class="hljs-string">&quot;metrics&quot;</span>: [<span class="hljs-string">&quot;page-score&quot;</span>, <span class="hljs-string">&quot;error-count&quot;</span>],
-    <span class="hljs-string">&quot;baseline&quot;</span>: <span class="hljs-string">&quot;2026-01-01&quot;</span>,
-    <span class="hljs-string">&quot;frequency&quot;</span>: <span class="hljs-string">&quot;weekly&quot;</span>
+  &quot;name&quot;: &quot;continuous-eval&quot;,
+  &quot;event&quot;: &quot;on-schedule&quot;,
+  &quot;schedule&quot;: &quot;0 2 * * 0&quot;,  // Weekly
+  &quot;track&quot;: {
+    &quot;metrics&quot;: [&quot;page-score&quot;, &quot;error-count&quot;],
+    &quot;baseline&quot;: &quot;2026-01-01&quot;,
+    &quot;frequency&quot;: &quot;weekly&quot;
   }
 }
 
-Output: Trend report showing score changes <span class="hljs-built_in">week</span>-over-<span class="hljs-built_in">week</span></code></pre>
+Output: Trend report showing score changes week-over-week</code></pre>
 <h3 id="4-multi-platform-parity">4. Multi-Platform Parity</h3>
 <p><strong>Before (4.x):</strong> VS Code Copilot only.
 <strong>Now (5.0.0+):</strong> Same agents run on:</p>
@@ -534,26 +534,26 @@ Output: Trend report showing score changes <span class="hljs-built_in">week</spa
 <hr>
 <h2 id="infrastructure-agents-ecosystem-reference">Infrastructure: Agents Ecosystem Reference</h2>
 <h3 id="three-teams-80-agents-5-platforms">Three Teams, 80 Agents, 5 Platforms</h3>
-<pre><code class="hljs">Accessibility Agents <span class="hljs-number">5.0</span><span class="hljs-number">.0</span>
-├── Team <span class="hljs-number">1</span>: Accessibility (<span class="hljs-number">40</span> agents)
-│   ├── Web (<span class="hljs-number">26</span>): Specialists, wizards, coaches
-│   ├── Document (<span class="hljs-number">14</span>): Word, Excel, PowerPoint, PDF, EPUB
-│   └── Skills (<span class="hljs-number">25</span>+): Reusable workflows
-├── Team <span class="hljs-number">2</span>: GitHub <span class="hljs-title function_">Workflow</span> <span class="hljs-params">(<span class="hljs-number">20</span> agents)</span>
-│   ├── Repository <span class="hljs-title function_">ops</span> <span class="hljs-params">(<span class="hljs-number">12</span>)</span>
-│   ├── Project <span class="hljs-title function_">management</span> <span class="hljs-params">(<span class="hljs-number">5</span>)</span>
-│   └── Analytics &amp; monitoring (<span class="hljs-number">3</span>)
-├── Team <span class="hljs-number">3</span>: Developer <span class="hljs-title function_">Tools</span> <span class="hljs-params">(<span class="hljs-number">18</span> agents)</span>
-│   ├── Python &amp; GUI (<span class="hljs-number">2</span>)
-│   ├── Testing &amp; CI/CD (<span class="hljs-number">4</span>)
-│   ├── Desktop <span class="hljs-title function_">accessibility</span> <span class="hljs-params">(<span class="hljs-number">3</span>)</span>
-│   └── NVDA &amp; screen <span class="hljs-title function_">readers</span> <span class="hljs-params">(<span class="hljs-number">3</span>)</span>
-└── Multi-Platform <span class="hljs-title function_">Support</span> <span class="hljs-params">(<span class="hljs-number">5</span>)</span>
-    ├── GitHub <span class="hljs-title function_">Copilot</span> <span class="hljs-params">(VS Code)</span>
-    ├── Claude <span class="hljs-title function_">Code</span> <span class="hljs-params">(CLI)</span>
+<pre><code class="hljs language-text">Accessibility Agents 5.0.0
+├── Team 1: Accessibility (40 agents)
+│   ├── Web (26): Specialists, wizards, coaches
+│   ├── Document (14): Word, Excel, PowerPoint, PDF, EPUB
+│   └── Skills (25+): Reusable workflows
+├── Team 2: GitHub Workflow (20 agents)
+│   ├── Repository ops (12)
+│   ├── Project management (5)
+│   └── Analytics &amp; monitoring (3)
+├── Team 3: Developer Tools (18 agents)
+│   ├── Python &amp; GUI (2)
+│   ├── Testing &amp; CI/CD (4)
+│   ├── Desktop accessibility (3)
+│   └── NVDA &amp; screen readers (3)
+└── Multi-Platform Support (5)
+    ├── GitHub Copilot (VS Code)
+    ├── Claude Code (CLI)
     ├── Gemini CLI
-    ├── Claude <span class="hljs-title function_">Desktop</span> <span class="hljs-params">(MCP)</span>
-    └── Codex <span class="hljs-title function_">CLI</span> <span class="hljs-params">(TOML)</span></code></pre>
+    ├── Claude Desktop (MCP)
+    └── Codex CLI (TOML)</code></pre>
 <h3 id="core-skills-25">Core Skills (25+)</h3>
 <p><strong>Categories:</strong></p>
 <ul>

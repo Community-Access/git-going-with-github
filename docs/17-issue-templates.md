@@ -2127,7 +2127,7 @@ After completing Steps 1-7, verify:
 
 1. Create a table:
 
-   ```
+   ```text
    Field Name -- Type (dropdown/input/textarea) -- Why Required? -- Options (if dropdown)
    [name]     -- [type]                        -- [reason]      -- [choices]
    ```

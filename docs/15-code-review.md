@@ -1425,7 +1425,7 @@ Each file's diff is a table. Every row is one line of code.
 <details>
 <summary>Screen reader users - NVDA</summary>
 
-```
+```text
 Press T to jump to the diff table then Insert+Space (Focus Mode)
 Press Down Arrow to move through lines one at a time
 Press Ctrl+Alt+Right Arrow to read across columns: line number, change type, code content
@@ -1436,7 +1436,7 @@ Press Ctrl+Alt+Right Arrow to read across columns: line number, change type, cod
 <details>
 <summary>Screen reader users - JAWS</summary>
 
-```
+```text
 Press T to jump to the diff table then Insert+Z (Virtual PC Cursor off)
 Press Down Arrow to move through lines
 Press Ctrl+Alt+Right Arrow for column-by-column reading
@@ -1447,7 +1447,7 @@ Press Ctrl+Alt+Right Arrow for column-by-column reading
 <details>
 <summary>Screen reader users - VoiceOver (macOS)</summary>
 
-```
+```text
 Press T or VO+U then Tables then select the diff table
 VO+Shift+Down Arrow to enter the table
 VO+Right/Left to navigate columns, VO+Up/Down to navigate rows

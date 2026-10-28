@@ -96,7 +96,7 @@ You do **not** need to know how to code to participate and contribute meaningful
 
 This is not a two-day course with two separate syllabi. It is one arc.
 
-```
+```text
 Day 1 - Learn the skill in the browser
   Navigate → Issue → Pull Request → Review → Merge
 
@@ -233,7 +233,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 
 > **One repository, everything included.** Clone or fork this repo and you have the complete workshop - all curriculum guides, Accessibility Agents agents and slash commands, YAML issue forms, PR template, and a practice contribution target in `learning-room/`. GitHub Skills modules cannot be bundled here (each participant activates their own copy on their own account), but links are in `.github/ISSUE_TEMPLATE/config.yml`.
 
-```
+```text
 [repo root]/
 ├── README.md                            -- You are here
 ├── CONTRIBUTING.md                      -- How to contribute to this repo

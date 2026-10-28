@@ -25,7 +25,7 @@ away.
 
 ## Dry-run summary
 
-```
+```text
 Stage 3.1 - rename plan
   58 mp3 renames (e.g. ch-00-welcome.mp3 -> ch-00-welcome.mp3)
   21 no-op (current_filename == filename)

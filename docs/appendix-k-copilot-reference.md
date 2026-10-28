@@ -1821,7 +1821,7 @@ On GitHub.com, you can assign tasks to different AI agents, including third-part
 4. Select the agent
 5. Add a comment describing the task:
 
-   ```
+   ```text
    @copilot please implement this feature and open a PR.
    ```
 

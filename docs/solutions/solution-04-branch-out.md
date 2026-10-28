@@ -13,7 +13,7 @@ The branch now exists on GitHub and is active. You can switch to it using the sa
 
 ## In VS Code (with Git)
 
-```
+```bash
 git checkout -b fix/welcome-todo
 ```
 
@@ -28,7 +28,7 @@ Or use the Source Control sidebar: click the branch name in the bottom-left stat
 
 ## With GitHub CLI
 
-```
+```bash
 gh repo clone <workshop-org>/learning-room-<your-username>
 cd learning-room
 git checkout -b fix/welcome-todo

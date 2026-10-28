@@ -20,7 +20,7 @@ See the [workshop schedule](https://github.com/Community-Access/git-going-with-g
 
 ## Example commit message
 
-```
+```text
 docs: replace TODO with workshop schedule link
 
 Resolves the placeholder on line 15 of welcome.md by adding
@@ -35,11 +35,11 @@ a link to the schedule file.
 
 ### Simpler alternatives that are also fine
 
-```
+```text
 Fix TODO in welcome.md
 ```
 
-```
+```text
 Add schedule link to welcome page
 ```
 

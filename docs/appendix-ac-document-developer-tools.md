@@ -60,7 +60,7 @@ The Document Accessibility Team provides specialized agents for scanning, remedi
 
 **Using `@word-accessibility`:**
 
-```
+```text
 User: @word-accessibility audit my-report.docx
 
 Agent response:
@@ -76,7 +76,7 @@ Agent response:
 
 **Using `@office-remediator`:**
 
-```
+```text
 User: @office-remediator fix-word my-report.docx
 
 Agent response:
@@ -105,7 +105,7 @@ Agent response:
 
 **Using `@excel-accessibility`:**
 
-```
+```text
 User: @excel-accessibility audit sales-data.xlsx
 
 Agent response:
@@ -123,7 +123,7 @@ Agent response:
 
 **Using `@office-remediator`:**
 
-```
+```text
 User: @office-remediator fix-excel sales-data.xlsx
 
 Agent response:
@@ -151,7 +151,7 @@ Agent response:
 
 **Using `@powerpoint-accessibility`:**
 
-```
+```text
 User: @powerpoint-accessibility audit presentation.pptx
 
 Agent response:
@@ -170,7 +170,7 @@ Agent response:
 
 **Using `@office-remediator`:**
 
-```
+```text
 User: @office-remediator fix-powerpoint presentation.pptx --add-speaker-notes
 
 Agent response:
@@ -203,7 +203,7 @@ PDF/UA (Universal Accessibility) is the ISO standard for accessible PDFs.
 
 **Using `@pdf-accessibility`:**
 
-```
+```text
 User: @pdf-accessibility audit report.pdf
 
 Agent response:
@@ -219,7 +219,7 @@ Agent response:
 
 **Using `@pdf-remediator`:**
 
-```
+```text
 User: @pdf-remediator fix-pdf report.pdf --ocr --add-bookmarks
 
 Agent response:
@@ -248,7 +248,7 @@ EPUB files are digital publications (e-books, online articles). Accessibility re
 
 **Using `@epub-accessibility`:**
 
-```
+```text
 User: @epub-accessibility audit ebook.epub
 
 Agent response:
@@ -295,7 +295,7 @@ The Developer Tools Team supports accessible application development across Pyth
 
 **Using `@python-specialist`:**
 
-```
+```text
 User: @python-specialist review my accessibility scanning script
 
 Agent response:
@@ -329,7 +329,7 @@ wxPython is a cross-platform GUI toolkit. Accessibility requires following platf
 
 **Using `@wxpython-specialist`:**
 
-```
+```text
 User: @wxpython-specialist audit my-app.py
 
 Agent response:
@@ -402,7 +402,7 @@ Desktop applications must follow OS conventions:
 
 **Using `@desktop-a11y-specialist`:**
 
-```
+```text
 User: @desktop-a11y-specialist test my-app --platform windows
 
 Agent response:
@@ -426,7 +426,7 @@ NVDA (free, open-source screen reader) supports add-ons for extended functionali
 
 **NVDA add-on structure:**
 
-```
+```text
 my-addon/
 ├── addon/
 │   ├── globalPlugins/
@@ -441,7 +441,7 @@ my-addon/
 
 **Using `@nvda-addon-developer`:**
 
-```
+```text
 User: @nvda-addon-developer create an add-on that improves announcement of custom web components
 
 Agent response:
@@ -519,7 +519,7 @@ jobs:
 
 **Using `@ci-accessibility`:**
 
-```
+```text
 User: @ci-accessibility add-workflow my-repo
 
 Agent response:
@@ -567,7 +567,7 @@ test('form accessible by keyboard only', async ({ page }) => {
 
 **Using `@playwright-scanner`:**
 
-```
+```text
 User: @playwright-scanner run tests/keyboard.spec.ts
 
 Agent response:

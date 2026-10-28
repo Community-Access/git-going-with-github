@@ -749,7 +749,7 @@ Every repository can be tagged with **topics** — keywords like `accessibility`
 
 Click any topic tag on a repository page to see all repos tagged with that topic. Or go directly:
 
-```
+```text
 https://github.com/topics/accessibility
 https://github.com/topics/screen-reader
 https://github.com/topics/good-first-issue

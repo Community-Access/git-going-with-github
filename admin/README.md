@@ -92,7 +92,7 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ### Pre-Workshop (48 Hours Before)
 
-1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) - Complete checklist
+1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before) - Complete checklist
 2. [ACCESSIBILITY_TESTING.md](ACCESSIBILITY_TESTING.md) - Test with screen readers
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#pre-workshop-setup-3-hours-before) - Setup workstation
 
@@ -104,7 +104,7 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ### Post-Workshop
 
-1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) - Follow-up tasks
+1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#post-workshop-tasks-week-after) - Follow-up tasks
 2. Update this documentation with lessons learned
 
 ---
@@ -121,7 +121,7 @@ This folder contains all administrative and facilitator documentation for runnin
 ### For Returning Facilitators
 
 1. Quick reference: [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
-2. Review: [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) checklist
+2. Review: [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before) checklist
 3. Keep open: [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) during workshop
 
 ### For Admin/Coordinators
@@ -137,7 +137,7 @@ This folder contains all administrative and facilitator documentation for runnin
 
 ### GitHub Classroom
 
-- [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) - Complete setup
+- [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#github-classroom-setup-before-day-1) - Complete setup
 - [COHORT_PROVISIONING.md](COHORT_PROVISIONING.md) - Provisioning
 - [classroom/README.md](classroom/README.md) - Fast copy-paste setup pack
 

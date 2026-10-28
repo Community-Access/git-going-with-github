@@ -182,13 +182,13 @@ The Progression Bot applies these labels to each challenge issue it creates:
 
 ### Issue Title Convention
 
-```
+```text
 Challenge [NUMBER]: [Title]
 ```
 
 Examples:
 
-```
+```text
 Challenge 1: Find Your Way Around
 Challenge 7: Resolve a Merge Conflict
 Challenge 16: Build Your Agent

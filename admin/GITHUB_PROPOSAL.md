@@ -229,7 +229,7 @@ Result: Users understand when agent output is correct or needs editing.
 
 Every exercise follows progression:
 
-```
+```text
 Manual Skill (User does 100% by hand)
     ↓
 With Agent (User does 50%, agent does 50%)
@@ -269,7 +269,7 @@ Accessibility is woven into every chapter.
 
 ### File Structure
 
-```
+```text
 .github/
 ├── agents/
 │   ├── daily-briefing.agent.md

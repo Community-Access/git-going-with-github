@@ -459,7 +459,7 @@ After removing the secret from history, go to **Security → Secret scanning** i
 
 ### Quick decision flowchart
 
-```
+```text
 Secret committed
       │
       ├─ Still local only (not pushed)?

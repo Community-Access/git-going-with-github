@@ -288,13 +288,13 @@
 <h3 id="what-are-subagents">What Are Subagents?</h3>
 <p>An <strong>agent</strong> is a standalone AI system (like <code>@aria-specialist</code>) that understands one domain (ARIA patterns). A <strong>subagent</strong> is an agent invoked by another agent to delegate work.</p>
 <p><strong>Example workflow:</strong></p>
-<pre><code class="hljs"><span class="hljs-keyword">User</span>: <span class="hljs-variable">@web</span><span class="hljs-operator">-</span>accessibility<span class="hljs-operator">-</span>wizard [audit this page]
+<pre><code class="hljs language-text">User: @web-accessibility-wizard [audit this page]
   ↓ (orchestrates multiple specialists)
-  ├─→ <span class="hljs-variable">@aria</span><span class="hljs-operator">-</span>specialist (<span class="hljs-keyword">check</span> ARIA roles)
-  ├─→ <span class="hljs-variable">@contrast</span><span class="hljs-operator">-</span>master (<span class="hljs-keyword">check</span> colors)
-  ├─→ <span class="hljs-variable">@keyboard</span><span class="hljs-operator">-</span>navigator (<span class="hljs-keyword">check</span> tab <span class="hljs-keyword">order</span>)
-  ├─→ <span class="hljs-variable">@alt</span><span class="hljs-operator">-</span>text<span class="hljs-operator">-</span>headings (<span class="hljs-keyword">check</span> images <span class="hljs-keyword">and</span> headings)
-  └─→ <span class="hljs-variable">@tables</span><span class="hljs-operator">-</span>specialist (<span class="hljs-keyword">check</span> <span class="hljs-keyword">table</span> markup)
+  ├─→ @aria-specialist (check ARIA roles)
+  ├─→ @contrast-master (check colors)
+  ├─→ @keyboard-navigator (check tab order)
+  ├─→ @alt-text-headings (check images and headings)
+  └─→ @tables-specialist (check table markup)
   ↓ (aggregates results)
 Output: [consolidated audit report]</code></pre>
 <h3 id="how-to-use-subagents">How to Use Subagents</h3>
@@ -440,7 +440,7 @@ const contrastResults = await runSubagent({
 </tbody></table>
 <h3 id="how-to-use-a-skill">How to Use a Skill</h3>
 <p><strong>From Copilot Chat:</strong></p>
-<pre><code class="hljs">/web-scanning [URL]
+<pre><code class="hljs language-text">/web-scanning [URL]
 /report-generation [findings JSON]
 /python-fact-grounded-coding my_script.py</code></pre>
 <p><strong>From a Custom Agent:</strong></p>
@@ -787,19 +787,19 @@ Example:
 <h2 id="5-orchestration-delegation-patterns">5. Orchestration: Delegation Patterns</h2>
 <h3 id="pattern-1-parallel-scanning-web-accessibility-wizard">Pattern 1: Parallel Scanning (Web Accessibility Wizard)</h3>
 <p><strong>Goal:</strong> Audit multiple aspects of a page simultaneously for speed.</p>
-<pre><code class="hljs">User request: Audit this page
+<pre><code class="hljs language-text">User request: Audit this page
   │
-  ├─ @aria-specialist (<span class="hljs-built_in">scan</span> ARIA)
-  ├─ @contrast-master (<span class="hljs-built_in">scan</span> colors)
-  ├─ @keyboard-navigator (<span class="hljs-built_in">scan</span> keyboard flow)
-  ├─ @alt-text-headings (<span class="hljs-built_in">scan</span> images/headings)
-  └─ @<span class="hljs-built_in">tables</span>-specialist (<span class="hljs-built_in">scan</span> <span class="hljs-built_in">tables</span>)
+  ├─ @aria-specialist (scan ARIA)
+  ├─ @contrast-master (scan colors)
+  ├─ @keyboard-navigator (scan keyboard flow)
+  ├─ @alt-text-headings (scan images/headings)
+  └─ @tables-specialist (scan tables)
   │
-  ↓ (<span class="hljs-built_in">all</span> run in parallel, results aggregated)
+  ↓ (all run in parallel, results aggregated)
   │
   Consolidated Report:
-  - Severity: <span class="hljs-number">12</span> errors, <span class="hljs-number">8</span> warnings
-  - Priority issues (blocking top <span class="hljs-number">5</span>)
+  - Severity: 12 errors, 8 warnings
+  - Priority issues (blocking top 5)
   - Detailed findings per agent</code></pre>
 <p><strong>Agent code pattern:</strong></p>
 <pre><code class="hljs language-markdown"><span class="hljs-section">## Parallel Audit</span>
@@ -813,57 +813,57 @@ Invoke all specialist agents in parallel:
 <span class="hljs-bullet">5.</span> Link to detailed fix guidance per agent</code></pre>
 <h3 id="pattern-2-cascading-fixes-web-issue-fixer">Pattern 2: Cascading Fixes (Web Issue Fixer)</h3>
 <p><strong>Goal:</strong> Fix issues in order of severity and dependency.</p>
-<pre><code class="hljs">Findings identified:
-<span class="hljs-bullet">  1.</span> Missing alt text (3 images)
-<span class="hljs-bullet">  2.</span> Poor color contrast (5 elements)
-<span class="hljs-bullet">  3.</span> Missing form labels (2 inputs)
-<span class="hljs-bullet">  4.</span> ARIA misuse (1 element)
+<pre><code class="hljs language-text">Findings identified:
+  1. Missing alt text (3 images)
+  2. Poor color contrast (5 elements)
+  3. Missing form labels (2 inputs)
+  4. ARIA misuse (1 element)
 
 Remediation order:
-<span class="hljs-bullet">  1.</span> Fix ARIA misuse first (foundational)
-<span class="hljs-bullet">  2.</span> Add form labels (unblocks testing)
-<span class="hljs-bullet">  3.</span> Add alt text (content layer)
-<span class="hljs-bullet">  4.</span> Fix contrast (visual layer)
+  1. Fix ARIA misuse first (foundational)
+  2. Add form labels (unblocks testing)
+  3. Add alt text (content layer)
+  4. Fix contrast (visual layer)
 
 Output: Numbered PR suggestions, 1 fix per commit message</code></pre>
 <h3 id="pattern-3-skill-first-workflows-testing-coach">Pattern 3: Skill-First Workflows (Testing Coach)</h3>
 <p><strong>Goal:</strong> Guide users through testing workflows without assuming prior knowledge.</p>
-<pre><code class="hljs"><span class="hljs-attribute">User</span><span class="hljs-punctuation">:</span> <span class="hljs-string">How do I test keyboard navigation?</span>
+<pre><code class="hljs language-text">User: How do I test keyboard navigation?
 
-<span class="hljs-attribute">Agent (@testing-coach) response</span><span class="hljs-punctuation">:
-</span>
-<span class="hljs-attribute">1. Ask clarifying questions</span><span class="hljs-punctuation">:</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Have you used NVDA before?</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">What platform (Windows/Mac/Linux)?</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">What component type (form/menu/modal)?</span>
+Agent (@testing-coach) response:
 
-<span class="hljs-attribute">2. Recommend testing path</span><span class="hljs-punctuation">:</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 1: Learn Tab order basics (video link)</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 2: Test with keyboard-only (no mouse)</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 3: Verify focus indicators visible</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Step 4: Check against WCAG 2.5.4</span>
+1. Ask clarifying questions:
+   - Have you used NVDA before?
+   - What platform (Windows/Mac/Linux)?
+   - What component type (form/menu/modal)?
 
-<span class="hljs-attribute">3. Provide interactive test</span><span class="hljs-punctuation">:</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Code snippet to inject focus indicators</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Keyboard test checklist</span>
-   <span class="hljs-bullet">-</span> <span class="hljs-string">Screenshot comparison guide</span></code></pre>
+2. Recommend testing path:
+   - Step 1: Learn Tab order basics (video link)
+   - Step 2: Test with keyboard-only (no mouse)
+   - Step 3: Verify focus indicators visible
+   - Step 4: Check against WCAG 2.5.4
+
+3. Provide interactive test:
+   - Code snippet to inject focus indicators
+   - Keyboard test checklist
+   - Screenshot comparison guide</code></pre>
 <h3 id="pattern-4-report-aggregation-cross-page-analyzer">Pattern 4: Report Aggregation (Cross-Page Analyzer)</h3>
 <p><strong>Goal:</strong> Consolidate findings across multiple pages into systemic issues.</p>
-<pre><code class="hljs"><span class="hljs-attribute">Input</span><span class="hljs-punctuation">:</span> <span class="hljs-string">50 pages audited</span>
+<pre><code class="hljs language-text">Input: 50 pages audited
 
-<span class="hljs-attribute">Output</span><span class="hljs-punctuation">:</span>
-<span class="hljs-bullet">-</span> <span class="hljs-string">Systemic issues (found on 10+ pages):</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Color contrast: 45 instances across 18 pages</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Missing alt text: 120 instances across 32 pages</span>
+Output:
+- Systemic issues (found on 10+ pages):
+  - Color contrast: 45 instances across 18 pages
+  - Missing alt text: 120 instances across 32 pages
 
-<span class="hljs-bullet">-</span> <span class="hljs-string">Page-specific issues (found on 1-2 pages):</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Modal focus trap broken (page 15)</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">ARIA combobox pattern error (page 3)</span>
+- Page-specific issues (found on 1-2 pages):
+  - Modal focus trap broken (page 15)
+  - ARIA combobox pattern error (page 3)
 
-<span class="hljs-bullet">-</span> <span class="hljs-string">Severity scorecard:</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Overall score: 62/100 (D grade)</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Top 3 fixes: address these to reach 75/100</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-string">Estimated effort: 8-12 hours</span></code></pre>
+- Severity scorecard:
+  - Overall score: 62/100 (D grade)
+  - Top 3 fixes: address these to reach 75/100
+  - Estimated effort: 8-12 hours</code></pre>
 <h2 id="6-advanced-techniques">6. Advanced Techniques</h2>
 <h3 id="technique-1-custom-skills-for-your-organization">Technique 1: Custom Skills for Your Organization</h3>
 <p>If your organization has repeated accessibility patterns, bundle them as a custom skill:</p>
@@ -908,13 +908,13 @@ Codify internal accessibility standards and patterns used across all projects.
 <span class="hljs-punctuation">}</span></code></pre>
 <h3 id="technique-3-platform-specific-skill-variants">Technique 3: Platform-Specific Skill Variants</h3>
 <p>Create platform-specific implementations of the same skill:</p>
-<pre><code class="hljs"><span class="hljs-selector-class">.github</span>/skills/<span class="hljs-selector-tag">form</span>-accessibility/
-  ├── SKILL<span class="hljs-selector-class">.md</span> (base description)
+<pre><code class="hljs language-text">.github/skills/form-accessibility/
+  ├── SKILL.md (base description)
   ├── implementations/
-  │   ├── react/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.tsx</span>
-  │   ├── vue/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.vue</span>
-  │   ├── svelte/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.svelte</span>
-  │   └── vanilla/<span class="hljs-selector-tag">form</span>-<span class="hljs-selector-tag">pattern</span><span class="hljs-selector-class">.js</span></code></pre>
+  │   ├── react/form-pattern.tsx
+  │   ├── vue/form-pattern.vue
+  │   ├── svelte/form-pattern.svelte
+  │   └── vanilla/form-pattern.js</code></pre>
 <p><strong>Agents select the implementation matching the detected framework.</strong></p>
 <h3 id="technique-4-result-caching-for-performance">Technique 4: Result Caching for Performance</h3>
 <p>For repeated audits (e.g., nightly checks), cache results to speed up analysis:</p>

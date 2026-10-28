@@ -117,7 +117,7 @@ git fetch upstream                       # Fetch without merging
 
 ### Template & Agent Files
 
-```
+```text
 .github/
 ├── ISSUE_TEMPLATE/
 │   ├── accessibility-bug.yml            ← Accessibility issue template
@@ -142,7 +142,7 @@ git fetch upstream                       # Fetch without merging
 
 ### Documentation Files
 
-```
+```text
 docs/
 ├── 00-pre-workshop-setup.md             ← Start here
 ├── 02-understanding-github.md

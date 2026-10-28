@@ -240,7 +240,7 @@ The generator runs axe-core in CI on a representative sample (homepage, one band
 
 ## Routing summary (one-screen reference)
 
-```
+```text
 /                                          home
 /learn/                                    curriculum view (interleaved)
 /feed-order/                               strict track_number list

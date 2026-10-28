@@ -284,7 +284,7 @@ This is equivalent to `git reset --soft HEAD~1` — your changes come back as st
 
 #### Using the Command Palette
 
-```
+```text
 Ctrl+Shift+P → type "git undo" → select "Git: Undo Last Commit"
 ```
 
@@ -396,7 +396,7 @@ git revert -m 1 a1b2c3d
 
 #### VS Code (Command Palette)
 
-```
+```text
 Ctrl+Shift+P → type "git tag" → select "Git: Create Tag"
 ```
 
@@ -532,7 +532,7 @@ To return to a branch: Click that status bar area, or use `Ctrl+Shift+P` → **"
 
 VS Code doesn't have a "force push" button in the UI — this is intentional to prevent accidents. Use the integrated terminal:
 
-```
+```text
 Ctrl+Backtick → then type the command below
 ```
 
@@ -875,7 +875,7 @@ Conventional commit format (`feat:`, `fix:`, `docs:`, `refactor:`) is especially
 
 Git's error messages and status output can be cryptic. Paste them directly into Copilot Chat:
 
-```
+```text
 # Paste this kind of thing into Copilot and ask "what does this mean?"
 error: Your local changes to the following files would be overwritten by merge:
     src/auth/login.js
@@ -905,7 +905,7 @@ When `git bisect` lands on a commit and you're not sure what to test:
 
 Paste the full error message from a rejected push into Copilot:
 
-```
+```text
 remote: error: GH006: Protected branch update failed for refs/heads/main.
 remote: error: Required status check "CI / build" is failing.
 ```

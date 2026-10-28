@@ -934,7 +934,7 @@ Copilot on GitHub.com has context about your repositories, issues, PRs, and code
 
 ### What you can ask Copilot on GitHub.com
 
-```
+```text
 # Ask about a specific repository
 "Summarize the recent changes to the accessibility-agents repo"
 

@@ -437,7 +437,7 @@ If you did not finish your commit during Block 2, use the first 15 minutes of th
 
 Before opening the PR, run through this with your screen reader:
 
-```
+```text
 □ My branch has a clear descriptive name (feature/, fix/, or docs/)
 □ I committed with a clear, present-tense message
 □ I read my changes back using VS Code's diff view (Ctrl+Shift+G → select file)

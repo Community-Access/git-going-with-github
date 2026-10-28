@@ -18,7 +18,7 @@ Run operations in this sequence for a full podcast build from scratch:
 Validates the podcast catalog, builds episode and challenge bundles, then writes
 all episode and challenge coach scripts to `podcasts\scripts\`.
 
-```
+```bat
 generate-transcripts.bat
 ```
 
@@ -38,7 +38,7 @@ The script echoes each episode name and index as it is processed.
 ffmpeg is required for MP3 output and is located automatically from the
 machine PATH, including after a fresh winget install.
 
-```
+```text
 generate-audio.bat                  generate all 75 episodes
 generate-audio.bat 5                generate episodes 5 and above
 generate-audio.bat 5 10             generate episodes 5 through 10
@@ -54,7 +54,7 @@ before running this command.
 Generates the RSS 2.0 / iTunes-compatible podcast feed and the admin podcast listing.
 Reads MP3 file sizes from `podcasts\audio\` and episode metadata from the catalog.
 
-```
+```bat
 build-rss-feed.bat
 ```
 
@@ -70,7 +70,7 @@ reflect the final MP3 file sizes.
 
 Runs local RSS 2.0 and iTunes compliance checks on `podcasts\feed.xml`.
 
-```
+```bat
 validate-rss-feed.bat
 ```
 
@@ -114,7 +114,7 @@ a PowerShell or bash session at the repo root.
 
 To pass a range to the audio build from npm:
 
-```
+```bash
 npm run build:podcast-audio -- --start 5 --end 10
 ```
 

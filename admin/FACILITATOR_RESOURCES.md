@@ -6,21 +6,21 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 
 ---
 
-## 🎯 Start Here Based on Your Situation
+## Start Here Based on Your Situation
 
 ### "I've Never Run This Workshop Before"
 
 → Read in this order:
 
-1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) — GitHub Classroom Setup section
-2. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist
+1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#github-classroom-setup-before-day-1) — GitHub Classroom Setup section
+2. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) — For hands-on procedures
 
 ### "Workshop Is Tomorrow"
 
 → Quick tasks:
 
-1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist (all boxes)
+1. [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before) — Pre-Workshop Checklist (all boxes)
 2. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#pre-workshop-setup-3-hours-before) — 3-Hour Prep
 3. [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#starting-day-1-15-minutes-before-call-starts) — Day-Of Checklist
 
@@ -43,18 +43,18 @@ Welcome, facilitator! This page helps you navigate all the documentation for run
 → Check:
 
 - [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md#-emergency-what-to-do-when-everything-stops-working) — Emergency protocols
-- Then [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-quick-troubleshooting-reference) — Quick reference
+- Then [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#quick-troubleshooting-reference) — Quick reference
 
 ### "Workshop Just Ended, What's Next?"
 
 → See:
 
-- [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) — Post-workshop tasks
+- [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#post-workshop-tasks-week-after) — Post-workshop tasks
 - [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md#post-workshop-operations) — Detailed post-workshop procedures
 
 ---
 
-## 📚 Complete Resource Reference
+## Complete Resource Reference
 
 ### Primary Documents
 
@@ -159,17 +159,17 @@ Assessment rubric and grading guidance (brief reference).
 
 ---
 
-## 🎓 Typical Workflow
+## Typical Workflow
 
 ### Weeks 1-2 Before Workshop
 
-1. Read [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-github-classroom-setup-before-day-1) GitHub Classroom Setup
+1. Read [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#github-classroom-setup-before-day-1) GitHub Classroom Setup
 2. Create your GitHub Classroom and assignments
-3. Follow setup checklist in [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before)
+3. Follow setup checklist in [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before)
 
 ### 48 Hours Before
 
-1. Complete [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-pre-workshop-checklist-48-hours-before) checklist
+1. Complete [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#pre-workshop-checklist-48-hours-before) checklist
 2. Test everything one more time
 3. Read [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) overview
 
@@ -183,22 +183,22 @@ Assessment rubric and grading guidance (brief reference).
 
 1. Follow [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md) hour-by-hour
 2. Keep [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md) open in another tab
-3. Reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-day-1-live-operations) for overview
+3. Reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#day-1-live-operations) for overview
 
 ### Day 2 During
 
-1. Same as Day 1, but reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-day-2-deeper-skills-and-celebration) Day 2 section
+1. Same as Day 1, but reference [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#day-2-deeper-skills-and-celebration) Day 2 section
 2. Be ready for harder scenarios and more independence from students
 
 ### After Workshop
 
-1. Follow [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#-post-workshop-tasks-week-after) post-workshop tasks
+1. Follow [FACILITATOR_GUIDE.md](FACILITATOR_GUIDE.md#post-workshop-tasks-week-after) post-workshop tasks
 2. Note what worked and what didn't
 3. Update this guide for next time
 
 ---
 
-## 🔧 How to Use These Documents
+## How to Use These Documents
 
 ### During Workshop: Have These Open
 
@@ -237,7 +237,7 @@ Then search for:
 
 ---
 
-## 📊 Document Overview at a Glance
+## Document Overview at a Glance
 
 | Document | Purpose | Length | Best For |
 |----------|---------|--------|----------|
@@ -249,7 +249,7 @@ Then search for:
 
 ---
 
-## 🎯 Key Principles Across All Documents
+## Key Principles Across All Documents
 
 These principles appear repeatedly because they're **that important**:
 
@@ -263,7 +263,7 @@ These principles appear repeatedly because they're **that important**:
 
 ---
 
-## 💡 Pro Tips from Experienced Facilitators
+## Pro Tips from Experienced Facilitators
 
 - **Bookmark the documents** — You'll reference them constantly
 - **Add your own notes** — Margin notes about what worked for you
@@ -276,7 +276,7 @@ These principles appear repeatedly because they're **that important**:
 
 ---
 
-## 🚀 Related Resources
+## Related Resources
 
 **In this repository:**
 
@@ -292,7 +292,7 @@ These principles appear repeatedly because they're **that important**:
 
 ---
 
-## ✅ Pre-Workshop Sanity Check
+## Pre-Workshop Sanity Check
 
 Before your first workshop, verify:
 
@@ -313,7 +313,7 @@ Before your first workshop, verify:
 
 ---
 
-## 📞 Questions or Feedback?
+## Questions or Feedback?
 
 Found an error or unclear section? Help improve this guide:
 
@@ -342,13 +342,13 @@ Use these official references when you need the current source of truth for fact
 Use this map to verify facts for each major section in this file.
 
 - **Complete Guide to Running GitHub Classroom Workshops:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **🎯 Start Here Based on Your Situation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **📚 Complete Resource Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🎓 Typical Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
-- **🔧 How to Use These Documents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **📊 Document Overview at a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🎯 Key Principles Across All Documents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **💡 Pro Tips from Experienced Facilitators:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🚀 Related Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **✅ Pre-Workshop Sanity Check:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **📞 Questions or Feedback?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Start Here Based on Your Situation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Complete Resource Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Typical Workflow:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax), [Secure use reference for GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions), [GitHub Actions changelog](https://github.blog/changelog/label/actions/)
+- **How to Use These Documents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Document Overview at a Glance:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Key Principles Across All Documents:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pro Tips from Experienced Facilitators:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Related Resources:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Pre-Workshop Sanity Check:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Questions or Feedback?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

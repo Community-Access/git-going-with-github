@@ -1,3 +1,7 @@
+# GitHub Classroom Admin Access
+
+Facilitators with admin access manage the workshop classroom at this address:
+
 <https://classroom.github.com/classrooms/263509777-git-going-with-github>
 
 ## Authoritative Sources
