@@ -1607,6 +1607,18 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* Links inside running text are underlined, so they do not rely on color
+   alone (WCAG 1.4.1; axe link-in-text-block, community-access.github.io#6).
+   github-markdown-css underlines them only on hover. */
+.markdown-body p a,
+.markdown-body li a,
+.markdown-body td a,
+.markdown-body blockquote a,
+.markdown-body dd a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* High contrast mode support */
 @media (prefers-contrast: high) {
   body {
