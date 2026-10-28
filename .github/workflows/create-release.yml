@@ -43,7 +43,8 @@ jobs:
       - name: Build BRF
         run: |
           pandoc epub/git-going-with-github.epub -f epub -t plain -o /tmp/book.txt
-          python3 scripts/build-brf.py /tmp/book.txt epub/git-going-with-github.brf
+          python3 scripts/build-brf.py /tmp/book.txt epub/git-going-with-github.brf --code ueb
+          python3 scripts/build-brf.py /tmp/book.txt epub/git-going-with-github-ebae.brf --code ebae
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -61,7 +62,9 @@ jobs:
             | **EPUB** | E-readers, Apple Books, Voice Dream, DAISY players |
             | **Word (.docx)** | Windows screen readers (JAWS, NVDA), Microsoft Word |
             | **BRF** | Braille displays and embossers (UEB Grade 2) |
+            | **BRF, EBAE** | The same, in English Braille American Edition Grade 2, the US code before UEB |
           files: |
             epub/git-going-with-github.epub
             epub/git-going-with-github.docx
             epub/git-going-with-github.brf
+            epub/git-going-with-github-ebae.brf
