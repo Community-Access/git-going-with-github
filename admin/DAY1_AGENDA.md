@@ -253,9 +253,9 @@ Challenge 4 asks you to create a personal branch named `learn/YOUR-USERNAME`.
 **Step by step:**
 
 1. Make sure you are on the Code tab of your repository
-2. Find the branch dropdown (it shows "main" by default) -- use `B` to navigate buttons
-3. Type `learn/YOUR-USERNAME` (replace with your actual GitHub username)
-4. Select "Create branch: learn/YOUR-USERNAME from main"
+2. Find the branch dropdown (it shows "main" by default; screen readers read "main branch") -- use `B` to navigate buttons, then press `Enter`
+3. In the text field that opens, type `learn/YOUR-USERNAME` (replace with your actual GitHub username). The field also filters existing branches, so "no branches found" is expected
+4. Press `Tab` until you reach "Create branch: learn/YOUR-USERNAME from main" (usually two presses, past the Tags tab), then press `Enter` or `Space`
 
 > **Why branches matter:** A branch is your private workspace. You can make changes without affecting anyone else. When you are ready, you open a pull request to propose merging your changes into `main`. This is how every contribution works in open source.
 

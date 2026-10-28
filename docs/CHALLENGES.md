@@ -80,8 +80,9 @@ A branch is a safe workspace. It lets you try a change without rewriting the mai
 
 **What to do:**
 
-- Find the branch selector on the Code tab
-- Create a branch named `learn/YOUR-USERNAME` from `main`
+- Find the branch selector on the Code tab. Screen readers read it as "main branch".
+- Open it. The text field that opens is for finding branches and also for naming a new one. Type `learn/YOUR-USERNAME`; "no branches found" is expected.
+- Press `Tab` until you reach **Create branch: learn/YOUR-USERNAME from main** (usually two presses, past the Tags tab), then press `Enter` or `Space`
 - Confirm the branch selector now names your branch
 
 **Evidence to post:** Write the branch name you created and how you confirmed you were on it.
