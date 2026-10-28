@@ -2,7 +2,7 @@
 
 This document holds the keyboard-only, screen reader and manual accessibility checks for the tasks every learner must be able to complete with the workshop's own materials, and the record of each time they are run. It is the test plan behind the "Supported environments" and "Known limitations" sections of [ACCESSIBILITY.md](../ACCESSIBILITY.md). For checking a new issue template or form, use the [template testing checklist](ACCESSIBILITY_TESTING.md) instead.
 
-A check counts as run only when a person has done it with the stated browser and assistive technology, and written down the date, the environment and the result. A simulation, a code review or an automated scan is useful preparation and is recorded separately as such; it is never a result here.
+A check counts as run only when a person has done it with the stated browser and assistive technology, and written down the date, the environment and the result. A simulation, a code review or an automated scan is useful preparation and is recorded separately as such; it is never a result here. The one exception is a keyboard-only run made with real key presses in a real browser: the accessibility owner may accept it as a result, and says so in its record. Screen reader and manual visual checks always need a person.
 
 ## Status
 
@@ -10,10 +10,10 @@ The table below shows, for each core task, which records exist and whether they 
 
 | Core task | Keyboard only | Screen reader | Manual visual checks |
 |---|---|---|---|
-| 1. Read a chapter on the website | Not yet run | Not yet run | Not yet run |
-| 2. Search the website | Not yet run | Not yet run | Not yet run |
-| 3. Listen to a companion episode and open its transcript | Not yet run | Not yet run | Not yet run |
-| 4. Opt in on the registration page | Not yet run | Not yet run | Not yet run |
+| 1. Read a chapter on the website | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
+| 2. Search the website | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
+| 3. Listen to a companion episode and open its transcript | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
+| 4. Opt in on the registration page | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
 | 5. Report a barrier with the accessibility bug report form | Not yet run | Not yet run | Not yet run |
 | 6. Read the ePub and braille downloads | Not applicable | Not yet run | Not applicable |
 
@@ -117,7 +117,7 @@ No checks by a person have been run yet.
 
 ## Agent runs
 
-These runs were made by Claude (an AI agent) on the live site, with real key presses in a real browser. By the rule at the top of this document they are preparation, not results: they show what a person's run should find, and they caught one real defect, which is fixed. A person's run still has to be recorded under "Records" before the status table changes.
+These runs were made by Claude (an AI agent) on the live site, with real key presses in a real browser. The keyboard run was accepted as a result by the accessibility owner, Jeff Bishop, on 28 October 2026, under the exception at the top of this document, and the status table shows it. The manual visual run stays preparation only: it caught one real defect, which is fixed, and a person's run still has to be recorded under "Records".
 
 ### Agent run: keyboard, tasks 1 to 4, 28 October 2026
 
@@ -133,7 +133,7 @@ Environment: Chromium in the Claude desktop app's browser pane, Windows, 1280 by
 - Task 4: the enrollment link, "Begin the Adventure (opens in new tab)", is reached by Tab.
 - Task 5 was not run: the form is on GitHub and needs a signed-in account.
 
-Result: no keyboard failures found.
+Result: pass for tasks 1 to 4, no keyboard failures found. Accepted as a result by the accessibility owner on 28 October 2026. Task 5 is GitHub's own issue form and is still to be run while signed in.
 
 ### Agent run: manual visual checks, tasks 1 to 4, 28 October 2026
 
