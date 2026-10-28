@@ -1,5 +1,5 @@
 name: Accessibility Bug Report
-description: Report a keyboard navigation, screen reader, or other accessibility issue
+description: Something in this workshop is hard or impossible to use with your setup, including a screen reader, magnifier, braille display or keyboard alone.
 title: "[A11Y] "
 labels: ["accessibility", "bug"]
 assignees: []
@@ -7,32 +7,17 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to file an accessibility bug report. The more detail you provide, the faster it can be reproduced and fixed. All fields marked as required are needed to triage your report.
+        Thank you for telling us. Accessibility reports are expertise, not complaints, and partial reports are welcome: fill in what you can. Only the first two fields are required.
 
-  - type: dropdown
-    id: issue-type
-    attributes:
-      label: Type of Accessibility Issue
-      description: Which category best describes what you encountered?
-      options:
-        - Keyboard navigation - cannot reach or operate a control with keyboard only
-        - Screen reader - missing, incorrect, or confusing announcements
-        - Focus management - focus jumps unexpectedly or is lost
-        - Heading structure - headings skipped, missing, or in wrong order
-        - Link / button labels - unlabeled, ambiguous, or "click here"
-        - Color / contrast - text or controls are hard to distinguish
-        - Images - missing or inadequate alternative text
-        - Forms - fields not labeled or error messages not announced
-        - Time limits - content changes or disappears before I can act
-        - Other (describe below)
-    validations:
-      required: true
+        You never need to tell us about a disability or diagnosis. If this form is hard to use, or you would rather not post publicly, email support@community-access.org or jeff@jeffbishop.com instead and we will file the issue for you if you want one.
+
+        How we triage and respond is in [ACCESSIBILITY.md](https://github.com/Community-Access/git-going-with-github/blob/main/ACCESSIBILITY.md#reporting-accessibility-issues). If the barrier is on GitHub.com or in VS Code itself, report it here anyway: we document workarounds and pass it on.
 
   - type: textarea
     id: description
     attributes:
-      label: Describe the Issue
-      description: What happened? What did you expect to happen instead?
+      label: What happened
+      description: What you were trying to do, and what got in the way. Your own words are best.
       placeholder: |
         When I press Tab on the Issues list page, focus skips the filter buttons
         and lands on the first issue title. I expected Tab to move to the filter
@@ -40,76 +25,153 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      description: The part of the workshop the barrier is in.
+      options:
+        - A page on the workshop website (published HTML)
+        - A chapter, appendix or challenge as Markdown on GitHub
+        - The ePub, Word or braille (BRF) download
+        - A podcast episode, its player or its transcript
+        - Registration or the student opt-in page
+        - My Learning Room repository, a challenge issue or a bot comment
+        - GitHub.com itself, while following the workshop
+        - VS Code, GitHub Copilot or another tool, while following the workshop
+        - Something else
+    validations:
+      required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page, file or episode
+      description: Optional. The URL, file name, chapter or episode number.
+      placeholder: "https://community-access.github.io/git-going-with-github/docs/05-working-with-issues.html"
+    validations:
+      required: false
+
   - type: textarea
     id: steps
     attributes:
-      label: Steps to Reproduce
-      description: List the exact steps to reproduce the issue, starting from a known page or state.
+      label: Steps to reproduce
+      description: Optional but very helpful. Start from a page or state we can find.
       placeholder: |
         1. Navigate to github.com/[org]/[repo]/issues
         2. Press Tab from the page heading
         3. Focus lands on the first issue title
-        4. The "Label" and "Milestone" filter buttons are never reached by Tab
     validations:
-      required: true
+      required: false
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Type of accessibility issue
+      description: Optional. Which category best describes what you encountered?
+      options:
+        - Not sure
+        - Keyboard navigation - cannot reach or operate a control with keyboard only
+        - Screen reader - missing, incorrect, or confusing announcements
+        - Focus management - focus jumps unexpectedly or is lost
+        - Heading structure - headings skipped, missing, or in wrong order
+        - Link / button labels - unlabeled, ambiguous, or "click here"
+        - Color / contrast - text or controls are hard to distinguish
+        - Zoom or reflow - content is lost or overlaps when enlarged
+        - Images or diagrams - missing or inadequate text alternative
+        - Audio - missing or inaccurate transcript
+        - Braille - translation or formatting problem in a BRF file
+        - Forms - fields not labeled or error messages not announced
+        - Time limits - content changes or disappears before I can act
+        - Other (describe above)
+      default: 0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How much it gets in your way
+      description: |
+        Optional; maintainers confirm severity during triage.
+        - Critical: I cannot complete the task at all.
+        - Serious: I can complete it only with real difficulty or a workaround.
+        - Moderate: it works but is confusing, slow or inconsistent.
+        - Minor: a small problem with little effect.
+      options:
+        - Not sure
+        - Critical
+        - Serious
+        - Moderate
+        - Minor
+      default: 0
+    validations:
+      required: false
 
   - type: dropdown
     id: screen-reader
     attributes:
-      label: Screen Reader
-      description: Which screen reader were you using?
+      label: Screen reader or other assistive technology
+      description: Optional. Add the version in "Anything else" if you know it.
       options:
         - NVDA (Windows)
         - JAWS (Windows)
+        - Narrator (Windows)
         - VoiceOver (macOS)
         - VoiceOver (iOS)
         - TalkBack (Android)
-        - Narrator (Windows)
         - Orca (Linux)
-        - Not using a screen reader
+        - Screen magnifier (ZoomText, Windows Magnifier, macOS Zoom)
+        - Braille display
+        - Voice control or dictation
+        - Keyboard only, no assistive technology
+        - Not using assistive technology
         - Other (describe below)
     validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: browser
     attributes:
       label: Browser
-      description: Which browser were you using?
+      description: Optional.
       options:
         - Google Chrome
         - Mozilla Firefox
         - Microsoft Edge
         - Apple Safari
+        - Not in a browser (VS Code, an e-reader, a braille device, a podcast app)
         - Other (describe below)
     validations:
-      required: true
+      required: false
 
   - type: input
     id: os
     attributes:
-      label: Operating System and Version
-      description: For example - Windows 11, macOS Sonoma 14.3, iOS 17.2
+      label: Operating system and version
+      description: Optional. For example - Windows 11, macOS 26, iOS 26
       placeholder: Windows 11
     validations:
-      required: true
+      required: false
 
   - type: dropdown
     id: wcag
     attributes:
       label: Relevant WCAG Success Criterion (if known)
-      description: If you know which WCAG criterion applies, select it. Leave blank if unsure - the team will assess.
+      description: Optional. Leave blank if unsure - the team will assess.
       options:
         - "1.1.1 Non-text Content (alt text)"
         - "1.3.1 Info and Relationships (semantic structure)"
         - "1.3.2 Meaningful Sequence (reading order)"
         - "1.4.1 Use of Color"
         - "1.4.3 Contrast (Minimum)"
+        - "1.4.10 Reflow"
         - "2.1.1 Keyboard (all functionality via keyboard)"
         - "2.1.2 No Keyboard Trap"
         - "2.4.3 Focus Order"
         - "2.4.6 Headings and Labels"
         - "2.4.7 Focus Visible"
+        - "2.5.3 Label in Name"
         - "3.2.2 On Input (no unexpected context changes)"
         - "3.3.2 Labels or Instructions"
         - "4.1.2 Name, Role, Value (ARIA)"
@@ -121,20 +183,28 @@ body:
   - type: textarea
     id: impact
     attributes:
-      label: Impact on Your Workflow
+      label: Impact on your workflow
       description: |
-        How does this issue affect your ability to use this project? 
-        Is there a workaround that lets you continue, or are you fully blocked?
+        Optional. Is there a workaround that lets you continue, or are you fully blocked?
       placeholder: |
         I cannot file new issues without mouse assistance because the "New issue"
         button is not reachable by keyboard. I am fully blocked from creating issues.
     validations:
-      required: true
+      required: false
 
   - type: textarea
     id: additional
     attributes:
-      label: Additional Context
-      description: Anything else that might help - screenshots with alt text, screen reader log excerpts, or links to related issues.
+      label: Anything else
+      description: Optional. Versions, workarounds you have tried, related issues, a screen reader speech log, or a recording or screenshot with a text description if you are comfortable sharing one.
     validations:
       required: false
+
+  - type: checkboxes
+    id: follow-up
+    attributes:
+      label: Follow-up
+      description: Optional.
+      options:
+        - label: I am willing to test a fix and tell you whether it works for me.
+          required: false

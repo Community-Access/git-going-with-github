@@ -22,7 +22,7 @@ Beyond class, I remain with you through the Support Hub, progression bots, and c
 
 You only need one path to begin.
 
-| | |
+| Item | Details |
 |---|---|
 | **Status** | Open for student opt-in |
 | **Current confirmed registrations** | **<span id="registration-count-live">Loading...</span>** |

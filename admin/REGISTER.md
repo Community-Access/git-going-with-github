@@ -6,7 +6,7 @@
 
 This page is a fast, self-serve opt-in workflow. Students can opt in directly from GitHub Pages with no instructor handoff required.
 
-| | |
+| Item | Details |
 |---|---|
 | **Status** | Open for student opt-in |
 | **Current confirmed registrations** | **<span id="registration-count-live">Loading...</span>** |
