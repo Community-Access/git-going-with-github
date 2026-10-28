@@ -5,11 +5,11 @@ This shows how to create a branch from each tool. You only needed to use one.
 ## On github.com
 
 1. Go to the repository's Code tab
-2. Click the branch dropdown (it says "main")
-3. Type a new branch name like `fix/welcome-todo`
-4. Click "Create branch: fix/welcome-todo from main"
+2. Open the branch dropdown (it says "main"; a screen reader reads it as "main branch")
+3. Type a new branch name like `fix/welcome-todo` in the text field that opens. The same field filters existing branches and names a new one, so "no branches found" is expected
+4. Select "Create branch: fix/welcome-todo from main". With a keyboard, press `Tab` until you reach it (usually two presses, past the Tags tab), then press `Enter` or `Space`
 
-The branch now exists on GitHub. You can switch to it using the same dropdown.
+The branch now exists on GitHub and is active. You can switch to it using the same dropdown.
 
 ## In VS Code (with Git)
 
