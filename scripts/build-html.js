@@ -987,9 +987,21 @@ function setupStyles(outputDir) {
   const githubCss = require.resolve('github-markdown-css');
   fs.copyFileSync(githubCss, path.join(stylesDir, 'github-markdown.css'));
 
-  // Copy highlight.js CSS (GitHub theme)
-  const highlightCss = path.join(require.resolve('highlight.js'), '../../styles/github.css');
-  fs.copyFileSync(highlightCss, path.join(stylesDir, 'highlight.css'));
+  // highlight.js CSS: the GitHub light theme, plus GitHub dark for dark mode.
+  // A few stock colours fall short of WCAG 1.4.3 (4.5:1) on the code block
+  // background (#f6f8fa light, #151b23 dark), so they are replaced with
+  // GitHub's own darker or lighter shades of the same hue.
+  const stylesRoot = path.join(require.resolve('highlight.js'), '../../styles');
+  const lightCss = fs.readFileSync(path.join(stylesRoot, 'github.css'), 'utf8')
+    .replace(/color: #e36209/g, 'color: #953800')
+    .replace(/color: #22863a/g, 'color: #116329')
+    .replace(/color: #d73a49/g, 'color: #cf222e');
+  const darkCss = fs.readFileSync(path.join(stylesRoot, 'github-dark.css'), 'utf8')
+    .replace(/color: #1f6feb/g, 'color: #58a6ff');
+  fs.writeFileSync(
+    path.join(stylesDir, 'highlight.css'),
+    `${lightCss}\n@media (prefers-color-scheme: dark) {\n${darkCss}\n}\n`
+  );
 
   // Create custom CSS for additional accessibility and styling
   const customCss = `
@@ -1187,6 +1199,8 @@ function setupStyles(outputDir) {
 }
 
 @media (prefers-color-scheme: dark) {
+  .breadcrumb { color: #9198a1; }
+  .breadcrumb a { color: #58a6ff; }
   .site-header { background: #0d1117; border-bottom-color: #30363d; }
   .search-input { background: #161b22; border-color: #30363d; color: #e6edf3; }
   .search-input:focus { border-color: #58a6ff; box-shadow: 0 0 0 3px rgba(88,166,255,0.3); background: #0d1117; }
@@ -1839,6 +1853,11 @@ textarea:focus-visible {
 
 .site-footer a:hover {
   text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-footer { color: #9198a1; border-top-color: #30363d; }
+  .site-footer a { color: #58a6ff; }
 }
 
 /* Reduced motion support */
