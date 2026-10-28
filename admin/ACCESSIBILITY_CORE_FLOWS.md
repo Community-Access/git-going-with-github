@@ -113,7 +113,35 @@ Reviewed by Claude (an AI coding agent) while adopting the Open Source Accessibi
 
 Add each run below, newest first, using the blocks above. Link any issue you file, labeled `accessibility`.
 
-No checks have been run yet.
+No checks by a person have been run yet.
+
+## Agent runs
+
+These runs were made by Claude (an AI agent) on the live site, with real key presses in a real browser. By the rule at the top of this document they are preparation, not results: they show what a person's run should find, and they caught one real defect, which is fixed. A person's run still has to be recorded under "Records" before the status table changes.
+
+### Agent run: keyboard, tasks 1 to 4, 28 October 2026
+
+Environment: Chromium in the Claude desktop app's browser pane, Windows, 1280 by 900 and 320 by 720 windows. Pages: the home page, Chapter 05, Chapter 07, the search results page for "merge conflict", and REGISTER.html.
+
+- Every link and control was reached with Tab, and focus went right round each page and back to the browser: 65 stops on the home page, 222 on Chapter 05, 88 on the search results page, 80 on REGISTER.html. No keyboard trap, including through the audio player and the code blocks, which take focus so they can be scrolled.
+- Every stop matched `:focus-visible` and drew an outline. On the Quick Jumps links it is 1.6 pixels solid, 5.19:1 in light mode and 3.49:1 in dark mode.
+- Focus order follows the page: skip link, header, sidebar, then the main content from the top.
+- The skip link is the first stop; Enter on it moves to `#main-content`, and the next Tab lands in the main content.
+- Task 1: the page has Previous and Next links to Chapters 04 and 06.
+- Task 2: typing "merge conflict" in the search box and pressing Enter opened the results page, which announces "80 results found" in a live region; the first result, "Merge Conflicts", is the sixth Tab stop, and Enter on it opened Chapter 07.
+- Task 3: on the focused audio player, Space played and Space paused the Chapter 05 episode; the full transcript link is present.
+- Task 4: the enrollment link, "Begin the Adventure (opens in new tab)", is reached by Tab.
+- Task 5 was not run: the form is on GitHub and needs a signed-in account.
+
+Result: no keyboard failures found.
+
+### Agent run: manual visual checks, tasks 1 to 4, 28 October 2026
+
+Same environment. Contrast was measured for every text element against its actual background colour, in light and dark mode.
+
+- At a 320 CSS pixel wide window, all five pages reflow with no horizontal scrolling (only code blocks scroll inside themselves, which is allowed).
+- Contrast found text under 4.5:1: in dark mode the breadcrumb, the footer and every code block (as low as 1.18:1, because the light highlight theme was used on a dark background), and in light mode three highlight colours on the code background (3.28:1 to 4.3:1). Fixed in pull request 274; a re-scan of all 223 site pages in both modes finds nothing under 4.5:1.
+- Not checked: Windows High Contrast (forced colors), real browser zoom at 200%, and plain language, which need a person's judgement.
 
 ## Authoritative Sources
 
