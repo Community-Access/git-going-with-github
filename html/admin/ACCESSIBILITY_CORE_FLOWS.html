@@ -212,6 +212,9 @@
 <li class="onpage-item"><a href="#documentation-checks">Documentation checks</a></li>
 <li class="onpage-item onpage-sub"><a href="#review-record-28-october-2026">Review record, 28 October 2026</a></li>
 <li class="onpage-item"><a href="#records">Records</a></li>
+<li class="onpage-item"><a href="#agent-runs">Agent runs</a></li>
+<li class="onpage-item onpage-sub"><a href="#agent-run-keyboard-tasks-1-to-4-28-october-2026">Agent run: keyboard, tasks 1 to 4, 28 October 2026</a></li>
+<li class="onpage-item onpage-sub"><a href="#agent-run-manual-visual-checks-tasks-1-to-4-28-october-2026">Agent run: manual visual checks, tasks 1 to 4, 28 October 2026</a></li>
 <li class="onpage-item"><a href="#authoritative-sources">Authoritative Sources</a></li>
 <li class="onpage-item onpage-sub"><a href="#section-level-source-map">Section-Level Source Map</a></li>
     </ul>
@@ -343,7 +346,30 @@ Result: <span class="language-xml">&lt;pass, or the barriers found with issue nu
 </ul>
 <h2 id="records">Records</h2>
 <p>Add each run below, newest first, using the blocks above. Link any issue you file, labeled <code>accessibility</code>.</p>
-<p>No checks have been run yet.</p>
+<p>No checks by a person have been run yet.</p>
+<h2 id="agent-runs">Agent runs</h2>
+<p>These runs were made by Claude (an AI agent) on the live site, with real key presses in a real browser. By the rule at the top of this document they are preparation, not results: they show what a person&#39;s run should find, and they caught one real defect, which is fixed. A person&#39;s run still has to be recorded under &quot;Records&quot; before the status table changes.</p>
+<h3 id="agent-run-keyboard-tasks-1-to-4-28-october-2026">Agent run: keyboard, tasks 1 to 4, 28 October 2026</h3>
+<p>Environment: Chromium in the Claude desktop app&#39;s browser pane, Windows, 1280 by 900 and 320 by 720 windows. Pages: the home page, Chapter 05, Chapter 07, the search results page for &quot;merge conflict&quot;, and REGISTER.html.</p>
+<ul>
+<li>Every link and control was reached with Tab, and focus went right round each page and back to the browser: 65 stops on the home page, 222 on Chapter 05, 88 on the search results page, 80 on REGISTER.html. No keyboard trap, including through the audio player and the code blocks, which take focus so they can be scrolled.</li>
+<li>Every stop matched <code>:focus-visible</code> and drew an outline. On the Quick Jumps links it is 1.6 pixels solid, 5.19:1 in light mode and 3.49:1 in dark mode.</li>
+<li>Focus order follows the page: skip link, header, sidebar, then the main content from the top.</li>
+<li>The skip link is the first stop; Enter on it moves to <code>#main-content</code>, and the next Tab lands in the main content.</li>
+<li>Task 1: the page has Previous and Next links to Chapters 04 and 06.</li>
+<li>Task 2: typing &quot;merge conflict&quot; in the search box and pressing Enter opened the results page, which announces &quot;80 results found&quot; in a live region; the first result, &quot;Merge Conflicts&quot;, is the sixth Tab stop, and Enter on it opened Chapter 07.</li>
+<li>Task 3: on the focused audio player, Space played and Space paused the Chapter 05 episode; the full transcript link is present.</li>
+<li>Task 4: the enrollment link, &quot;Begin the Adventure (opens in new tab)&quot;, is reached by Tab.</li>
+<li>Task 5 was not run: the form is on GitHub and needs a signed-in account.</li>
+</ul>
+<p>Result: no keyboard failures found.</p>
+<h3 id="agent-run-manual-visual-checks-tasks-1-to-4-28-october-2026">Agent run: manual visual checks, tasks 1 to 4, 28 October 2026</h3>
+<p>Same environment. Contrast was measured for every text element against its actual background colour, in light and dark mode.</p>
+<ul>
+<li>At a 320 CSS pixel wide window, all five pages reflow with no horizontal scrolling (only code blocks scroll inside themselves, which is allowed).</li>
+<li>Contrast found text under 4.5:1: in dark mode the breadcrumb, the footer and every code block (as low as 1.18:1, because the light highlight theme was used on a dark background), and in light mode three highlight colours on the code background (3.28:1 to 4.3:1). Fixed in pull request 274; a re-scan of all 223 site pages in both modes finds nothing under 4.5:1.</li>
+<li>Not checked: Windows High Contrast (forced colors), real browser zoom at 200%, and plain language, which need a person&#39;s judgement.</li>
+</ul>
 <h2 id="authoritative-sources">Authoritative Sources</h2>
 <p>Use these official references when you need the current source of truth for facts in this document.</p>
 <ul>
