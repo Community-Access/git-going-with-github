@@ -150,7 +150,7 @@ That's it. GitHub Desktop stores your credentials securely in the system keychai
 
 GitHub Desktop has three main areas:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────┐
 │  Toolbar: Current Repository ▾  |  Current Branch ▾  |  │
 │                                    Fetch/Push button      │

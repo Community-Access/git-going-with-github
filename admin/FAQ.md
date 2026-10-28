@@ -536,7 +536,7 @@ Full reference: [Appendix E (GitHub Flavored Markdown)](../docs/appendix-c-markd
 
 **A:** Wrap code in triple backticks. Add a language name for syntax highlighting:
 
-````
+````markdown
 ```python
 print("Hello, world!")
 ```
@@ -546,7 +546,7 @@ print("Hello, world!")
 
 **A:**
 
-```
+```markdown
 | Column 1 | Column 2 |
 |----------|----------|
 | Cell 1   | Cell 2   |

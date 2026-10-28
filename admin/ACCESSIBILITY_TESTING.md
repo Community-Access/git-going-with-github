@@ -49,7 +49,7 @@ Use before deploying any new issue template or form.
 
 ### NVDA Testing (Windows)
 
-```
+```text
 1. Press NVDA+Space to enable browse mode on page
 2. Press H to navigate to first heading
 3. Use H repeatedly to scan all headings (should be H1 → H2 → H3, not jumps)
@@ -73,7 +73,7 @@ Use before deploying any new issue template or form.
 
 ### JAWS Testing (Windows)
 
-```
+```text
 1. Press Spacebar to enter browse mode
 2. Press Insert+F6 to open headings list
    - Verify headings are in order (1 → 2 → 3, no jumps)
@@ -97,7 +97,7 @@ Use before deploying any new issue template or form.
 
 ### VoiceOver Testing (macOS)
 
-```
+```text
 1. Press VO+U to open Web Rotor
 2. Navigate to Form Controls section
    - Should list all fields
@@ -275,7 +275,7 @@ Test WITHOUT using the mouse.
 
 When you find an accessibility problem, document it:
 
-```
+```text
 Title: [Accessibility] Form label missing on email field
 
 Description:

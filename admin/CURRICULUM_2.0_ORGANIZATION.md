@@ -12,22 +12,22 @@
 
 | File | Type | Size | Status |
 |------|------|------|--------|
-| `docs/appendix-aa-agent-installation-setup.md` | Reference guide | 1,200+ words | ✅ Complete |
-| `docs/appendix-ab-advanced-agent-patterns.md` | Reference guide | 1,500+ words | ✅ Complete |
-| `docs/appendix-ac-document-developer-tools.md` | Reference guide | 1,200+ words | ✅ Complete |
-| `admin/AGENTS_ROADMAP.md` | Admin reference | 800+ words | ✅ Complete |
+| `docs/appendix-aa-agent-installation-setup.md` | Reference guide | 1,200+ words | Complete |
+| `docs/appendix-ab-advanced-agent-patterns.md` | Reference guide | 1,500+ words | Complete |
+| `docs/appendix-ac-document-developer-tools.md` | Reference guide | 1,200+ words | Complete |
+| `admin/AGENTS_ROADMAP.md` | Admin reference | 800+ words | Complete |
 
 ### Existing Files Modified (7)
 
 | File | Changes | Status |
 |------|---------|--------|
-| `docs/00-pre-workshop-setup.md` | Added version requirements table | ✅ Complete |
-| `docs/19-accessibility-agents.md` | Expanded intro, added section 3A, updated prerequisites | ✅ Complete |
-| `docs/appendix-k-copilot-reference.md` | Added MCP Server section 4B | ✅ Complete |
-| `docs/appendix-l-agents-reference.md` | Expanded to 80 agents, added skills, updated platforms | ✅ Complete |
-| `.github/copilot-instructions.md` | Added agents-specific guidance section | ✅ Complete |
-| `https://lp.csedesigns.com/ggg/PODCASTS.html` | Added episodes 41-43, regeneration notes | ✅ Complete |
-| `admin/AGENTS_ROADMAP.md` | NEW file for agents tracking | ✅ Complete |
+| `docs/00-pre-workshop-setup.md` | Added version requirements table | Complete |
+| `docs/19-accessibility-agents.md` | Expanded intro, added section 3A, updated prerequisites | Complete |
+| `docs/appendix-k-copilot-reference.md` | Added MCP Server section 4B | Complete |
+| `docs/appendix-l-agents-reference.md` | Expanded to 80 agents, added skills, updated platforms | Complete |
+| `.github/copilot-instructions.md` | Added agents-specific guidance section | Complete |
+| `https://lp.csedesigns.com/ggg/PODCASTS.html` | Added episodes 41-43, regeneration notes | Complete |
+| `admin/AGENTS_ROADMAP.md` | NEW file for agents tracking | Complete |
 
 **Total new content:** ~7,600 words | **Total files touched:** 11
 
@@ -39,27 +39,27 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All 80 agents organized by team"
-- ✅ [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Platform features and MCP"
-- ✅ [Appendix M: Accessibility Standards](../docs/appendix-m-accessibility-standards.md) - "WCAG 2.2 AA reference" (existing)
-- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific installation guide (NEW)"
-- ✅ [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Subagents, hooks, skills (NEW)"
-- ✅ [Appendix AC: Document & Developer Tools](../docs/appendix-ac-document-developer-tools.md) - "Specialized agents (NEW)"
-- ✅ [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version history and learning pathways (NEW)"
+- [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All 80 agents organized by team"
+- [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Platform features and MCP"
+- [Appendix M: Accessibility Standards](../docs/appendix-m-accessibility-standards.md) - "WCAG 2.2 AA reference" (existing)
+- [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific installation guide (NEW)"
+- [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Subagents, hooks, skills (NEW)"
+- [Appendix AC: Document & Developer Tools](../docs/appendix-ac-document-developer-tools.md) - "Specialized agents (NEW)"
+- [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version history and learning pathways (NEW)"
 
 **Section 3A content includes:**
 
-- ✅ Platform comparison table (5 platforms)
-- ✅ Links to installation guide per platform
-- ✅ Decision tree for platform selection
-- ✅ Screen reader/low vision/keyboard guidance
+- Platform comparison table (5 platforms)
+- Links to installation guide per platform
+- Decision tree for platform selection
+- Screen reader/low vision/keyboard guidance
 
 **Learning cards include:**
 
-- ✅ Screen reader workflow
-- ✅ Low vision workflow
-- ✅ Keyboard-only workflow
-- ✅ Sighted mouse workflow
+- Screen reader workflow
+- Low vision workflow
+- Keyboard-only workflow
+- Sighted mouse workflow
 
 ---
 
@@ -67,17 +67,17 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list and capabilities"
-- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific setup"
-- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent introduction"
-- ✅ [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version tracking"
+- [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list and capabilities"
+- [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Platform-specific setup"
+- [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent introduction"
+- [admin/AGENTS_ROADMAP.md](admin/AGENTS_ROADMAP.md) - "Version tracking"
 
 **New Section 4B (MCP Servers) includes:**
 
-- ✅ 30+ tools organized by category (web, document, markdown, compliance, CI/CD)
-- ✅ Usage examples for each platform
-- ✅ GitHub Actions CI/CD example with YAML
-- ✅ Learning cards for all audience types
+- 30+ tools organized by category (web, document, markdown, compliance, CI/CD)
+- Usage examples for each platform
+- GitHub Actions CI/CD example with YAML
+- Learning cards for all audience types
 
 ---
 
@@ -85,19 +85,19 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Copilot features"
-- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agents introduction"
-- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Getting started"
-- ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Canonical source for 80 agents"
+- [Appendix K: Copilot Reference](../docs/appendix-k-copilot-reference.md) - "Copilot features"
+- [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agents introduction"
+- [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Getting started"
+- [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Canonical source for 80 agents"
 
 **Updated tables include:**
 
-- ✅ Team 1: 40 agents (26 web + 14 document)
-- ✅ Team 2: 20 agents (GitHub Workflow)
-- ✅ Team 3: 18 agents (Developer Tools)
-- ✅ Platforms table with "When to Use" column
-- ✅ Skills section (25+ bundled skills)
-- ✅ MCP tools section (30+ tools)
+- Team 1: 40 agents (26 web + 14 document)
+- Team 2: 20 agents (GitHub Workflow)
+- Team 3: 18 agents (Developer Tools)
+- Platforms table with "When to Use" column
+- Skills section (25+ bundled skills)
+- MCP tools section (30+ tools)
 
 ---
 
@@ -105,24 +105,24 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All agents"
-- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent overview"
-- ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Official source"
+- [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "All agents"
+- [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent overview"
+- [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Official source"
 
 **Platform-specific sections cover:**
 
-- ✅ GitHub Copilot (VS Code) - section with detailed steps
-- ✅ Claude Code - section with CLI setup
-- ✅ Gemini CLI - section with free tier info
-- ✅ Claude Desktop - section with MCP configuration
-- ✅ Codex CLI - section with TOML setup
+- GitHub Copilot (VS Code) - section with detailed steps
+- Claude Code - section with CLI setup
+- Gemini CLI - section with free tier info
+- Claude Desktop - section with MCP configuration
+- Codex CLI - section with TOML setup
 
 **Cross-platform guidance includes:**
 
-- ✅ System requirements table
-- ✅ Version checking commands
-- ✅ Troubleshooting by platform
-- ✅ Learning cards (SR/LV/keyboard/sighted)
+- System requirements table
+- Version checking commands
+- Troubleshooting by platform
+- Learning cards (SR/LV/keyboard/sighted)
 
 ---
 
@@ -130,20 +130,20 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list"
-- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup reference"
-- ✅ [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent context"
-- ✅ [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Source for skills and hooks"
+- [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Agent list"
+- [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup reference"
+- [Chapter 19: Accessibility Agents](../docs/19-accessibility-agents.md) - "Agent context"
+- [Accessibility Agents Repository](https://github.com/Community-Access/accessibility-agents) - "Source for skills and hooks"
 
 **Advanced topics covered:**
 
-- ✅ Subagent delegation with examples
-- ✅ Skills (25+ library overview)
-- ✅ Hooks (lifecycle automation) with JSON examples
-- ✅ Browser tools catalog
-- ✅ Orchestration patterns
-- ✅ Custom skills authoring
-- ✅ Continuous evaluation setup
+- Subagent delegation with examples
+- Skills (25+ library overview)
+- Hooks (lifecycle automation) with JSON examples
+- Browser tools catalog
+- Orchestration patterns
+- Custom skills authoring
+- Continuous evaluation setup
 
 ---
 
@@ -151,19 +151,19 @@
 
 **Links OUT to:**
 
-- ✅ [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Complete agent list"
-- ✅ [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Advanced techniques"
-- ✅ [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup guide"
+- [Appendix L: Agents Reference](../docs/appendix-l-agents-reference.md) - "Complete agent list"
+- [Appendix AB: Advanced Patterns](../docs/appendix-ab-advanced-agent-patterns.md) - "Advanced techniques"
+- [Appendix AA: Installation & Setup](../docs/appendix-aa-agent-installation-setup.md) - "Setup guide"
 
 **Specialized content covers:**
 
-- ✅ 15 document agents (Word, Excel, PowerPoint, PDF, EPUB)
-- ✅ Office accessibility patterns with common issues/fixes
-- ✅ PDF/UA standard compliance
-- ✅ 8 developer tools agents (Python, wxPython, CI/CD, desktop)
-- ✅ Code examples for accessible Python and wxPython
-- ✅ NVDA add-on development overview
-- ✅ CI/CD accessibility integration
+- 15 document agents (Word, Excel, PowerPoint, PDF, EPUB)
+- Office accessibility patterns with common issues/fixes
+- PDF/UA standard compliance
+- 8 developer tools agents (Python, wxPython, CI/CD, desktop)
+- Code examples for accessible Python and wxPython
+- NVDA add-on development overview
+- CI/CD accessibility integration
 
 ---
 
@@ -171,10 +171,10 @@
 
 **New section: Version Requirements**
 
-- ✅ Minimum versions table (VS Code 1.113+, Node.js v18+, Git v2.20+)
-- ✅ Version checking commands
-- ✅ Links to [Appendix AA: Installation](../docs/appendix-aa-agent-installation-setup.md)
-- ✅ Explains agents are optional (Day 2 extension)
+- Minimum versions table (VS Code 1.113+, Node.js v18+, Git v2.20+)
+- Version checking commands
+- Links to [Appendix AA: Installation](../docs/appendix-aa-agent-installation-setup.md)
+- Explains agents are optional (Day 2 extension)
 
 ---
 
@@ -182,15 +182,15 @@
 
 **New section: Agents & Accessibility Patterns**
 
-- ✅ Agent reference formatting rules (`` `@agent-name` ``)
-- ✅ Platform support documentation requirements
-- ✅ Prerequisite clarity guidelines
-- ✅ Multi-workflow documentation pattern (SR/LV/keyboard/sighted)
-- ✅ Skill-first principle preservation
-- ✅ Podcast regeneration tracking
-- ✅ Cross-platform considerations
-- ✅ Common mistakes table
-- ✅ References section with links to all appendices
+- Agent reference formatting rules (`` `@agent-name` ``)
+- Platform support documentation requirements
+- Prerequisite clarity guidelines
+- Multi-workflow documentation pattern (SR/LV/keyboard/sighted)
+- Skill-first principle preservation
+- Podcast regeneration tracking
+- Cross-platform considerations
+- Common mistakes table
+- References section with links to all appendices
 
 ---
 
@@ -198,12 +198,12 @@
 
 **New sections added:**
 
-- ✅ Episodes 41-43: Agents content (new appendices AA, AB, AC)
-- ✅ Episodes pending regeneration (17, 39, 40)
-- ✅ Recording checklist for all episodes
-- ✅ Production notes for recording team
-- ✅ Quality assurance checklist
-- ✅ Alex & Jamie style guide reference
+- Episodes 41-43: Agents content (new appendices AA, AB, AC)
+- Episodes pending regeneration (17, 39, 40)
+- Recording checklist for all episodes
+- Production notes for recording team
+- Quality assurance checklist
+- Alex & Jamie style guide reference
 
 ---
 
@@ -211,14 +211,14 @@
 
 **Organization reference includes:**
 
-- ✅ Version alignment table (Curriculum 2.0 ↔ Agents 5.0.0+)
-- ✅ Capability matrix (8 features in 5.0+)
-- ✅ Key transitions (4.x → 5.0.0)
-- ✅ 4 learning pathways (Web, Document, Developer Tools, Multi-Platform)
-- ✅ Contribution guidance for facilitators
-- ✅ Infrastructure overview (80 agents, 5 platforms, 25+ skills)
-- ✅ Roadmap for future versions
-- ✅ Maintenance tasks by semester
+- Version alignment table (Curriculum 2.0 with Agents 5.0.0+)
+- Capability matrix (8 features in 5.0+)
+- Key transitions (4.x → 5.0.0)
+- 4 learning pathways (Web, Document, Developer Tools, Multi-Platform)
+- Contribution guidance for facilitators
+- Infrastructure overview (80 agents, 5 platforms, 25+ skills)
+- Roadmap for future versions
+- Maintenance tasks by semester
 
 ---
 
@@ -296,22 +296,22 @@ All new files include **learning cards** with four workflow perspectives:
 
 | Workflow | Included in All New Files | Example |
 |----------|--------------------------|---------|
-| Screen reader users | ✅ | "Use `H` key to navigate section headings" |
-| Low vision users | ✅ | "Zoom in on the table independently with Ctrl+=" |
-| Keyboard-only users | ✅ | "Tab through controls; use Enter to activate" |
-| Sighted users | ✅ | "Use visual hierarchy to scan sections quickly" |
+| Screen reader users | Yes | "Use `H` key to navigate section headings" |
+| Low vision users | Yes | "Zoom in on the table independently with Ctrl+=" |
+| Keyboard-only users | Yes | "Tab through controls; use Enter to activate" |
+| Sighted users | Yes | "Use visual hierarchy to scan sections quickly" |
 
 **Validation status:**
 
-- ✅ Appendix AA: 4 learning cards (SR, LV, Keyboard, Sighted)
-- ✅ Appendix AB: 3 learning cards (SR, LV, Sighted) + workflow diagrams
-- ✅ Appendix AC: 3 learning cards (SR, LV, Sighted) + tables
-- ✅ Chapter 19 Section 3A: Platform-specific accessibility notes
-- ✅ Chapter 0: Version requirements clearly stated
+- Appendix AA: 4 learning cards (SR, LV, Keyboard, Sighted)
+- Appendix AB: 3 learning cards (SR, LV, Sighted) + workflow diagrams
+- Appendix AC: 3 learning cards (SR, LV, Sighted) + tables
+- Chapter 19 Section 3A: Platform-specific accessibility notes
+- Chapter 0: Version requirements clearly stated
 
-**No emojis used:** ✅ All files (consistent with curriculum style)
+**No emojis used:** Yes, all files (consistent with curriculum style)
 
-**Descriptive links throughout:** ✅ All cross-references specific and tested
+**Descriptive links throughout:** Yes, all cross-references specific and tested
 
 ---
 
@@ -335,11 +335,11 @@ All new files include **learning cards** with four workflow perspectives:
 
 **Recording prerequisites met:**
 
-- ✅ All content written and formatted
-- ✅ Alex & Jamie style guide available (PODCASTS.md)
-- ✅ Learning cards prepared for each episode
-- ✅ Production checklist ready (<https://lp.csedesigns.com/ggg/PODCASTS.html>)
-- ✅ Quality assurance steps documented
+- All content written and formatted
+- Alex & Jamie style guide available (PODCASTS.md)
+- Learning cards prepared for each episode
+- Production checklist ready (<https://lp.csedesigns.com/ggg/PODCASTS.html>)
+- Quality assurance steps documented
 
 ---
 
@@ -390,12 +390,12 @@ All new files include **learning cards** with four workflow perspectives:
 | Podcast episodes new/regenerated | 6 (3 new + 3 regenerated) |
 | Estimated podcast recording time | 120+ minutes |
 | Cross-references verified | 100% |
-| Accessibility validation | ✅ Complete (SR, LV, keyboard, sighted) |
-| No emojis used | ✅ Confirmed |
+| Accessibility validation | Complete (SR, LV, keyboard, sighted) |
+| No emojis used | Confirmed |
 
 ---
 
-**All Priority 1-5 tasks complete. Curriculum 2.0 ready for production.** ✅
+**All Priority 1-5 tasks complete. Curriculum 2.0 ready for production.**
 
 ## Authoritative Sources
 

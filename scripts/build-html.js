@@ -684,7 +684,6 @@ const htmlTemplate = (content, title, relativePath) => {
           name="q"
           placeholder="Search docs…"
           autocomplete="off"
-          aria-label="Search documentation"
         >
         <button type="submit" class="search-button" aria-label="Submit search">
           <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -1030,7 +1029,6 @@ function setupStyles(outputDir) {
 .quick-jumps-list a:focus {
   background: #eaeef2;
   text-decoration: underline;
-  outline: none;
 }
 @media (prefers-color-scheme: dark) {
   .quick-jumps { background: #161b22; border-color: #30363d; }
@@ -1966,7 +1964,6 @@ function buildSearchPage(outputDir) {
           name="q"
           placeholder="Search docs…"
           autocomplete="off"
-          aria-label="Search documentation"
         >
         <button type="submit" class="search-button" aria-label="Submit search">
           <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">

@@ -6,11 +6,11 @@ This is your comprehensive guide to facilitate a two-day GitHub workshop. It cov
 
 ---
 
-## 🎯 Quick Navigation
+## Quick Navigation
 
-- **Just starting?** → Go to [GitHub Classroom Setup](#-github-classroom-setup-before-day-1)
-- **Workshop is tomorrow?** → Go to [Pre-Workshop Checklist](#-pre-workshop-checklist-48-hours-before)
-- **Workshop is happening now?** → Go to [Live Workshop Operations](#-day-1-live-operations)
+- **Just starting?** → Go to [GitHub Classroom Setup](#github-classroom-setup-before-day-1)
+- **Workshop is tomorrow?** → Go to [Pre-Workshop Checklist](#pre-workshop-checklist-48-hours-before)
+- **Workshop is happening now?** → Go to [Live Workshop Operations](#day-1-live-operations)
 - **Student got stuck?** → Go to [Troubleshooting Guide](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)
 - **Need hands-on details?** → Go to [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md)
 
@@ -36,7 +36,7 @@ This is your comprehensive guide to facilitate a two-day GitHub workshop. It cov
 
 ---
 
-## 👥 Your Facilitation Team
+## Your Facilitation Team
 
 This workshop is designed for **2 co-facilitators** who can split roles:
 
@@ -51,9 +51,9 @@ If you're solo:
 
 ---
 
-## 🚀 GitHub Classroom Setup (Before Day 1)
+## GitHub Classroom Setup (Before Day 1)
 
-This section is for someone (probably you!) setting up GitHub Classroom for the first time. If your Classroom is already configured, skip to [Pre-Workshop Checklist](#-pre-workshop-checklist-48-hours-before).
+This section is for someone (probably you!) setting up GitHub Classroom for the first time. If your Classroom is already configured, skip to [Pre-Workshop Checklist](#pre-workshop-checklist-48-hours-before).
 
 ### What is GitHub Classroom?
 
@@ -124,9 +124,9 @@ Save both invite links in a safe place (notes, email yourself, password manager)
    - Merging closes the issue
    - Next challenge issue appears
 
-If anything is missing, see [Troubleshooting GitHub Classroom Setup](#troubleshooting-github-classroom-setup) below.
+If anything is missing, see [Known Gotchas](#known-gotchas) below.
 
-### ⚠️ Known Gotchas
+### Known Gotchas
 
 **"The invite link isn't working"**
 
@@ -154,7 +154,7 @@ If anything is missing, see [Troubleshooting GitHub Classroom Setup](#troublesho
 
 ---
 
-## 📋 Pre-Workshop Checklist (48 Hours Before)
+## Pre-Workshop Checklist (48 Hours Before)
 
 You have two days until the workshop. Use this checklist:
 
@@ -198,11 +198,11 @@ You have two days until the workshop. Use this checklist:
   - Video call has tech issues (phone dial-in number active)
   - Bot stops working (you'll manually review PRs)
   - Key facilitator unavailable (co-facilitator can lead)
-- [ ] Coffee/water ready 😄
+- [ ] Coffee/water ready
 
 ---
 
-## ✨ Day 1: Live Operations
+## Day 1: Live Operations
 
 This section covers what you and your co-facilitator do during Day 1.
 
@@ -341,7 +341,7 @@ When you notice something:
    - Comment if needed: "Looking good! I see the bot asked you to [X]. Give that a try!"
 
 3. **Student merged a PR** → Celebrate publicly:
-   > "🎉 Awesome work @student! You just merged your first pull request! That's huge."
+   > "Awesome work @student! You just merged your first pull request! That's huge."
 
 4. **Gandalf bot gave confusing feedback** → Translate it:
    > "I see Gandalf's feedback. Let me explain what it means: [plain language explanation]. Try [specific fix]."
@@ -438,7 +438,7 @@ Pull from the Classroom dashboard:
 
 ---
 
-## 🎉 Day 2: Deeper Skills and Celebration
+## Day 2: Deeper Skills and Celebration
 
 ### Hour 1: Recap and Momentum (30 min)
 
@@ -498,7 +498,7 @@ Pull from the Classroom dashboard:
 1. Assign pairs: "Student A, you review Student B's PR. Student B, you'll review Student C's. Etc."
 2. Give them a template for feedback:
 
-   ```
+   ```text
    - What I liked about this PR: [specific thing]
    - One question I have: [genuine question]
    - One suggestion: [improvement idea]
@@ -643,7 +643,7 @@ Point to:
 
 ---
 
-## 📊 Post-Workshop Tasks (Week After)
+## Post-Workshop Tasks (Week After)
 
 ### Day 3 (Next Day)
 
@@ -685,7 +685,7 @@ Point to:
 
 ---
 
-## 🆘 Quick Troubleshooting Reference
+## Quick Troubleshooting Reference
 
 ### During Workshop
 
@@ -716,7 +716,7 @@ For more, see [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_T
 
 ---
 
-## 📚 Appendices
+## Appendices
 
 ### Appendix A: Facilitator Communication Templates
 
@@ -813,7 +813,7 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 *These are used in each challenge issue. Paste them into challenge issues to guide stuck students:*
 
 **For editing challenges:**
-> If you get stuck: Look for the pencil icon (✏️) to edit the file. Type your change, then scroll down and click "Propose changes."
+> If you get stuck: Select the pencil icon, the "Edit this file" button, to edit the file. Type your change, then scroll down and click "Propose changes."
 
 **For PR challenges:**
 > If you get stuck: Don't refresh the page yet! GitHub is still processing. Wait 30 seconds. If still nothing, paste this link in chat: [direct link to PR]
@@ -826,7 +826,7 @@ Subject: Your GitHub Workshop Starts Tomorrow!
 
 ---
 
-## 💡 Philosophy and Final Thoughts
+## Philosophy and Final Thoughts
 
 This workshop succeeds because of **you** — the facilitator. Here's what you bring:
 
@@ -845,13 +845,13 @@ That's the real goal. Everything else follows from that.
 
 ---
 
-## 📞 Need Help?
+## Need Help?
 
 If something goes wrong:
 
 1. **Automation failing?** → See [FACILITATOR_CLASSROOM_TROUBLESHOOTING.md](FACILITATOR_CLASSROOM_TROUBLESHOOTING.md)
 2. **Student having issues?** → See [FACILITATOR_OPERATIONS.md](FACILITATOR_OPERATIONS.md)
-3. **Setting up for first time?** → Scroll back to [GitHub Classroom Setup](#-github-classroom-setup-before-day-1)
+3. **Setting up for first time?** → Scroll back to [GitHub Classroom Setup](#github-classroom-setup-before-day-1)
 4. **Can't find what you need?** → Email or ping us — we'll help and update this guide
 
 ---
@@ -870,15 +870,15 @@ Use these official references when you need the current source of truth for fact
 Use this map to verify facts for each major section in this file.
 
 - **Running GitHub Classroom Workshops for Blind and Low-Vision Students:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **🎯 Quick Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Quick Navigation:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 - **About This Workshop:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **👥 Your Facilitation Team:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🚀 GitHub Classroom Setup (Before Day 1):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-- **📋 Pre-Workshop Checklist (48 Hours Before):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **✨ Day 1: Live Operations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🎉 Day 2: Deeper Skills and Celebration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
-- **📊 Post-Workshop Tasks (Week After):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **🆘 Quick Troubleshooting Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **📚 Appendices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **💡 Philosophy and Final Thoughts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
-- **📞 Need Help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Your Facilitation Team:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **GitHub Classroom Setup (Before Day 1):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [About Git](https://docs.github.com/en/get-started/using-git/about-git), [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow), [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+- **Pre-Workshop Checklist (48 Hours Before):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Day 1: Live Operations:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Day 2: Deeper Skills and Celebration:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [GitHub Skills catalog](https://skills.github.com/), [GitHub Learning Pathways](https://resources.github.com/learn/pathways/)
+- **Post-Workshop Tasks (Week After):** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Quick Troubleshooting Reference:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Appendices:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Philosophy and Final Thoughts:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Need Help?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

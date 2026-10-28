@@ -271,7 +271,7 @@ See [Appendix D (Git Authentication)](../docs/appendix-d-git-authentication.md) 
 
   Then add to `~/.ssh/config`:
 
-  ```
+  ```text
   Host github.com
     AddKeysToAgent yes
     UseKeychain yes

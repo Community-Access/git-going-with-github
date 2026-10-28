@@ -86,8 +86,8 @@ Ask GitHub or chat platform to notify you of:
 
 1. **Welcome message to chat:**
 
-   ```
-   Welcome to the GitHub Workshop! 👋 
+   ```text
+   Welcome to the GitHub Workshop!
    If you can see this message, you're connected.
    Video or audio-only? Both are fine.
    Screen reader users: All of GitHub.com is accessible.
@@ -139,7 +139,7 @@ Ask GitHub or chat platform to notify you of:
 
 In chat, post:
 
-```
+```text
 Here's your Day 1 invite link:
 [PASTE YOUR INVITE LINK]
 
@@ -157,7 +157,7 @@ Accept and GitHub creates your repo.
 
 In chat as things happen:
 
-```
+```text
 Great! I see people accepting the invite.
 You should now be in your private repo.
 Look for "Challenge 1" in your Issues tab.
@@ -183,7 +183,7 @@ Wait until 70%+ have said they see Challenge 1 before moving forward.
 1. **Open your test repo on screen**
 2. **Narrate what you're doing:**
 
-   ```
+   ```text
    "I'm going to show you what Challenge 1 looks like.
    I'm clicking the Issues tab...
    I see Challenge 1 here...
@@ -219,7 +219,7 @@ Wait for confirmations. Help anyone who sees something different.
 > I need to edit a file called [filename]. Let me look in the file list... there it is.
 >
 > **Step 3: Click edit**
-> I'm clicking the pencil icon (✏️) to edit the file.
+> I'm selecting the pencil icon, the "Edit this file" button, to edit the file.
 >
 > **Step 4: Make my change**
 > [Type while narrating] I'm adding this text... done.
@@ -312,7 +312,7 @@ Answer a few questions, then:
 
 - First merges happening
 - New challenges appearing
-- Celebrate: "🎉 @student1 just merged their first PR! Nice work!"
+- Celebrate: "@student1 just merged their first PR! Nice work!"
 
 **60-120 min:**
 
@@ -338,7 +338,7 @@ Answer a few questions, then:
 |---|---|
 | "I'm stuck" | "Tell me what challenge you're on and what's confusing." (Then see troubleshooting guide) |
 | "Is this right?" | "What did you create? Show me a link." (Then validate) |
-| "I merged!" | "🎉 Awesome! You just merged your first PR! That's huge!" |
+| "I merged!" | "Awesome! You just merged your first PR! That's huge!" |
 | "What's next?" | "Your next challenge should appear soon. Refresh your Issues. If not, let me know!" |
 | "Is [technology] important?" | "Great question! [Short answer]. Let's talk more after this challenge." |
 | "My screen reader glitched" | "Which screen reader? What glitched? Let's fix it." (Then escalate if needed) |

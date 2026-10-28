@@ -57,7 +57,7 @@ This document tracks the curriculum's alignment with Accessibility Agents versio
 
 **Example:**
 
-```
+```text
 Version 4.x:
 User: @aria-specialist audit this component
 Agent: [Reports 3 ARIA errors]
@@ -75,7 +75,7 @@ Agent: [Returns remediated code for approval]
 **Before (4.x):** No automated compliance reporting.
 **Now (5.0.0+):** Generate VPAT and compliance reports automatically.
 
-```
+```text
 User: @document-csv-reporter generate-vpat audit-findings.json
 Agent: [Exports findings mapped to WCAG 2.2 AA and Section 508]
 Agent: [Generates VPAT template with compliance assertions]
@@ -89,7 +89,7 @@ Output: compliance-report.xlsx
 
 **Capability:**
 
-```
+```text
 Hook configuration:
 {
   "name": "continuous-eval",
@@ -265,7 +265,7 @@ Output: Trend report showing score changes week-over-week
 
 ### Three Teams, 80 Agents, 5 Platforms
 
-```
+```text
 Accessibility Agents 5.0.0
 ├── Team 1: Accessibility (40 agents)
 │   ├── Web (26): Specialists, wizards, coaches

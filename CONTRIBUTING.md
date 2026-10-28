@@ -100,7 +100,7 @@ git remote -v
 
 Expected output:
 
-```
+```text
 origin    https://github.com/[your-username]/[workshop-repo-name].git (fetch)
 origin    https://github.com/[your-username]/[workshop-repo-name].git (push)
 upstream  https://github.com/[original-owner]/[workshop-repo-name].git (fetch)
@@ -164,7 +164,7 @@ which is not a term NVDA uses. Updated to match NVDA's own terminology."
 
 **Commit message format:**
 
-```
+```text
 type: short summary (under 72 characters)
 
 Optional longer explanation of why the change was made, not just what
@@ -402,7 +402,7 @@ When you open a pull request, fill in the template that appears. If no template 
 
 ### PR Title Format
 
-```
+```text
 fix: correct JAWS shortcut for PR review in Section 3
 docs: add alternative macOS exercise for Section 6
 exercise: add bonus challenge for notifications day 2

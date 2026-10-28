@@ -62,7 +62,6 @@
           name="q"
           placeholder="Search docs…"
           autocomplete="off"
-          aria-label="Search documentation"
         >
         <button type="submit" class="search-button" aria-label="Submit search">
           <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -231,7 +230,7 @@ from any location.</p>
 <h2 id="generate-transcriptsbat">generate-transcripts.bat</h2>
 <p>Validates the podcast catalog, builds episode and challenge bundles, then writes
 all episode and challenge coach scripts to <code>podcasts\scripts\</code>.</p>
-<pre><code class="hljs"><span class="hljs-keyword">generate</span>-transcripts<span class="hljs-variable">.bat</span></code></pre>
+<pre><code class="hljs language-bat">generate-transcripts.bat</code></pre>
 <p>Output files: <code>podcasts\scripts\ep*.txt</code> and <code>podcasts\scripts\cc-*.txt</code></p>
 <p>Note: transcript generation always rebuilds all episodes from the catalog.
 Range selection is not supported at this stage. Run this step whenever the
@@ -243,16 +242,16 @@ Audio format, voice model, pitch, and speed settings are read from
 <p>The script echoes each episode name and index as it is processed.
 ffmpeg is required for MP3 output and is located automatically from the
 machine PATH, including after a fresh winget install.</p>
-<pre><code class="hljs"><span class="hljs-keyword">generate</span>-audio<span class="hljs-variable">.bat</span>                  <span class="hljs-keyword">generate</span> all <span class="hljs-number">75</span> episodes
-<span class="hljs-keyword">generate</span>-audio<span class="hljs-variable">.bat</span> <span class="hljs-number">5</span>                <span class="hljs-keyword">generate</span> episodes <span class="hljs-number">5</span> <span class="hljs-keyword">and</span> above
-<span class="hljs-keyword">generate</span>-audio<span class="hljs-variable">.bat</span> <span class="hljs-number">5</span> <span class="hljs-number">10</span>             <span class="hljs-keyword">generate</span> episodes <span class="hljs-number">5</span> through <span class="hljs-number">10</span></code></pre>
+<pre><code class="hljs language-text">generate-audio.bat                  generate all 75 episodes
+generate-audio.bat 5                generate episodes 5 and above
+generate-audio.bat 5 10             generate episodes 5 through 10</code></pre>
 <p>Output files: <code>podcasts\audio\*.mp3</code></p>
 <p>To change audio format, voice pitch, or speed, edit <code>podcasts\tts\voice-config.ini</code>
 before running this command.</p>
 <h2 id="build-rss-feedbat">build-rss-feed.bat</h2>
 <p>Generates the RSS 2.0 / iTunes-compatible podcast feed and the admin podcast listing.
 Reads MP3 file sizes from <code>podcasts\audio\</code> and episode metadata from the catalog.</p>
-<pre><code class="hljs"><span class="hljs-keyword">build</span>-rss-feed.bat</code></pre>
+<pre><code class="hljs language-bat">build-rss-feed.bat</code></pre>
 <p>Output files:</p>
 <ul>
 <li><code>podcasts\feed.xml</code> - the RSS feed for podcast directories</li>
@@ -262,7 +261,7 @@ Reads MP3 file sizes from <code>podcasts\audio\</code> and episode metadata from
 reflect the final MP3 file sizes.</p>
 <h2 id="validate-rss-feedbat">validate-rss-feed.bat</h2>
 <p>Runs local RSS 2.0 and iTunes compliance checks on <code>podcasts\feed.xml</code>.</p>
-<pre><code class="hljs"><span class="hljs-keyword">validate</span>-rss-feed.bat</code></pre>
+<pre><code class="hljs language-bat">validate-rss-feed.bat</code></pre>
 <p>Checks performed:</p>
 <ul>
 <li>Required channel elements: title, link, description, language</li>
@@ -346,7 +345,7 @@ a PowerShell or bash session at the repo root.</p>
 </tr>
 </tbody></table>
 <p>To pass a range to the audio build from npm:</p>
-<pre><code class="hljs"><span class="hljs-comment">npm run build:podcast</span><span class="hljs-literal">-</span><span class="hljs-comment">audio</span> <span class="hljs-literal">--</span> <span class="hljs-literal">--</span><span class="hljs-comment">start 5</span> <span class="hljs-literal">--</span><span class="hljs-comment">end 10</span></code></pre>
+<pre><code class="hljs language-bash">npm run build:podcast-audio -- --start 5 --end 10</code></pre>
 <h2 id="authoritative-sources">Authoritative Sources</h2>
 <p>Use these official references when you need the current source of truth for facts in this chapter.</p>
 <ul>

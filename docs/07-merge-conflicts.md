@@ -416,7 +416,7 @@ The content coming from the OTHER branch (or main)
 
 #### After two students both added a shortcut to the same table row
 
-```
+```text
 <<<<<<< HEAD
   Insert+Space -- Toggle between Browse Mode and Focus Mode
   Insert+F5 -- List elements by type
@@ -580,7 +580,7 @@ VS Code has excellent merge conflict tooling with full screen reader support. Th
 
 ### VS Code shows conflicts as
 
-```
+```text
 <<<<<<< HEAD (Current Change)
 Your version
 ======= original                   -- (3-way merge, if enabled)

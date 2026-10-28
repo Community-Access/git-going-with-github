@@ -117,7 +117,7 @@ git --version
 
 Expected output:
 
-```
+```text
 1.113.0 or higher (VS Code)
 github.copilot
 v18.0.0 or higher (Node.js)
@@ -360,7 +360,7 @@ After installation, verify each platform is ready:
 
 **On GitHub Copilot (VS Code):**
 
-```
+```text
 Open Chat (Ctrl+Alt+I) → Type: @daily-briefing morning briefing
 ```
 

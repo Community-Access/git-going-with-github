@@ -25,7 +25,7 @@ An **agent** is a standalone AI system (like `@aria-specialist`) that understand
 
 **Example workflow:**
 
-```
+```text
 User: @web-accessibility-wizard [audit this page]
   ↓ (orchestrates multiple specialists)
   ├─→ @aria-specialist (check ARIA roles)
@@ -120,7 +120,7 @@ Accessibility Agents includes a library of reusable skills organized by capabili
 
 **From Copilot Chat:**
 
-```
+```text
 /web-scanning [URL]
 /report-generation [findings JSON]
 /python-fact-grounded-coding my_script.py
@@ -435,7 +435,7 @@ await browser.close();
 
 **Goal:** Audit multiple aspects of a page simultaneously for speed.
 
-```
+```text
 User request: Audit this page
   │
   ├─ @aria-specialist (scan ARIA)
@@ -470,7 +470,7 @@ Invoke all specialist agents in parallel:
 
 **Goal:** Fix issues in order of severity and dependency.
 
-```
+```text
 Findings identified:
   1. Missing alt text (3 images)
   2. Poor color contrast (5 elements)
@@ -490,7 +490,7 @@ Output: Numbered PR suggestions, 1 fix per commit message
 
 **Goal:** Guide users through testing workflows without assuming prior knowledge.
 
-```
+```text
 User: How do I test keyboard navigation?
 
 Agent (@testing-coach) response:
@@ -516,7 +516,7 @@ Agent (@testing-coach) response:
 
 **Goal:** Consolidate findings across multiple pages into systemic issues.
 
-```
+```text
 Input: 50 pages audited
 
 Output:
@@ -591,7 +591,7 @@ Set up automated evaluation to measure improvement over time:
 
 Create platform-specific implementations of the same skill:
 
-```
+```text
 .github/skills/form-accessibility/
   ├── SKILL.md (base description)
   ├── implementations/

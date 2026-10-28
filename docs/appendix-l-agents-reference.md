@@ -1453,7 +1453,7 @@ GitHub supports assigning cloud agents to issues and pull requests. You can use 
 
 **GitHub cloud agent assignment syntax:**
 
-```
+```markdown
 @copilot please implement this feature with accessibility best practices in mind.
 Reference: [Appendix K: GitHub Agentic Workflows](appendix-k-copilot-reference.md#14-github-agentic-workflows-and-third-party-agents)
 ```
