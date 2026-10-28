@@ -19,6 +19,8 @@ These workflows operate on this repository itself:
 | `build-epub.yml` | Builds ePub version of workshop content |
 | `create-release.yml` | Creates tagged releases |
 | `deploy-pages.yml` | Deploys content to GitHub Pages |
+| `docs-accessibility.yml` | Runs the documentation accessibility check on Markdown changes (see ACCESSIBILITY.md) |
+| `accessibility-review-reminder.yml` | Opens the quarterly accessibility progress update and review issue |
 | `generate-diagram-svgs.yml` | Converts diagram sources to SVG |
 | `registration.yml` | Processes student registration |
 | `sync-docs-to-wiki.yml` | Syncs documentation to the repository wiki |

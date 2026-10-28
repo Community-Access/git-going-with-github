@@ -10,7 +10,7 @@ GitHub Skills is GitHub's free, self-paced interactive learning platform. Every 
 
 This appendix catalogs every available GitHub Skills module, organized into learning paths that build on the skills you practiced in this workshop. Use it as a roadmap for continued learning after Day 2.
 
-### Learning Cards: How GitHub Skills Works
+## Learning Cards: How GitHub Skills Works
 
 <details>
 <summary>Screen reader users</summary>

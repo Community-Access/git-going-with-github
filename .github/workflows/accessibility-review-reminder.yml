@@ -1,0 +1,79 @@
+name: Accessibility Review Reminder
+
+# Opens one issue each quarter that asks the accessibility owner to publish an
+# accessibility progress update and review ACCESSIBILITY.md (Open Source
+# Accessibility Framework, Community action 5, with the reviews that Testing
+# action 6 and Workflow actions 7 and 10 ask for). The issue lists the
+# accessibility issues opened and closed since the previous quarter, so the
+# update starts from real numbers. See ACCESSIBILITY.md, "Progress updates".
+
+on:
+  schedule:
+    # 15:00 UTC on the first day of January, April, July and October.
+    - cron: "0 15 1 1,4,7,10 *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  open-review-issue:
+    name: Open the quarterly accessibility review issue
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Open the review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const now = new Date();
+            const quarter = Math.floor(now.getUTCMonth() / 3) + 1;
+            const title = `Accessibility progress update and review, ${now.getUTCFullYear()} Q${quarter}`;
+
+            const existing = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'all', labels: 'accessibility', per_page: 100
+            });
+            if (existing.some((issue) => issue.title === title)) {
+              core.info(`"${title}" already exists; nothing to do.`);
+              return;
+            }
+
+            const since = new Date(now);
+            since.setUTCMonth(since.getUTCMonth() - 3);
+            const sinceDate = since.toISOString().slice(0, 10);
+            const search = async (q) =>
+              (await github.rest.search.issuesAndPullRequests({ q: `repo:${owner}/${repo} label:accessibility ${q}`, per_page: 1 })).data.total_count;
+            const opened = await search(`created:>=${sinceDate} -label:"accessibility review"`);
+            const closed = await search(`closed:>=${sinceDate} -label:"accessibility review"`);
+            const open = await search('is:open -label:"accessibility review"');
+
+            const base = `https://github.com/${owner}/${repo}`;
+            const body = [
+              `Quarterly accessibility review for ${now.getUTCFullYear()} Q${quarter}, opened automatically by \`accessibility-review-reminder.yml\`.`,
+              '',
+              '## Since ' + sinceDate,
+              '',
+              `- Accessibility issues and pull requests opened: ${opened}`,
+              `- Accessibility issues and pull requests closed: ${closed}`,
+              `- Still open: ${open} ([open accessibility work](${base}/issues?q=is%3Aopen+label%3Aaccessibility))`,
+              '',
+              '## Checklist',
+              '',
+              '- [ ] Add a dated entry to "Progress updates" in ACCESSIBILITY.md: completed work, remaining work, known barriers, links.',
+              '- [ ] Review "Supported environments" and "Known limitations"; add what was tested since the last review.',
+              '- [ ] Record any keyboard, screen reader or manual checks that were run in admin/ACCESSIBILITY_CORE_FLOWS.md.',
+              '- [ ] Check that open reports have an acknowledgement, a severity, a status and a next step.',
+              '- [ ] Keep a few `good first issue` and `help wanted` accessibility issues open, with context and acceptance criteria.',
+              '- [ ] Review the dependency list in ACCESSIBILITY.md and any upstream blockers.',
+              '- [ ] Credit accessibility contributors in the update, only in the form each person agreed to.',
+              '- [ ] Check the matching actions in the public Open Source Accessibility Framework tracking issue.',
+              '',
+              'Close this issue with a link to the pull request that adds the update.'
+            ].join('\n');
+
+            const issue = await github.rest.issues.create({
+              owner, repo, title, body, labels: ['accessibility', 'accessibility review']
+            });
+            core.info(`Opened #${issue.data.number}`);

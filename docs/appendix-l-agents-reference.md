@@ -333,7 +333,7 @@ The GitHub Workflow team includes 12 agents that automate common repository oper
 
 ### `@template-builder` - Issue Template Wizard
 
-# Appendix L: Agents Reference
+## Detailed Agents Reference
 
 This appendix is the authoritative reference for all Accessibility Agents, skills, slash commands, customization primitives, and file formats. Updated for Accessibility Agents v5.0.0+ and VS Code 1.120+.
 

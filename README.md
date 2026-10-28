@@ -238,6 +238,7 @@ Every chapter has an "If You Get Stuck" section. Every challenge has a [referenc
 ├── README.md                            -- You are here
 ├── CONTRIBUTING.md                      -- How to contribute to this repo
 ├── CODE_OF_CONDUCT.md                   -- Community standards
+├── ACCESSIBILITY.md                     -- Accessibility commitment, reporting, and known limitations
 ├── admin/FACILITATOR_GUIDE.md           -- For workshop organizers only
 ├── admin/DAY1_AGENDA.md                 -- Day 1 workshop schedule
 ├── admin/DAY2_AGENDA.md                 -- Day 2 workshop schedule
@@ -314,6 +315,12 @@ And by the end of Day 2, you will not just be a learner. You will be a product m
 - **File an issue** in this repository if something in these docs is unclear
 - **Community:** [GitHub Accessibility Discussions](https://github.com/orgs/community/discussions/categories/accessibility)
 
+## Accessibility of This Project
+
+How we work on the workshop's own accessibility, how to report a barrier (on GitHub or by email), how we respond, what the workshop supports and what we know is not yet good enough are all in [ACCESSIBILITY.md](ACCESSIBILITY.md). We follow GitHub's [Open Source Accessibility Framework](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/), an improvement framework rather than a certification, and publish our progress in ACCESSIBILITY.md.
+
+To report a barrier, use the [accessibility bug report form](https://github.com/Community-Access/git-going-with-github/issues/new?template=accessibility-bug.yml) or email [support@community-access.org](mailto:support@community-access.org). To help, look for issues labeled [`accessibility`](https://github.com/Community-Access/git-going-with-github/issues?q=is%3Aopen+label%3Aaccessibility).
+
 ## License
 
 All workshop documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) - you are free to share and adapt with attribution.
@@ -343,4 +350,5 @@ Use this map to verify facts for each major section in this file.
 - **Screen Reader Users: Start Here:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/), [WAI tutorials for accessible design patterns](https://www.w3.org/WAI/tutorials/), [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/)
 - **The Goal of This Event:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
 - **Questions Before the Event?:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)
+- **Accessibility of This Project:** [Open Source Accessibility Framework](https://open-source-accessibility.github.io/Open-Source-Accessibility-Framework/), [W3C Web Content Accessibility Guidelines (WCAG) 2 overview](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - **License:** [GitHub Docs, home](https://docs.github.com/en), [GitHub Changelog](https://github.blog/changelog/)

@@ -1,6 +1,3 @@
-
-**Table: Keyboard shortcut for focusing search in different screen readers**
-
 # Contributing to This Workshop Repository
 
 Thank you for helping improve this workshop. Whether you are a participant who found a typo, someone who wants to add a new exercise, or an educator adapting these materials for your own community - your contribution is meaningful and welcome.
@@ -209,7 +206,7 @@ git push origin fix-nvda-shortcut-section-05
 
 ### Keyboard Shortcuts
 
-Format all keyboard shortcuts in a table when listing more than two:
+Format all keyboard shortcuts in a table when listing more than two. Introduce each table with a sentence that says what its rows are, as this example does: it shows the keyboard shortcut for focusing search in each screen reader.
 
 | Action | NVDA | JAWS | VoiceOver |
 |--------|------|------|-----------|
@@ -226,6 +223,16 @@ When mentioning a single shortcut inline: use backticks - `NVDA+F7`
 ## 6. Accessibility Requirements
 
 Every document in this repository is used by screen reader users. Accessibility is not a nice-to-have - it is the primary requirement. All contributions must meet the following:
+
+The full set of expectations, including the requirements for the website template and other interfaces, is in [the contributor expectations in ACCESSIBILITY.md](ACCESSIBILITY.md#contributor-expectations). The [pull request template](https://github.com/Community-Access/git-going-with-github/blob/main/.github/PULL_REQUEST_TEMPLATE.md) turns them into a checklist. Before you push, run the documentation accessibility check, which fails if your change adds a new finding:
+
+```bash
+npm run check:accessibility
+```
+
+To see every finding with its line number, including the ones already recorded, run `node scripts/check-docs-accessibility.js --report`. If you fix a recorded finding, lower its count in `scripts/docs-accessibility-baseline.json` in the same pull request.
+
+To report an accessibility barrier in the workshop, use the [accessibility bug report form](https://github.com/Community-Access/git-going-with-github/issues/new?template=accessibility-bug.yml), or email the addresses in [ACCESSIBILITY.md](ACCESSIBILITY.md#reporting-accessibility-issues) if GitHub is a barrier for you. Accessibility issues that suit a first contribution are labeled `accessibility` and `good first issue`; ones where we need specialist experience are labeled `accessibility` and `help wanted`.
 
 ### Heading Structure
 
@@ -423,7 +430,7 @@ If two weeks pass with no response, feel free to leave a comment on the PR to ch
 
 **For urgent issues with the workshop materials during a live event:** Contact the facilitator directly
 
-**For accessibility concerns:** Tag your issue or comment with the `accessibility` label
+**For accessibility concerns:** Use the [accessibility bug report form](https://github.com/Community-Access/git-going-with-github/issues/new?template=accessibility-bug.yml), which applies the `accessibility` label for you, or see [ACCESSIBILITY.md](ACCESSIBILITY.md#reporting-accessibility-issues) for other ways to report, including by email. If you need an accommodation to contribute, email us privately; you do not need to explain why
 
 *Workshops run better when participants contribute back. Every correction, every clarification, every additional exercise makes this material stronger for everyone who comes after you. Your name in the commit history is not the end of your participation - it is the beginning.*
 

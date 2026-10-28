@@ -1,0 +1,56 @@
+name: Documentation Accessibility Check
+
+# The repository's automated accessibility check (Open Source Accessibility
+# Framework, Testing action 1). It checks the Markdown that becomes the
+# published site, the ePub and the braille files for missing or skipped
+# headings, missing alternative text, ambiguous link text, empty table
+# headers, code blocks without a language, and emoji. Known findings are in
+# scripts/docs-accessibility-baseline.json; a pull request fails only when it
+# adds a new one. See ACCESSIBILITY.md, "Contributor expectations".
+
+on:
+  pull_request:
+    paths:
+      - "*.md"
+      - "docs/**/*.md"
+      - "admin/**/*.md"
+      - "classroom/**/*.md"
+      - "scripts/check-docs-accessibility.js"
+      - "scripts/docs-accessibility-baseline.json"
+      - ".github/workflows/docs-accessibility.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "*.md"
+      - "docs/**/*.md"
+      - "admin/**/*.md"
+      - "classroom/**/*.md"
+      - "scripts/check-docs-accessibility.js"
+      - "scripts/docs-accessibility-baseline.json"
+      - ".github/workflows/docs-accessibility.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-docs-accessibility:
+    name: Check Markdown accessibility
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check for new accessibility findings
+        run: npm run check:accessibility
+
+      - name: List every known finding
+        if: always()
+        run: node scripts/check-docs-accessibility.js --report
