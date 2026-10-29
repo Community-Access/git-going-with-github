@@ -311,6 +311,12 @@
 <li>Before we close a report, we write down the outcome on the issue, and we ask the reporter, or another person affected, to confirm the fix works for them when they are willing.</li>
 <li>We credit reporters and testers only in the way they choose (see <a href="#recognizing-contributions">Recognizing contributions</a>).</li>
 </ul>
+<p>Two workflows hold us to this for reports opened from 29 October 2026 on. Their logic and its tests are in <a href="https://github.com/Community-Access/git-going-with-github/blob/main/.github/scripts/a11y-community.mjs">.github/scripts/a11y-community.mjs</a>.</p>
+<ul>
+<li><strong>When you report a barrier,</strong> a bot replies once: it thanks you, says a maintainer will reply with a status and a next step within 5 business days, points you to <a href="#known-limitations">Known limitations</a>, and invites, but never requires, details of your setup. The issue is labeled <code>a11y: awaiting response</code> until a maintainer comments.</li>
+<li><strong>If no maintainer has replied after 5 business days</strong> (Monday to Friday), the issue is labeled <code>a11y: response overdue</code> and the accessibility owner is reminded on the issue.</li>
+<li><strong>A report cannot close without an outcome.</strong> Maintainers close it from the pull request or commit that fixes it, or write a comment with a line that starts <code>Outcome:</code>, after the reporter&#39;s last comment, saying what changed or why it cannot. A report closed without either is reopened automatically, with a note saying how to add one. When a report closes as fixed, you are invited to confirm that the fix works for you, and the issue is labeled <code>a11y: validation requested</code>.</li>
+</ul>
 <p>If we cannot meet a date we gave, we say why on the issue, share any workaround, and give a new date.</p>
 <h2 id="taking-part">Taking part</h2>
 <p>There are several ways to take part, and no single channel is required:</p>
@@ -400,6 +406,7 @@
 </ul>
 <h2 id="recognizing-contributions">Recognizing contributions</h2>
 <p>Accessibility work, including reports, testing, reviews and documentation, is project work, and we say so publicly. Before we name anyone in a progress update, release notes or a community post, we ask how they would like to be credited: by GitHub handle, by name, or not at all, and we record the answer on the issue or pull request. We describe the work, never the person&#39;s disability, diagnosis or assistive technology, even if they mentioned it in a report, and we never present one person as speaking for a disability community.</p>
+<p>A workflow does the asking. When an accessibility pull request from outside the maintainers is merged, or your report closes as fixed, a bot asks you once how you would like to be credited, and you reply with one line: <code>credit: @handle</code>, <code>credit: name &lt;Name&gt;</code>, <code>credit: anonymous</code> or <code>credit: no</code>. Only your own reply counts, you can change it later, and nothing about you beyond the credit you choose is published. The answer is recorded as a <code>credit:</code> label. Before each progress update, the accessibility owner runs <code>node .github/scripts/a11y-credits.mjs --since &lt;date of the last update&gt;</code> and pastes the block it prints; it lists items labeled <code>credit: yes</code> or <code>credit: anonymous</code> closed since then, as code and other contributions, and warns about <code>credit: asked</code> items with no answer after 14 days, whose contributors are left out or asked again.</p>
 <h2 id="reusing-our-accessibility-materials">Reusing our accessibility materials</h2>
 <p>Other projects are welcome to reuse what we built for this workshop, under the repository&#39;s <a href="https://github.com/Community-Access/git-going-with-github/blob/main/LICENSE">CC BY 4.0 license</a>, with attribution. Each item below says what problem it solves and where it falls short.</p>
 <ul>
