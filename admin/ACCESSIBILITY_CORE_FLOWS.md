@@ -2,7 +2,7 @@
 
 This document holds the keyboard-only, screen reader and manual accessibility checks for the tasks every learner must be able to complete with the workshop's own materials, and the record of each time they are run. It is the test plan behind the "Supported environments" and "Known limitations" sections of [ACCESSIBILITY.md](../ACCESSIBILITY.md). For checking a new issue template or form, use the [template testing checklist](ACCESSIBILITY_TESTING.md) instead.
 
-A check counts as run only when a person has done it with the stated browser and assistive technology, and written down the date, the environment and the result. A simulation, a code review or an automated scan is useful preparation and is recorded separately as such; it is never a result here. The one exception is a keyboard-only run made with real key presses in a real browser: the accessibility owner may accept it as a result, and says so in its record. Screen reader and manual visual checks always need a person.
+A check counts as run only when a person has done it with the stated browser and assistive technology, and written down the date, the environment and the result. A simulation, a code review or an automated scan is useful preparation and is recorded separately as such; it is never a result here. The one exception is an agent's run in a real browser on the live site: the accessibility owner may accept a keyboard-only run made with real key presses, or a manual visual run, as a result, and says so in its record. Screen reader checks always need a person.
 
 ## Status
 
@@ -10,14 +10,14 @@ The table below shows, for each core task, which records exist and whether they 
 
 | Core task | Keyboard only | Screen reader | Manual visual checks |
 |---|---|---|---|
-| 1. Read a chapter on the website | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
-| 2. Search the website | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
-| 3. Listen to a companion episode and open its transcript | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
-| 4. Opt in on the registration page | Pass, 28 October 2026 (agent run, accepted) | Not yet run | Not yet run |
+| 1. Read a chapter on the website | Pass, 28 October 2026 (agent run, accepted) | Pass, 29 October 2026 (accessibility owner) | Run 29 October 2026 (agent run, accepted); findings #279, #280 |
+| 2. Search the website | Pass, 28 October 2026 (agent run, accepted) | Pass, 29 October 2026 (accessibility owner) | Run 29 October 2026 (agent run, accepted); finding #280 |
+| 3. Listen to a companion episode and open its transcript | Pass, 28 October 2026 (agent run, accepted) | Pass, 29 October 2026 (accessibility owner) | Run 29 October 2026 (agent run, accepted); finding #280 |
+| 4. Opt in on the registration page | Pass, 28 October 2026 (agent run, accepted) | Pass, 29 October 2026 (accessibility owner) | Run 29 October 2026 (agent run, accepted); finding #280 |
 | 5. Report a barrier with the accessibility bug report form | Not yet run | Not yet run | Not yet run |
 | 6. Read the ePub and braille downloads | Not applicable | Not yet run | Not applicable |
 
-Last reviewed: 28 October 2026. The quarterly [accessibility review issue](https://github.com/Community-Access/git-going-with-github/blob/main/.github/workflows/accessibility-review-reminder.yml) asks for this table to be brought up to date.
+Last reviewed: 29 October 2026. The quarterly [accessibility review issue](https://github.com/Community-Access/git-going-with-github/blob/main/.github/workflows/accessibility-review-reminder.yml) asks for this table to be brought up to date.
 
 ## The core tasks
 
@@ -113,11 +113,32 @@ Reviewed by Claude (an AI coding agent) while adopting the Open Source Accessibi
 
 Add each run below, newest first, using the blocks above. Link any issue you file, labeled `accessibility`.
 
-No checks by a person have been run yet.
+### Screen reader: tasks 1 to 4, 29 October 2026
+
+Environment: the accessibility owner's test machine, which has Windows 11 Pro, JAWS 2026 (2026.2608.25.400) and NVDA 2026.2, with Chrome 156 and Edge 156. Tested by Jeff Bishop, accessibility owner.
+
+Jeff ran the screen reader checks of the website's core tasks himself and signed them off on 29 October 2026. No per-task findings were written down, and no barrier was reported from the run.
+
+Result: pass for tasks 1 to 4, signed off by the accessibility owner. VoiceOver on macOS, task 5 (GitHub's own issue form) and task 6 (the downloads) are still to be run.
 
 ## Agent runs
 
-These runs were made by Claude (an AI agent) on the live site, with real key presses in a real browser. The keyboard run was accepted as a result by the accessibility owner, Jeff Bishop, on 28 October 2026, under the exception at the top of this document, and the status table shows it. The manual visual run stays preparation only: it caught one real defect, which is fixed, and a person's run still has to be recorded under "Records".
+These runs were made by Claude (an AI agent) on the live site, in a real browser. The keyboard run of 28 October 2026 and the manual visual run of 29 October 2026 were accepted as results by the accessibility owner, Jeff Bishop, under the exception at the top of this document, and the status table shows them. The manual visual run of 28 October 2026 was preparation only: it caught one real defect, which is fixed.
+
+### Agent run: manual visual checks, tasks 1 to 4, 29 October 2026
+
+Environment: Chromium in the Claude desktop app's browser pane, Windows, light and dark mode. Pages: the home page, Chapter 05, Chapter 07, the search results page for "merge conflict", and REGISTER.html. Browser zoom was not set directly: 200% zoom was checked as a 640 CSS pixel wide window, the same layout as 200% zoom on a 1280 pixel window, and 400% zoom as a 320 CSS pixel wide window.
+
+- Keyboard: see the accepted keyboard run of 28 October 2026.
+- Text alternatives: the only images on these pages are two decorative icons, hidden from assistive technology. No content image lacks a text alternative.
+- Titles, headings and labels: each page title names the page and the site (for example "Working with Issues - GIT Going with GitHub"); each page has one H1 that matches it; the only heading before the H1 is the sidebar's "Guided Reference". Every form control has a name, and no link is empty. The search results page announces "80 results found" in a live region.
+- Plain language: the opening of Chapter 05 is short and direct, but CLI, ARIA, PR and WCAG are used without being spelled out on first use. Tracked in [#279](https://github.com/Community-Access/git-going-with-github/issues/279).
+- 200% zoom (640 pixels): all five pages reflow with no horizontal scrolling and nothing cut off.
+- 320 CSS pixels: no page scrolls horizontally, but the header breadcrumb is squeezed to 8 pixels, so only the "H" of its Home link shows and the rest is behind the Wiki button. It is cut off below about 480 pixels. Tracked in [#280](https://github.com/Community-Access/git-going-with-github/issues/280); the same link is in the sidebar as "Workshop Home".
+- Contrast: every text element measured against its actual background on all five pages, at 320 and 640 pixels in light mode and at 320 pixels in dark mode: nothing under 4.5:1 (3:1 for large text).
+- Not checked: Windows High Contrast (forced colors), and whether color is ever the only way meaning is shown.
+
+Result: run for tasks 1 to 4, with two findings, [#279](https://github.com/Community-Access/git-going-with-github/issues/279) and [#280](https://github.com/Community-Access/git-going-with-github/issues/280). Accepted as a result by the accessibility owner on 29 October 2026.
 
 ### Agent run: keyboard, tasks 1 to 4, 28 October 2026
 

@@ -300,7 +300,7 @@ OS: Windows 11
 
 ## Testing the Built HTML Output
 
-This repository includes a build system that converts all Markdown files to HTML (see `BUILD.md`). If participants will use the HTML versions, test them separately:
+This repository includes a build system that converts all Markdown files to HTML (see `BUILD.md`). If participants will use the HTML versions, test them separately with the lists below. The keyboard, screen reader and manual checks of the published site's core tasks, and the record of each run, are in [Accessibility Checks for Core Flows](ACCESSIBILITY_CORE_FLOWS.md); add website results there, not here.
 
 ### Heading Hierarchy
 
@@ -334,7 +334,7 @@ This repository includes a build system that converts all Markdown files to HTML
 - **Need screen reader help?** See `docs/appendix-b-screen-reader-cheatsheet.md`
 - **Want resources?** See `docs/appendix-x-resources.md`
 
-*Last updated: February 2026*  
+*Last updated: October 2026*  
 *Accessibility is foundational to inclusive workflows.*
 
 ## Authoritative Sources
